@@ -54,18 +54,18 @@ function AppComponent() {
                     );
                   }
 
+                  const isWinSequenceCell = gameRoundInfo.winCellSequence?.cells.some(winCell => winCell.rowIndex === rowIndex && winCell.columnIndex === columnIndex);
+
                   let cellClassName = 'board-cell-mark';
 
-                  if (gameRoundInfo.winCellSequence?.cells.some(winCell => winCell.rowIndex === rowIndex && winCell.columnIndex === columnIndex)) {
-                    cellClassName += ' bg-win';
-                  } else if (mark === CellMark.CROSS) {
+                  if (mark === CellMark.CROSS) {
                     cellClassName += ' bg-cross';
                   } else if (mark === CellMark.NOUGHT) {
                     cellClassName += ' bg-nought';
                   }
 
                   return (
-                    <td key={columnIndex} className="board-cell">
+                    <td key={columnIndex} className={`board-cell ${isWinSequenceCell ? 'bg-win' : ''}`}>
                       <button className="board-cell-button">
                         <div className={cellClassName} />
                       </button>
