@@ -2,7 +2,7 @@
  * Array-like data structure with possible negative element indexes
  */
 
-export class List<T> implements Iterable<T | undefined> {
+export class List<T> implements Iterable<T> {
   private _minIndex: number = 0;
   private _maxIndex: number = -1;
   private _data: Map<number, T>;
@@ -35,14 +35,14 @@ export class List<T> implements Iterable<T | undefined> {
     this._maxIndex = maxIndex;
   }
 
-  get length(): number {
+  get size(): number {
     return this._maxIndex - this._minIndex + 1;
   }
 
-  get(index: number): T | undefined {
+  get(index: number): T {
     this.ensureIndexIsWithinRange(index);
 
-    return this._data.get(index);
+    return this._data.get(index) as T;
   }
 
   set(index: number, value: T): void {
@@ -61,13 +61,29 @@ export class List<T> implements Iterable<T | undefined> {
     this.set(this._minIndex, value);
   }
 
-  [Symbol.iterator](): Iterator<T | undefined> {
+  forEach(callback: (element: T, index: number) => void): void {
+    for (let index = this._minIndex; index <= this._maxIndex; index++) {
+      callback(this.get(index), index);
+    }
+  }
+
+  map<U>(callback: (element: T, index: number) => U): U[] {
+    const result: U[] = [];
+
+    this.forEach((element, index) => {
+      result.push(callback(element, index));
+    });
+
+    return result;
+  }
+
+  [Symbol.iterator](): Iterator<T> {
     const { _minIndex, _maxIndex } = this;
-    let currentIndex = _minIndex;
+    let index = _minIndex;
 
     return {
       next: () => {
-        if (currentIndex > _maxIndex) {
+        if (index > _maxIndex) {
           return {
             done: true,
             value: undefined,
@@ -76,7 +92,7 @@ export class List<T> implements Iterable<T | undefined> {
 
         return {
           done: false,
-          value: this.get(currentIndex++),
+          value: this.get(index++),
         };
       }
     };
