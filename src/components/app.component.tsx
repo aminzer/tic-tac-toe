@@ -1,18 +1,13 @@
 import React from 'react';
-import { List } from '../data_structures';
 import { CellMark, GameRoundStatus } from '../constants';
 import { CellMarkMatrix, GameRoundInfo } from '../interfaces';
-import { getWinCellSequence, increaseSizeBeyondBoundaryCell } from '../utils';
+import { getWinCellSequence, increaseSizeBeyondBoundaryCell, createMatrix } from '../utils';
 import './app.styles.css';
 
-const initialRowCount = 9;
-const initialColumnCount = 11;
-
-const initialCellMarkMatrix = new List<List<CellMark>>({ maxIndex: initialRowCount - 1 });
-for (let rowIndex = 0; rowIndex < initialRowCount; rowIndex++) {
-  const row = new List<CellMark>({ maxIndex: initialColumnCount - 1 });
-  initialCellMarkMatrix.set(rowIndex, row);
-}
+const initialCellMarkMatrix = createMatrix<CellMark>({
+  rowCount: 9,
+  columnCount: 11,
+});
 
 function AppComponent() {
   const [cellMarkMatrix, setCellMarkMatrix] = React.useState<CellMarkMatrix>(initialCellMarkMatrix);
