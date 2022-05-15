@@ -2,7 +2,7 @@ import React from 'react';
 import { List } from '../data_structures';
 import { CellMark, GameRoundStatus } from '../constants';
 import { CellMarkMatrix, GameRoundInfo } from '../interfaces';
-import { getWinCellSequence } from '../utils';
+import { getWinCellSequence, increaseSizeBeyondBoundaryCell } from '../utils';
 import './app.styles.css';
 
 const initialRowCount = 9;
@@ -26,6 +26,9 @@ function AppComponent() {
   const handleCellClick = (rowIndex: number, columnIndex: number): void => {
     // TODO ?? make a deep copy of matrix
     cellMarkMatrix.get(rowIndex).set(columnIndex, currentMark);
+
+    increaseSizeBeyondBoundaryCell(cellMarkMatrix, { rowIndex, columnIndex });
+
     setCellMarkMatrix(cellMarkMatrix);
 
     setCurrentMark(currentMark === CellMark.CROSS ? CellMark.NOUGHT : CellMark.CROSS);
