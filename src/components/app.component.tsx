@@ -1,7 +1,7 @@
 import React from 'react';
 import { CellMark, GameRoundStatus } from '../constants';
 import { CellMarkMatrix, GameRoundInfo } from '../interfaces';
-import { getWinCellSequence, increaseSizeBeyondBoundaryCell, createMatrix } from '../utils';
+import { getWinCellSequence, increaseMatrixSizeBeyondBoundaryCell, createMatrix } from '../utils';
 import './app.styles.css';
 
 const initialCellMarkMatrix = createMatrix<CellMark>({
@@ -22,7 +22,7 @@ function AppComponent() {
     // TODO ?? make a deep copy of matrix
     cellMarkMatrix.get(rowIndex).set(columnIndex, currentMark);
 
-    increaseSizeBeyondBoundaryCell(cellMarkMatrix, { rowIndex, columnIndex });
+    increaseMatrixSizeBeyondBoundaryCell(cellMarkMatrix, { rowIndex, columnIndex });
 
     setCellMarkMatrix(cellMarkMatrix);
 

@@ -27,7 +27,7 @@ const addColumnToEnd = <T,>(matrix: List<List<T>>): void => {
   });
 };
 
-export const increaseSizeBeyondBoundaryCell = <T,>(matrix: List<List<T>>, cell: Cell): void => {
+export const increaseMatrixSizeBeyondBoundaryCell = <T,>(matrix: List<List<T>>, cell: Cell): void => {
   if (cell.rowIndex === matrix.minIndex) {
     addRowFromStart(matrix);
   }
