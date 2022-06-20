@@ -45,14 +45,47 @@ export const increaseMatrixSizeBeyondBoundaryCell = <T,>(matrix: List<List<T>>, 
   }
 };
 
-export const createMatrix = <T,>({ rowCount, columnCount }: { rowCount: number, columnCount: number }): List<List<T>> => {
-  const matrix = new List<List<T>>({ maxIndex: rowCount - 1 });
+export const createMatrix = <T,>({
+  minRowIndex = 0,
+  maxRowIndex,
+  minColumnIndex = 0,
+  maxColumnIndex,
+}: {
+  minRowIndex?: number;
+  maxRowIndex: number;
+  minColumnIndex?: number;
+  maxColumnIndex: number;
+}): List<List<T>> => {
+  const matrix = new List<List<T>>({
+    minIndex: minRowIndex,
+    maxIndex: maxRowIndex,
+  });
 
-  for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
-    const row = new List<T>({ maxIndex: columnCount - 1 });
+  for (let rowIndex = minRowIndex; rowIndex <= maxRowIndex; rowIndex++) {
+    const row = new List<T>({
+      minIndex: minColumnIndex,
+      maxIndex: maxColumnIndex,
+    });
 
     matrix.set(rowIndex, row);
   }
 
   return matrix;
+};
+
+export const cloneMatrix = <T,>(matrix: List<List<T>>): List<List<T>> => {
+  const newMatrix = createMatrix<T>({
+    minRowIndex: matrix.minIndex,
+    maxRowIndex: matrix.maxIndex,
+    minColumnIndex: matrix.get(0).minIndex,
+    maxColumnIndex: matrix.get(0).maxIndex,
+  });
+
+  matrix.forEach((row, rowIndex)=> {
+    row.forEach((cell, cellIndex) => {
+      newMatrix.get(rowIndex).set(cellIndex, cell);
+    });
+  });
+
+  return newMatrix;
 };

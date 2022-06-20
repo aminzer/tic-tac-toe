@@ -1,12 +1,12 @@
 import React from 'react';
 import { CellMark, GameRoundStatus } from '../constants';
 import { CellMarkMatrix, GameRoundInfo } from '../interfaces';
-import { getWinCellSequence, increaseMatrixSizeBeyondBoundaryCell, createMatrix } from '../utils';
+import { getWinCellSequence, increaseMatrixSizeBeyondBoundaryCell, createMatrix, cloneMatrix } from '../utils';
 import './app.styles.css';
 
 const initialCellMarkMatrix = createMatrix<CellMark>({
-  rowCount: 9,
-  columnCount: 11,
+  maxRowIndex: 8,
+  maxColumnIndex: 10,
 });
 
 function AppComponent() {
@@ -19,16 +19,16 @@ function AppComponent() {
   const isRoundFinished = gameRoundInfo.status === GameRoundStatus.FINISHED;
 
   const handleCellClick = (rowIndex: number, columnIndex: number): void => {
-    // TODO ?? make a deep copy of matrix
-    cellMarkMatrix.get(rowIndex).set(columnIndex, currentMark);
+    const newCellMarkMatrix = cloneMatrix(cellMarkMatrix);
+    newCellMarkMatrix.get(rowIndex).set(columnIndex, currentMark);
 
-    increaseMatrixSizeBeyondBoundaryCell(cellMarkMatrix, { rowIndex, columnIndex });
+    increaseMatrixSizeBeyondBoundaryCell(newCellMarkMatrix, { rowIndex, columnIndex });
 
-    setCellMarkMatrix(cellMarkMatrix);
+    setCellMarkMatrix(newCellMarkMatrix);
 
     setCurrentMark(currentMark === CellMark.CROSS ? CellMark.NOUGHT : CellMark.CROSS);
 
-    const winCellSequence = getWinCellSequence(cellMarkMatrix);
+    const winCellSequence = getWinCellSequence(newCellMarkMatrix);
 
     setGameRoundInfo({
       status: winCellSequence ? GameRoundStatus.FINISHED : GameRoundStatus.IN_PROGRESS,
