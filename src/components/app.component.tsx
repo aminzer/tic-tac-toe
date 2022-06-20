@@ -37,59 +37,61 @@ function AppComponent() {
   };
 
   return (
-    <div className="content">
-      <div className="board-container">
-        <table className="board">
-          <tbody>
-            {cellMarkMatrix.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((mark, columnIndex) => {
-                  if (!mark) {
+    <React.StrictMode>
+      <div className="content">
+        <div className="board-container">
+          <table className="board">
+            <tbody>
+              {cellMarkMatrix.map((row, rowIndex) => (
+                <tr key={rowIndex}>
+                  {row.map((mark, columnIndex) => {
+                    if (!mark) {
+                      return (
+                        <td key={columnIndex} className="board-cell" onClick={isRoundFinished ? undefined : () => handleCellClick(rowIndex, columnIndex)}>
+                          <button className={`board-cell-button ${isRoundFinished ? '' : 'active'}`} />
+                        </td>
+                      );
+                    }
+
+                    const isWinSequenceCell = gameRoundInfo.winCellSequence?.cells.some(winCell => winCell.rowIndex === rowIndex && winCell.columnIndex === columnIndex);
+
+                    let cellClassName = 'board-cell-mark';
+
+                    if (mark === CellMark.CROSS) {
+                      cellClassName += ' bg-cross';
+                    } else if (mark === CellMark.NOUGHT) {
+                      cellClassName += ' bg-nought';
+                    }
+
                     return (
-                      <td key={columnIndex} className="board-cell" onClick={isRoundFinished ? undefined : () => handleCellClick(rowIndex, columnIndex)}>
-                        <button className={`board-cell-button ${isRoundFinished ? '' : 'active'}`} />
+                      <td key={columnIndex} className={`board-cell ${isWinSequenceCell ? 'bg-win' : ''}`}>
+                        <button className="board-cell-button">
+                          <div className={cellClassName} />
+                        </button>
                       </td>
                     );
-                  }
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-                  const isWinSequenceCell = gameRoundInfo.winCellSequence?.cells.some(winCell => winCell.rowIndex === rowIndex && winCell.columnIndex === columnIndex);
-
-                  let cellClassName = 'board-cell-mark';
-
-                  if (mark === CellMark.CROSS) {
-                    cellClassName += ' bg-cross';
-                  } else if (mark === CellMark.NOUGHT) {
-                    cellClassName += ' bg-nought';
-                  }
-
-                  return (
-                    <td key={columnIndex} className={`board-cell ${isWinSequenceCell ? 'bg-win' : ''}`}>
-                      <button className="board-cell-button">
-                        <div className={cellClassName} />
-                      </button>
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <div className="info-container">
-        {isRoundFinished ? (
-          <React.Fragment>
-            Winner:
-            <div className={`current-mark-icon ${gameRoundInfo.winCellSequence?.cellMark === CellMark.CROSS ? 'bg-cross' : 'bg-nought'}`}></div>
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            Current turn:
-            <div className={`current-mark-icon ${currentMark === CellMark.CROSS ? 'bg-cross' : 'bg-nought'}`}></div>
-          </React.Fragment>
-        )}
-      </div>
-    </div >
+        <div className="info-container">
+          {isRoundFinished ? (
+            <React.Fragment>
+              Winner:
+              <div className={`current-mark-icon ${gameRoundInfo.winCellSequence?.cellMark === CellMark.CROSS ? 'bg-cross' : 'bg-nought'}`}></div>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              Current turn:
+              <div className={`current-mark-icon ${currentMark === CellMark.CROSS ? 'bg-cross' : 'bg-nought'}`}></div>
+            </React.Fragment>
+          )}
+        </div>
+      </div >
+    </React.StrictMode>
   );
 }
 
