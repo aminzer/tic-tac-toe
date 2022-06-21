@@ -1,10 +1,19 @@
+:root {
+  --color-background: #20212c;
+  --color-default: #a2a9c4;
+  --color-cross: #c00;
+  --color-cross-dark: #700;
+  --color-nought: #00c;
+  --color-nought-dark: #007;
+}
+
 body {
   height: 100vh;
   width: 100vw;
   margin: 0;
   padding: 0;
-  background-color: #20212c;
-  color: #a2a9c4;
+  background-color: var(--color-background);
+  color: var(--color-default);
   font-family: "Verdana";
 }
 
