@@ -1,0 +1,15 @@
+.btn {
+  padding: 0.25rem 0.5rem;
+  background-color: initial;
+  color: var(--color-default);
+  border: 2px solid var(--color-default);
+  border-radius: var(--border-radius-default);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--color-background-light);
+}

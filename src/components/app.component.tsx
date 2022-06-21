@@ -2,6 +2,7 @@ import React from 'react';
 import { Mark, GameRoundStatus } from '../constants';
 import { MarkMatrix, GameRoundInfo, GameStatistic } from '../types';
 import { getWinCellSequence, increaseMatrixSizeBeyondBoundaryCell, createMatrix, cloneMatrix } from '../utils';
+import Button from './button.component';
 import './app.styles.css';
 
 const initialMarkMatrix = createMatrix<Mark>({
@@ -68,7 +69,7 @@ function AppComponent() {
     }
   };
 
-  const handleStartNewRoundButtonClick = () => {
+  const startNewGameRound = () => {
     setMarkMatrix(initialMarkMatrix);
 
     const startingMark = invertMark(gameRoundInfo.startingMark);
@@ -101,7 +102,9 @@ function AppComponent() {
               <React.Fragment>
                 Winner:
                 <div className={`current-mark-icon ${getMarkClass(gameRoundInfo.winCellSequence?.mark)}`} />
-                <button className="btn" style={{ marginLeft: '0.5rem' }} onClick={handleStartNewRoundButtonClick}>Start new round</button>
+                <Button onClick={startNewGameRound} style={{ marginLeft: '0.5rem' }}>
+                  Start new round
+                </Button>
               </React.Fragment>
             ) : (
               <React.Fragment>
