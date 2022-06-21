@@ -21,7 +21,7 @@ const initialGameStatistic: GameStatistic = {
   }
 };
 
-const getCellColorClass = (mark?: Mark): string => {
+const getMarkClass = (mark?: Mark): string => {
   return mark === Mark.NOUGHT ? 'bg-nought' : 'bg-cross';
 }
 
@@ -100,13 +100,13 @@ function AppComponent() {
             {isRoundFinished ? (
               <React.Fragment>
                 Winner:
-                <div className={`current-mark-icon ${getCellColorClass(gameRoundInfo.winCellSequence?.mark)}`} />
+                <div className={`current-mark-icon ${getMarkClass(gameRoundInfo.winCellSequence?.mark)}`} />
                 <button className="btn" style={{ marginLeft: '0.5rem' }} onClick={handleStartNewRoundButtonClick}>Start new round</button>
               </React.Fragment>
             ) : (
               <React.Fragment>
                 Current turn:
-                <div className={`current-mark-icon ${getCellColorClass(currentMark)}`} />
+                <div className={`current-mark-icon ${getMarkClass(currentMark)}`} />
               </React.Fragment>
             )}
           </div>
@@ -128,10 +128,10 @@ function AppComponent() {
 
                     const isWinSequenceCell = gameRoundInfo.winCellSequence?.cells.some(winCell => winCell.rowIndex === rowIndex && winCell.columnIndex === columnIndex);
 
-                    const cellClassName = `board-cell-mark ${getCellColorClass(mark)}`;
+                    const cellClassName = `board-cell-mark ${getMarkClass(mark)}`;
 
                     return (
-                      <td key={columnIndex} className={`board-cell ${isWinSequenceCell ? 'bg-win' : ''}`}>
+                      <td key={columnIndex} className={`board-cell ${isWinSequenceCell ? `${getMarkClass(gameRoundInfo.winCellSequence?.mark)}-dark` : ''}`}>
                         <button className="board-cell-button">
                           <div className={cellClassName} />
                         </button>

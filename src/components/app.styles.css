@@ -1,3 +1,26 @@
+:root {
+  --color-cross: #c00;
+  --color-cross-dark: #700;
+  --color-nought: #00c;
+  --color-nought-dark: #007;
+}
+
+.bg-cross {
+  background-color: var(--color-cross);
+}
+
+.bg-cross-dark {
+  background-color: var(--color-cross-dark);
+}
+
+.bg-nought {
+  background-color: var(--color-nought);
+}
+
+.bg-nought-dark {
+  background-color: var(--color-nought-dark);
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -65,18 +88,6 @@
   border-radius: 33%;
 }
 
-.bg-cross {
-  background-color: #c00;
-}
-
-.bg-nought {
-  background-color: #00c;
-}
-
-.bg-win {
-  background-color: #ff0;
-}
-
 .current-mark-icon {
   height: 1rem;
   width: 1rem;
@@ -93,11 +104,11 @@
 }
 
 .score-mark-container-cross {
-  border-color: #c00;
+  border-color: var(--color-cross);
 }
 
 .score-mark-container-nought {
-  border-color: #00c;
+  border-color: var(--color-nought);
 }
 
 .btn {
