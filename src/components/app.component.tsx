@@ -1,42 +1,29 @@
-import React from 'react';
-import { Mark, GameRoundStatus } from '../constants';
-import { MarkMatrix, GameRoundInfo, GameStatistic } from '../types';
-import { getWinCellSequence, increaseMatrixSizeBeyondBoundaryCell, createMatrix, cloneMatrix } from '../utils';
-import Button from './button.component';
+import React, { useState } from 'react';
+import { GameRoundStatus } from '../constants';
+import {
+  getWinCellSequence,
+  increaseMatrixSizeBeyondBoundaryCell,
+  cloneMatrix,
+  invertMark,
+  isGameRoundFinished,
+  getMarkClass,
+} from '../utils';
+import Header from './header';
+import {
+  initialMark,
+  initialMarkMatrix,
+  initialGameRoundInfo,
+  initialGameStatistic,
+} from './initial_data';
 import './app.styles.css';
 
-const initialMarkMatrix = createMatrix<Mark>({
-  maxRowIndex: 10,
-  maxColumnIndex: 10,
-});
-
-const initialGameRoundInfo: GameRoundInfo = {
-  startingMark: Mark.CROSS,
-  status: GameRoundStatus.IN_PROGRESS,
-};
-
-const initialGameStatistic: GameStatistic = {
-  winCount: {
-    [Mark.CROSS]: 0,
-    [Mark.NOUGHT]: 0,
-  }
-};
-
-const getMarkClass = (mark?: Mark): string => {
-  return mark === Mark.NOUGHT ? 'bg-nought' : 'bg-cross';
-}
-
-const invertMark = (mark: Mark): Mark => {
-  return mark === Mark.NOUGHT ? Mark.CROSS : Mark.NOUGHT;
-};
-
 function AppComponent() {
-  const [markMatrix, setMarkMatrix] = React.useState<MarkMatrix>(initialMarkMatrix);
-  const [currentMark, setCurrentMark] = React.useState<Mark>(Mark.CROSS);
-  const [gameRoundInfo, setGameRoundInfo] = React.useState<GameRoundInfo>(initialGameRoundInfo);
-  const [gameStatistic, setGameStatistic] = React.useState<GameStatistic>(initialGameStatistic);
+  const [markMatrix, setMarkMatrix] = useState(initialMarkMatrix);
+  const [currentMark, setCurrentMark] = useState(initialMark);
+  const [gameRoundInfo, setGameRoundInfo] = useState(initialGameRoundInfo);
+  const [gameStatistic, setGameStatistic] = useState(initialGameStatistic);
 
-  const isRoundFinished = gameRoundInfo.status === GameRoundStatus.FINISHED;
+  const isRoundFinished = isGameRoundFinished(gameRoundInfo);
 
   const handleCellClick = (rowIndex: number, columnIndex: number): void => {
     const newMarkMatrix = cloneMatrix(markMatrix);
@@ -85,35 +72,12 @@ function AppComponent() {
   return (
     <React.StrictMode>
       <div className="content">
-        <div className="info-container">
-          <div className="info-container-row">
-            Score:
-            <div className="score-mark-container score-mark-container-cross">
-              {gameStatistic.winCount[Mark.CROSS]}
-            </div>
-            -
-            <div className="score-mark-container score-mark-container-nought">
-              {gameStatistic.winCount[Mark.NOUGHT]}
-            </div>
-          </div>
-
-          <div className="info-container-row">
-            {isRoundFinished ? (
-              <React.Fragment>
-                Winner:
-                <div className={`current-mark-icon ${getMarkClass(gameRoundInfo.winCellSequence?.mark)}`} />
-                <Button onClick={startNewGameRound} style={{ marginLeft: '0.5rem' }}>
-                  Start new round
-                </Button>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                Current turn:
-                <div className={`current-mark-icon ${getMarkClass(currentMark)}`} />
-              </React.Fragment>
-            )}
-          </div>
-        </div>
+        <Header
+          currentMark={currentMark}
+          gameRoundInfo={gameRoundInfo}
+          gameStatistic={gameStatistic}
+          onNewGameRoundStart={startNewGameRound}
+        />
 
         <div className="board-container">
           <div className="board-spacer">
