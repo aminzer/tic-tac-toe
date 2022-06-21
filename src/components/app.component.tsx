@@ -5,10 +5,9 @@ import {
   increaseMatrixSizeBeyondBoundaryCell,
   cloneMatrix,
   invertMark,
-  isGameRoundFinished,
-  getMarkClass,
 } from '../utils';
 import Header from './header';
+import Board from './board';
 import {
   initialMark,
   initialMarkMatrix,
@@ -23,9 +22,7 @@ function AppComponent() {
   const [gameRoundInfo, setGameRoundInfo] = useState(initialGameRoundInfo);
   const [gameStatistic, setGameStatistic] = useState(initialGameStatistic);
 
-  const isRoundFinished = isGameRoundFinished(gameRoundInfo);
-
-  const handleCellClick = (rowIndex: number, columnIndex: number): void => {
+  const handleBoardCellClick = (rowIndex: number, columnIndex: number): void => {
     const newMarkMatrix = cloneMatrix(markMatrix);
     newMarkMatrix.get(rowIndex).set(columnIndex, currentMark);
 
@@ -79,39 +76,11 @@ function AppComponent() {
           onNewGameRoundStart={startNewGameRound}
         />
 
-        <div className="board-container">
-          <div className="board-spacer">
-            <table className="board">
-              <tbody>
-                {markMatrix.map((row, rowIndex) => (
-                  <tr className="board-row" key={rowIndex}>
-                    {row.map((mark, columnIndex) => {
-                      if (!mark) {
-                        return (
-                          <td key={columnIndex} className="board-cell" onClick={isRoundFinished ? undefined : () => handleCellClick(rowIndex, columnIndex)}>
-                            <button className={`board-cell-button ${isRoundFinished ? '' : 'active'}`} />
-                          </td>
-                        );
-                      }
-
-                      const isWinSequenceCell = gameRoundInfo.winCellSequence?.cells.some(winCell => winCell.rowIndex === rowIndex && winCell.columnIndex === columnIndex);
-
-                      const cellClassName = `board-cell-mark ${getMarkClass(mark)}`;
-
-                      return (
-                        <td key={columnIndex} className={`board-cell ${isWinSequenceCell ? `${getMarkClass(gameRoundInfo.winCellSequence?.mark)}-dark` : ''}`}>
-                          <button className="board-cell-button">
-                            <div className={cellClassName} />
-                          </button>
-                        </td>
-                      );
-                    })}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <Board
+          markMatrix={markMatrix}
+          gameRoundInfo={gameRoundInfo}
+          onCellClick={handleBoardCellClick}
+        />
       </div >
     </React.StrictMode>
   );

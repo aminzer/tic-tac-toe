@@ -1,0 +1,16 @@
+.board-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+}
+
+.board-spacer {
+  margin: auto;
+  padding: 1rem;
+}
+
+.board {
+  border-spacing: 0;
+}
