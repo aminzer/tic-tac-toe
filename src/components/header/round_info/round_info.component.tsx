@@ -1,8 +1,9 @@
 import { Fragment } from 'react';
 import { Mark } from '../../../constants';
 import { GameRoundInfo } from '../../../types';
-import { isGameRoundFinished, getMarkClass } from '../../../utils';
+import { isGameRoundFinished } from '../../../utils';
 import Button from '../../button';
+import MarkIcon from './mark_icon';
 
 interface Props {
   currentMark: Mark;
@@ -12,10 +13,12 @@ interface Props {
 
 export default function RoundInfoComponent({ currentMark, gameRoundInfo, onNewGameRoundStart }: Props) {
   if (isGameRoundFinished(gameRoundInfo)) {
+    const winnerMark = gameRoundInfo.winCellSequence?.mark
+
     return (
       <Fragment>
-        Winner:
-        <div className={`current-mark-icon ${getMarkClass(gameRoundInfo.winCellSequence?.mark)}`} />
+        Winner: <MarkIcon mark={winnerMark} />
+
         <Button onClick={onNewGameRoundStart} style={{ marginLeft: '0.5rem' }}>
           Start new round
         </Button>
@@ -25,8 +28,7 @@ export default function RoundInfoComponent({ currentMark, gameRoundInfo, onNewGa
 
   return (
     <Fragment>
-      Current turn :
-      <div className={`current-mark-icon ${getMarkClass(currentMark)}`} />
+      Current turn: <MarkIcon mark={currentMark} />
     </Fragment>
   );
 }

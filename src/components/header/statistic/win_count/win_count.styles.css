@@ -1,0 +1,15 @@
+.win-count {
+  margin: 0 0.5rem;
+  padding: 0.1rem 0.4rem;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: var(--border-radius-default);
+}
+
+.win-count-cross {
+  border-color: var(--color-cross);
+}
+
+.win-count-nought {
+  border-color: var(--color-nought);
+}

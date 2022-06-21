@@ -1,0 +1,15 @@
+.header {
+  padding: 0.5rem;
+}
+
+.header > .header-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.header > .header-row:last-child {
+  margin-bottom: 0;
+}
