@@ -19,7 +19,6 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
-  box-sizing: border-box;
 }
 
 .info-container {
@@ -39,11 +38,19 @@
 }
 
 .board-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   overflow: auto;
 }
 
+.board-spacer {
+  margin: auto;
+  padding: 1rem;
+}
+
 .board {
-  margin: 1rem auto;
   border-spacing: 0;
 }
 
