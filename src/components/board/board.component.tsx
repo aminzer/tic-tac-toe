@@ -19,7 +19,7 @@ export default function BoardComponent({ markMatrix, gameRoundInfo, onCellClick 
         <table className="board">
           <tbody>
             {markMatrix.map((row, rowIndex) => (
-              <tr className="board-row" key={rowIndex}>
+              <tr key={rowIndex}>
                 {row.map((mark, columnIndex) => (
                   <BoardCell
                     rowIndex={rowIndex}
@@ -30,6 +30,10 @@ export default function BoardComponent({ markMatrix, gameRoundInfo, onCellClick 
                       rowIndex,
                       columnIndex,
                     })}
+                    isTopBorderCell={rowIndex === markMatrix.minIndex}
+                    isBottomBorderCell={rowIndex === markMatrix.maxIndex}
+                    isLeftBorderCell={columnIndex === markMatrix.get(0).minIndex}
+                    isRightBorderCell={columnIndex === markMatrix.get(0).maxIndex}
                     onCellClick={onCellClick}
                     key={columnIndex}
                   />

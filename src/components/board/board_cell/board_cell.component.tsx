@@ -8,6 +8,10 @@ interface Props {
   mark?: Mark;
   isDisabled: boolean;
   isWinSequenceCell: boolean;
+  isTopBorderCell: boolean;
+  isBottomBorderCell: boolean;
+  isLeftBorderCell: boolean;
+  isRightBorderCell: boolean;
   onCellClick: (rowIndex: number, columnIndex: number) => void;
 };
 
@@ -17,13 +21,25 @@ export default function BoardCellComponent({
   mark,
   isDisabled,
   isWinSequenceCell,
+  isTopBorderCell,
+  isBottomBorderCell,
+  isLeftBorderCell,
+  isRightBorderCell,
   onCellClick,
 }: Props) {
+  const boardCellClass = [
+    'board-cell',
+    isTopBorderCell ? 'board-cell-top' : '',
+    isBottomBorderCell ? 'board-cell-bottom' : '',
+    isLeftBorderCell ? 'board-cell-left' : '',
+    isRightBorderCell ? 'board-cell-right' : '',
+  ].join(' ');
+
   if (mark) {
     const cellClassName = `board-cell-mark ${getMarkClass(mark)}`;
 
     return (
-      <td className={`board-cell ${isWinSequenceCell ? `${getMarkClass(mark)}-dark` : ''}`}>
+      <td className={`${boardCellClass} ${isWinSequenceCell ? `${getMarkClass(mark)}-dark` : ''}`}>
         <button className="board-cell-button">
           <div className={cellClassName} />
         </button>
@@ -33,7 +49,7 @@ export default function BoardCellComponent({
 
   return (
     <td
-      className="board-cell"
+      className={boardCellClass}
       onClick={isDisabled ? undefined : () => onCellClick(rowIndex, columnIndex)}
     >
       <button className={`board-cell-button ${isDisabled ? '' : 'active'}`} />
