@@ -44,7 +44,6 @@
 
 .board {
   margin: 0.25rem auto;
-  border: 1px solid var(--color-default);
   border-spacing: 0;
 }
 
@@ -52,6 +51,22 @@
   height: 2rem;
   width: 2rem;
   border: 1px solid var(--color-default);
+}
+
+.board-row:first-child > .board-cell {
+  border-top: none;
+}
+
+.board-row:last-child > .board-cell {
+  border-bottom: none;
+}
+
+.board-row > .board-cell:first-child {
+  border-left: none;
+}
+
+.board-row > .board-cell:last-child {
+  border-right: none;
 }
 
 .board-cell-button {

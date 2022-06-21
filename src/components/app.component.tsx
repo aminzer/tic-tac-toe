@@ -116,7 +116,7 @@ function AppComponent() {
           <table className="board">
             <tbody>
               {markMatrix.map((row, rowIndex) => (
-                <tr key={rowIndex}>
+                <tr className="board-row" key={rowIndex}>
                   {row.map((mark, columnIndex) => {
                     if (!mark) {
                       return (
