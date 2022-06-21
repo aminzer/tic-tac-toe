@@ -1,4 +1,4 @@
-export enum CellMark {
+export enum Mark {
   CROSS = 'X',
   NOUGHT = 'O',
 }

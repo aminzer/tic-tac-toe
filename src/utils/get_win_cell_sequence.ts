@@ -1,29 +1,29 @@
-import { CellMark } from '../constants';
-import { Cell, CellSequence, CellMarkMatrix } from '../types';
+import { Mark } from '../constants';
+import { Cell, CellSequence, MarkMatrix } from '../types';
 
-const winSequenceLength = 2; // TODO 5
+const winSequenceLength = 5;
 
-export const getWinCellSequence = (cellMarkMatrix: CellMarkMatrix): CellSequence | undefined => {
-  const minRowIndex = cellMarkMatrix.minIndex;
-  const maxRowIndex = cellMarkMatrix.maxIndex;
+export const getWinCellSequence = (markMatrix: MarkMatrix): CellSequence | undefined => {
+  const minRowIndex = markMatrix.minIndex;
+  const maxRowIndex = markMatrix.maxIndex;
 
-  const minColumnIndex = cellMarkMatrix.get(0).minIndex;
-  const maxColumnIndex = cellMarkMatrix.get(0).maxIndex;
+  const minColumnIndex = markMatrix.get(0).minIndex;
+  const maxColumnIndex = markMatrix.get(0).maxIndex;
 
   const cellSequence: CellSequence = {
     cells: [],
-    cellMark: CellMark.CROSS,
+    mark: Mark.CROSS,
   };
 
   const calculateCellSequence = (cellSequence: CellSequence, nextCell: Cell): void => {
-    const nextCellMark = cellMarkMatrix.get(nextCell.rowIndex).get(nextCell.columnIndex);
+    const nextMark = markMatrix.get(nextCell.rowIndex).get(nextCell.columnIndex);
 
-    if (!nextCellMark || nextCellMark !== cellSequence.cellMark) {
+    if (!nextMark || nextMark !== cellSequence.mark) {
       cellSequence.cells = [];
     }
 
     cellSequence.cells.push(nextCell);
-    cellSequence.cellMark = nextCellMark;
+    cellSequence.mark = nextMark;
   }
 
   // check for horizontal mark sequences

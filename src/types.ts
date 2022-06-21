@@ -1,4 +1,4 @@
-import { CellMark, GameRoundStatus } from './constants';
+import { Mark, GameRoundStatus } from './constants';
 import { List } from './data_structures';
 
 export interface Cell {
@@ -8,20 +8,20 @@ export interface Cell {
 
 export interface CellSequence {
   cells: Cell[];
-  cellMark: CellMark;
+  mark: Mark;
 }
 
-export type CellMarkMatrix = List<List<CellMark>>;
+export type MarkMatrix = List<List<Mark>>;
 
 export interface GameRoundInfo {
-  startingCellMark: CellMark;
+  startingMark: Mark;
   status: GameRoundStatus;
   winCellSequence?: CellSequence;
 }
 
 export interface GameStatistic {
   winCount: {
-    [CellMark.CROSS]: number;
-    [CellMark.NOUGHT]: number;
+    [Mark.CROSS]: number;
+    [Mark.NOUGHT]: number;
   }
 }

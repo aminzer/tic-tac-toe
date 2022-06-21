@@ -1,53 +1,53 @@
 import React from 'react';
-import { CellMark, GameRoundStatus } from '../constants';
-import { CellMarkMatrix, GameRoundInfo, GameStatistic } from '../types';
+import { Mark, GameRoundStatus } from '../constants';
+import { MarkMatrix, GameRoundInfo, GameStatistic } from '../types';
 import { getWinCellSequence, increaseMatrixSizeBeyondBoundaryCell, createMatrix, cloneMatrix } from '../utils';
 import './app.styles.css';
 
-const initialCellMarkMatrix = createMatrix<CellMark>({
+const initialMarkMatrix = createMatrix<Mark>({
   maxRowIndex: 8,
   maxColumnIndex: 10,
 });
 
 const initialGameRoundInfo: GameRoundInfo = {
-  startingCellMark: CellMark.CROSS,
+  startingMark: Mark.CROSS,
   status: GameRoundStatus.IN_PROGRESS,
 };
 
 const initialGameStatistic: GameStatistic = {
   winCount: {
-    [CellMark.CROSS]: 0,
-    [CellMark.NOUGHT]: 0,
+    [Mark.CROSS]: 0,
+    [Mark.NOUGHT]: 0,
   }
 };
 
-const getCellColorClass = (cellMark?: CellMark): string => {
-  return cellMark === CellMark.NOUGHT ? 'bg-nought' : 'bg-cross';
+const getCellColorClass = (mark?: Mark): string => {
+  return mark === Mark.NOUGHT ? 'bg-nought' : 'bg-cross';
 }
 
-const invertCellMark = (cellMark?: CellMark): CellMark => {
-  return cellMark === CellMark.NOUGHT ? CellMark.CROSS : CellMark.NOUGHT;
+const invertMark = (mark: Mark): Mark => {
+  return mark === Mark.NOUGHT ? Mark.CROSS : Mark.NOUGHT;
 };
 
 function AppComponent() {
-  const [cellMarkMatrix, setCellMarkMatrix] = React.useState<CellMarkMatrix>(initialCellMarkMatrix);
-  const [currentMark, setCurrentMark] = React.useState<CellMark>(CellMark.CROSS);
+  const [markMatrix, setMarkMatrix] = React.useState<MarkMatrix>(initialMarkMatrix);
+  const [currentMark, setCurrentMark] = React.useState<Mark>(Mark.CROSS);
   const [gameRoundInfo, setGameRoundInfo] = React.useState<GameRoundInfo>(initialGameRoundInfo);
   const [gameStatistic, setGameStatistic] = React.useState<GameStatistic>(initialGameStatistic);
 
   const isRoundFinished = gameRoundInfo.status === GameRoundStatus.FINISHED;
 
   const handleCellClick = (rowIndex: number, columnIndex: number): void => {
-    const newCellMarkMatrix = cloneMatrix(cellMarkMatrix);
-    newCellMarkMatrix.get(rowIndex).set(columnIndex, currentMark);
+    const newMarkMatrix = cloneMatrix(markMatrix);
+    newMarkMatrix.get(rowIndex).set(columnIndex, currentMark);
 
-    increaseMatrixSizeBeyondBoundaryCell(newCellMarkMatrix, { rowIndex, columnIndex });
+    increaseMatrixSizeBeyondBoundaryCell(newMarkMatrix, { rowIndex, columnIndex });
 
-    setCellMarkMatrix(newCellMarkMatrix);
+    setMarkMatrix(newMarkMatrix);
 
-    setCurrentMark(invertCellMark(currentMark));
+    setCurrentMark(invertMark(currentMark));
 
-    const winCellSequence = getWinCellSequence(newCellMarkMatrix);
+    const winCellSequence = getWinCellSequence(newMarkMatrix);
 
     if (winCellSequence) {
       setGameRoundInfo({
@@ -60,7 +60,7 @@ function AppComponent() {
         ...gameStatistic,
         winCount: {
           ...gameStatistic.winCount,
-          [winCellSequence.cellMark]: gameStatistic.winCount[winCellSequence.cellMark] + 1,
+          [winCellSequence.mark]: gameStatistic.winCount[winCellSequence.mark] + 1,
         }
       };
 
@@ -69,16 +69,16 @@ function AppComponent() {
   };
 
   const handleStartNewRoundButtonClick = () => {
-    setCellMarkMatrix(initialCellMarkMatrix);
+    setMarkMatrix(initialMarkMatrix);
 
-    const startingCellMark = invertCellMark(gameRoundInfo.startingCellMark);
+    const startingMark = invertMark(gameRoundInfo.startingMark);
 
     setGameRoundInfo({
       ...initialGameRoundInfo,
-      startingCellMark,
+      startingMark,
     });
 
-    setCurrentMark(startingCellMark);
+    setCurrentMark(startingMark);
   };
 
   return (
@@ -88,11 +88,11 @@ function AppComponent() {
           <div className="info-container-row">
             Score:
             <div className="score-mark-container score-mark-container-cross">
-              {gameStatistic.winCount[CellMark.CROSS]}
+              {gameStatistic.winCount[Mark.CROSS]}
             </div>
             -
             <div className="score-mark-container score-mark-container-nought">
-              {gameStatistic.winCount[CellMark.NOUGHT]}
+              {gameStatistic.winCount[Mark.NOUGHT]}
             </div>
           </div>
 
@@ -100,7 +100,7 @@ function AppComponent() {
             {isRoundFinished ? (
               <React.Fragment>
                 Winner:
-                <div className={`current-mark-icon ${getCellColorClass(gameRoundInfo.winCellSequence?.cellMark)}`} />
+                <div className={`current-mark-icon ${getCellColorClass(gameRoundInfo.winCellSequence?.mark)}`} />
                 <button className="btn" style={{ marginLeft: '0.5rem' }} onClick={handleStartNewRoundButtonClick}>Start new round</button>
               </React.Fragment>
             ) : (
@@ -115,7 +115,7 @@ function AppComponent() {
         <div className="board-container">
           <table className="board">
             <tbody>
-              {cellMarkMatrix.map((row, rowIndex) => (
+              {markMatrix.map((row, rowIndex) => (
                 <tr key={rowIndex}>
                   {row.map((mark, columnIndex) => {
                     if (!mark) {
