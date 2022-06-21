@@ -5,7 +5,7 @@ import { getWinCellSequence, increaseMatrixSizeBeyondBoundaryCell, createMatrix,
 import './app.styles.css';
 
 const initialMarkMatrix = createMatrix<Mark>({
-  maxRowIndex: 8,
+  maxRowIndex: 10,
   maxColumnIndex: 10,
 });
 
