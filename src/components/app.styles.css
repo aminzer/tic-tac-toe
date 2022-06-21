@@ -96,14 +96,14 @@
 .board-cell-mark {
   height: 100%;
   width: 100%;
-  border-radius: 33%;
+  border-radius: var(--border-radius-default);
 }
 
 .current-mark-icon {
   height: 1rem;
   width: 1rem;
   margin-left: 0.5rem;
-  border-radius: 33%;
+  border-radius: var(--border-radius-default);
 }
 
 .score-mark-container {
@@ -111,7 +111,7 @@
   padding: 0.1rem 0.4rem;
   border-width: 3px;
   border-style: solid;
-  border-radius: 5px;
+  border-radius: var(--border-radius-default);
 }
 
 .score-mark-container-cross {
@@ -127,7 +127,7 @@
   background-color: initial;
   color: var(--color-default);
   border: 2px solid var(--color-default);
-  border-radius: 5px;
+  border-radius: var(--border-radius-default);
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.1s linear;
