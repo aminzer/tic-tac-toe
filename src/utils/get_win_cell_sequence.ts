@@ -1,7 +1,7 @@
 import { CellMark } from '../constants';
-import { Cell, CellSequence, CellMarkMatrix } from '../interfaces';
+import { Cell, CellSequence, CellMarkMatrix } from '../types';
 
-const winSequenceLength = 5;
+const winSequenceLength = 2; // TODO 5
 
 export const getWinCellSequence = (cellMarkMatrix: CellMarkMatrix): CellSequence | undefined => {
   const minRowIndex = cellMarkMatrix.minIndex;

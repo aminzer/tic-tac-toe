@@ -1,5 +1,5 @@
 import { List } from '../data_structures';
-import { Cell } from '../interfaces';
+import { Cell } from '../types';
 
 const addRowFromStart = <T,>(matrix: List<List<T>>): void => {
   matrix.pushFromStart(new List<T>({

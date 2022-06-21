@@ -4,6 +4,7 @@
   height: 100%;
   width: 100%;
   box-sizing: border-box;
+  overflow: auto;
 }
 
 .board-container {
@@ -14,10 +15,18 @@
 }
 
 .info-container {
+  padding: 0.5rem;
+}
+
+.info-container > .info-container-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.info-container > .info-container-row:last-child {
+  margin-bottom: 0;
 }
 
 .board {
@@ -38,6 +47,7 @@
   padding: 0.5rem;
   background: none;
   border: none;
+  transition: all 0.1s linear;
 }
 
 .board-cell-button.active {
@@ -71,4 +81,36 @@
   width: 1rem;
   margin-left: 0.5rem;
   border-radius: 33%;
+}
+
+.score-mark-container {
+  margin: 0 0.5rem;
+  padding: 0.1rem 0.4rem;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+.score-mark-container-cross {
+  border-color: #c00;
+}
+
+.score-mark-container-nought {
+  border-color: #00c;
+}
+
+.btn {
+  padding: 0.25rem 0.5rem;
+  background-color: initial;
+  color: #a2a9c4;
+  border: 2px solid #a2a9c4;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #343648;
 }

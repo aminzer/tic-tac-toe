@@ -14,6 +14,7 @@ export interface CellSequence {
 export type CellMarkMatrix = List<List<CellMark>>;
 
 export interface GameRoundInfo {
+  startingCellMark: CellMark;
   status: GameRoundStatus;
   winCellSequence?: CellSequence;
 }
