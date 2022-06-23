@@ -3,11 +3,17 @@
  */
 
 export class List<T> implements Iterable<T> {
-  private _minIndex: number = 0;
-  private _maxIndex: number = -1;
+  private _minIndex: number;
+  private _maxIndex: number;
   private _data: Map<number, T>;
 
-  constructor({ minIndex = 0, maxIndex = -1 }: { minIndex?: number, maxIndex?: number } = {}) {
+  constructor({
+    minIndex = 0,
+    maxIndex = -1,
+  }: {
+    minIndex?: number;
+    maxIndex?: number;
+  } = {}) {
     this.ensureRangeIsValid(minIndex, maxIndex);
 
     this._minIndex = minIndex;
@@ -23,6 +29,8 @@ export class List<T> implements Iterable<T> {
     this.ensureRangeIsValid(minIndex, this._maxIndex);
 
     this._minIndex = minIndex;
+
+    this.deleteElementsOutsizeIndexRange();
   }
 
   get maxIndex(): number {
@@ -33,6 +41,8 @@ export class List<T> implements Iterable<T> {
     this.ensureRangeIsValid(this._minIndex, maxIndex);
 
     this._maxIndex = maxIndex;
+
+    this.deleteElementsOutsizeIndexRange();
   }
 
   get size(): number {
@@ -98,15 +108,27 @@ export class List<T> implements Iterable<T> {
     };
   }
 
+  private isIndexWithinRange(index: number): boolean {
+    return index >= this._minIndex && index <= this._maxIndex;
+  }
+
   private ensureIndexIsWithinRange(index: number): void {
-    if (index < this._minIndex || index > this._maxIndex) {
-      throw new Error(`Index (${index}) is out of range [${this._minIndex},${this._maxIndex}]`);
+    if (!this.isIndexWithinRange(index)) {
+      throw new Error(`Index (${index}) is out of range [${this._minIndex}...${this._maxIndex}]`);
     }
   }
 
   private ensureRangeIsValid(minIndex: number, maxIndex: number): void {
     if (minIndex > maxIndex + 1) {
-      throw new Error(`minIndex (${minIndex}) cannot be greater than maxIndex + 1 (${maxIndex + 1})`);
+      throw new Error(`Invalid index range: [${minIndex}...${maxIndex}]`);
     }
+  }
+
+  private deleteElementsOutsizeIndexRange(): void {
+    this.forEach((element, index) => {
+      if (!this.isIndexWithinRange(index)) {
+        this._data.delete(index);
+      }
+    });
   }
 }
