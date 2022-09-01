@@ -10,12 +10,11 @@ interface Props {
 export default function StatisticComponent({ gameStatistic: { winCount } }: Props) {
   return (
     <Fragment>
-      Score:
       <WinCount
         value={winCount[Mark.CROSS]}
         mark={Mark.CROSS}
       />
-      -
+      x
       <WinCount
         value={winCount[Mark.NOUGHT]}
         mark={Mark.NOUGHT}

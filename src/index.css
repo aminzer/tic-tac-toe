@@ -3,10 +3,10 @@
   --color-background-light: #343648;
   --color-default: #a2a9c4;
 
-  --color-cross: #c00;
-  --color-cross-dark: #700;
-  --color-nought: #00c;
-  --color-nought-dark: #007;
+  --color-cross: #b7ff00;
+  --color-cross-dark: #466200;
+  --color-nought: #00b7ff;
+  --color-nought-dark: #004662;
 
   --border-radius-default: 5px;
 }
