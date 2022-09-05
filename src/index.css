@@ -1,4 +1,6 @@
 :root {
+  --font-family: "Roboto Mono";
+
   --color-background: #11002e;
   --color-background-light: #4a376a;
   --color-default: #c5a4ff;
@@ -8,7 +10,7 @@
   --color-nought: #ff006f;
   --color-nought-dark: #62002b;
 
-  --border-radius-default: 5px;
+  --border-radius-default: 20px;
 }
 
 *,
@@ -25,7 +27,7 @@ body {
   padding: 0;
   background-color: var(--color-background);
   color: var(--color-default);
-  font-family: "Roboto Mono";
+  font-family: var(--font-family);
 }
 
 #root {
