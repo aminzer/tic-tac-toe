@@ -125,10 +125,12 @@ export class List<T> implements Iterable<T> {
   }
 
   private deleteElementsOutsizeIndexRange(): void {
-    this.forEach((element, index) => {
-      if (!this.isIndexWithinRange(index)) {
+    [...this._data.keys()]
+      .filter(index => (
+        !this.isIndexWithinRange(index)
+      ))
+      .forEach(index => {
         this._data.delete(index);
-      }
-    });
+      });
   }
 }

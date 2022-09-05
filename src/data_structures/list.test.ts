@@ -69,7 +69,7 @@ describe('List', () => {
   });
 
   describe('set minIndex', () => {
-    describe.skip('when list size was decreased and increased back', () => { // TODO fix case
+    describe('when list size was decreased and increased back', () => {
       const list = new List<string>({
         minIndex: 0,
         maxIndex: 3,
