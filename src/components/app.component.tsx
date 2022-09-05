@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { GameRoundStatus } from '../constants';
+import React, { useState, useEffect } from 'react';
+import { GameRoundStatus, Mark } from '../constants';
 import {
   getWinCellSequence,
   increaseMatrixSizeBeyondBoundaryCell,
   cloneMatrix,
   invertMark,
+  setTitle,
 } from '../utils';
 import Header from './header';
 import Board from './board';
@@ -65,6 +66,14 @@ function AppComponent() {
 
     setCurrentMark(startingMark);
   };
+
+  useEffect(() => {
+    const { winCount } = gameStatistic;
+    const crossWinCount = winCount[Mark.CROSS];
+    const noughtWinCount = winCount[Mark.NOUGHT];
+
+    setTitle(`${crossWinCount}:${noughtWinCount}`);
+  }, [gameStatistic]);
 
   return (
     <React.StrictMode>
