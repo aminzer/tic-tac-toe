@@ -1,7 +1,7 @@
 .board-cell {
   height: 2rem;
   width: 2rem;
-  border: 1px solid var(--color-default);
+  border: 1px solid var(--color-background-light);
 }
 
 .board-cell-top {

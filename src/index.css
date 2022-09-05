@@ -1,12 +1,12 @@
 :root {
-  --color-background: #20212c;
-  --color-background-light: #343648;
-  --color-default: #a2a9c4;
+  --color-background: #11002e;
+  --color-background-light: #4a376a;
+  --color-default: #c5a4ff;
 
-  --color-cross: #b7ff00;
-  --color-cross-dark: #466200;
-  --color-nought: #00b7ff;
-  --color-nought-dark: #004662;
+  --color-cross: #eeff00;
+  --color-cross-dark: #5c6200;
+  --color-nought: #ff006f;
+  --color-nought-dark: #62002b;
 
   --border-radius-default: 5px;
 }
@@ -25,7 +25,7 @@ body {
   padding: 0;
   background-color: var(--color-background);
   color: var(--color-default);
-  font-family: "Verdana";
+  font-family: "Roboto Mono";
 }
 
 #root {
