@@ -1,5 +1,5 @@
 import { Mark } from '../../../constants';
-import { getMarkClass } from '../../../utils';
+import { getBackgroundMarkClass } from '../../../utils';
 import './board_cell.styles.css';
 
 interface Props {
@@ -36,10 +36,10 @@ export default function BoardCellComponent({
   ].join(' ');
 
   if (mark) {
-    const cellClassName = `board-cell-mark ${getMarkClass(mark)}`;
+    const cellClassName = `board-cell-mark ${getBackgroundMarkClass(mark)}`;
 
     return (
-      <td className={`${boardCellClass} ${isWinSequenceCell ? `${getMarkClass(mark)}-dark` : ''}`}>
+      <td className={`${boardCellClass} ${isWinSequenceCell ? `${getBackgroundMarkClass(mark)}-dark` : ''}`}>
         <button className="board-cell-button">
           <div className={cellClassName} />
         </button>

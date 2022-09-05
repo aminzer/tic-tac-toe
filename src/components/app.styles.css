@@ -14,6 +14,14 @@
   background-color: var(--color-nought-dark);
 }
 
+.color-cross {
+  color: var(--color-cross);
+}
+
+.color-nought {
+  color: var(--color-nought);
+}
+
 .content {
   display: flex;
   flex-direction: column;

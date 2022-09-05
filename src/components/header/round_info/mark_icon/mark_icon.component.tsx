@@ -1,5 +1,5 @@
 import { Mark } from '../../../../constants';
-import { getMarkClass } from '../../../../utils';
+import { getBackgroundMarkClass } from '../../../../utils';
 import './mark_icon.styles.css';
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function MarkIconComponent({ mark }: Props) {
-  const className = `mark-icon ${getMarkClass(mark)}`;
+  const className = `mark-icon ${getBackgroundMarkClass(mark)}`;
 
   return (
     <div className={className} />
