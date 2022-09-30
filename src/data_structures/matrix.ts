@@ -28,31 +28,31 @@ export class Matrix<T> {
     this._data = new Map();
   }
 
-  get rowCount(): number {
+  public get rowCount(): number {
     return this._maxRowIndex - this._minRowIndex + 1;
   }
 
-  get columnCount(): number {
+  public get columnCount(): number {
     return this._maxColumnIndex - this._minColumnIndex + 1;
   }
 
-  get minRowIndex(): number {
+  public get minRowIndex(): number {
     return this._minRowIndex;
   }
 
-  get maxRowIndex(): number {
+  public get maxRowIndex(): number {
     return this._maxRowIndex;
   }
 
-  get minColumnIndex(): number {
+  public get minColumnIndex(): number {
     return this._minColumnIndex;
   }
 
-  get maxColumnIndex(): number {
+  public get maxColumnIndex(): number {
     return this._maxColumnIndex;
   }
 
-  set minRowIndex(minRowIndex: number) {
+  public set minRowIndex(minRowIndex: number) {
     this.ensureRangeIsValid(minRowIndex, this._maxRowIndex);
 
     const isDeletionOutsideMatrixRequired = minRowIndex > this._minRowIndex;
@@ -64,7 +64,7 @@ export class Matrix<T> {
     }
   }
 
-  set maxRowIndex(maxRowIndex: number) {
+  public set maxRowIndex(maxRowIndex: number) {
     this.ensureRangeIsValid(this._minRowIndex, maxRowIndex);
 
     const isDeletionOutsideMatrixRequired = maxRowIndex < this._maxRowIndex;
@@ -76,7 +76,7 @@ export class Matrix<T> {
     }
   }
 
-  set minColumnIndex(minColumnIndex: number) {
+  public set minColumnIndex(minColumnIndex: number) {
     this.ensureRangeIsValid(minColumnIndex, this._maxColumnIndex);
 
     const isDeletionOutsideMatrixRequired = minColumnIndex > this._minColumnIndex;
@@ -88,7 +88,7 @@ export class Matrix<T> {
     }
   }
 
-  set maxColumnIndex(maxColumnIndex: number) {
+  public set maxColumnIndex(maxColumnIndex: number) {
     this.ensureRangeIsValid(this._minColumnIndex, maxColumnIndex);
 
     const isDeletionOutsideMatrixRequired = maxColumnIndex < this._maxColumnIndex;
@@ -100,7 +100,7 @@ export class Matrix<T> {
     }
   }
 
-  get(rowIndex: number, columnIndex: number): T | undefined {
+  public get(rowIndex: number, columnIndex: number): T | undefined {
     this.ensureCellIsWithinMatrix(rowIndex, columnIndex);
 
     const dataKey = this.stringifyDataKey(rowIndex, columnIndex);
@@ -108,7 +108,7 @@ export class Matrix<T> {
     return this._data.get(dataKey);
   }
 
-  set(rowIndex: number, columnIndex: number, value: T): void {
+  public set(rowIndex: number, columnIndex: number, value: T): void {
     this.ensureCellIsWithinMatrix(rowIndex, columnIndex);
 
     const dataKey = this.stringifyDataKey(rowIndex, columnIndex);
