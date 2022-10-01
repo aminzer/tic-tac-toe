@@ -116,6 +116,19 @@ export class Matrix<T> {
     this._data.set(dataKey, value);
   }
 
+  public clone(): Matrix<T> {
+    const newMatrix = new Matrix<T>({
+      minRowIndex: this._minRowIndex,
+      maxRowIndex: this._maxRowIndex,
+      minColumnIndex: this._minColumnIndex,
+      maxColumnIndex: this._maxColumnIndex,
+    });
+
+    newMatrix._data = new Map(this._data);
+
+    return newMatrix;
+  }
+
   private stringifyDataKey(rowIndex: number, columnIndex: number): string {
     return `${rowIndex}_${columnIndex}`;
   }
