@@ -262,25 +262,25 @@ describe('Matrix', () => {
       maxColumnIndex,
     });
 
-    for (let rowIndex = minRowIndex; rowIndex <= maxRowIndex; rowIndex++) {
-      for (let columnIndex = minColumnIndex; columnIndex <= maxColumnIndex; columnIndex++) {
+    for (let rowIndex = minRowIndex; rowIndex <= maxRowIndex; rowIndex += 1) {
+      for (let columnIndex = minColumnIndex; columnIndex <= maxColumnIndex; columnIndex += 1) {
         matrix.set(rowIndex, columnIndex, `${rowIndex}-${columnIndex}`);
       }
     }
 
     describe('when list size was decreased and increased back', () => {
-      matrix.minRowIndex++;
-      matrix.minRowIndex--;
-      matrix.maxRowIndex--;
-      matrix.maxRowIndex++;
-      matrix.minColumnIndex++;
-      matrix.minColumnIndex--;
-      matrix.maxColumnIndex--;
-      matrix.maxColumnIndex++;
+      matrix.minRowIndex += 1;
+      matrix.minRowIndex -= 1;
+      matrix.maxRowIndex -= 1;
+      matrix.maxRowIndex += 1;
+      matrix.minColumnIndex += 1;
+      matrix.minColumnIndex -= 1;
+      matrix.maxColumnIndex -= 1;
+      matrix.maxColumnIndex += 1;
 
       it('clears elements that were outside decreased index range', () => {
-        for (let rowIndex = minRowIndex; rowIndex <= maxRowIndex; rowIndex++) {
-          for (let columnIndex = minColumnIndex; columnIndex <= maxColumnIndex; columnIndex++) {
+        for (let rowIndex = minRowIndex; rowIndex <= maxRowIndex; rowIndex += 1) {
+          for (let columnIndex = minColumnIndex; columnIndex <= maxColumnIndex; columnIndex += 1) {
             if (rowIndex === 1 && columnIndex === 11) {
               continue;
             }
@@ -343,7 +343,6 @@ describe('Matrix', () => {
         expect(clonedMatrix.get(0, 0)).toBe('e');
       });
 
-
       it("doesn't update initial matrix", () => {
         expect(matrix.minRowIndex).toBe(0);
         expect(matrix.maxRowIndex).toBe(1);
@@ -377,27 +376,27 @@ describe('Matrix', () => {
 
     describe('mapRows', () => {
       it('return array of results of calls of callback for each matrix row', () => {
-        const x = matrix.mapRows(row => (
+        const x = matrix.mapRows((row) => (
           `#${row.index} ${row.mapColumns((cell) => `[${cell.rowIndex}:${cell.columnIndex}]`).join(',')}`
-        ))
+        ));
 
         expect(x).toEqual([
           '#0 [0:100],[0:101]',
           '#1 [1:100],[1:101]',
-        ])
+        ]);
       });
     });
 
     describe('mapColumns', () => {
       it('return array of results of calls of callback for each matrix column', () => {
-        const x = matrix.mapColumns(column => (
+        const x = matrix.mapColumns((column) => (
           `#${column.index} ${column.mapRows((cell) => `[${cell.rowIndex}:${cell.columnIndex}]`).join(',')}`
-        ))
+        ));
 
         expect(x).toEqual([
           '#100 [0:100],[1:100]',
           '#101 [0:101],[1:101]',
-        ])
+        ]);
       });
     });
   });

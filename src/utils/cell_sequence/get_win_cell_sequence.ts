@@ -18,10 +18,10 @@ export const getWinCellSequence = (markMatrix: Matrix<Mark>, {
   let cellSequence: CellSequence | null = null;
 
   // check for horizontal mark sequences
-  for (let rowIndex = minRowIndex; rowIndex <= maxRowIndex; rowIndex++) {
+  for (let rowIndex = minRowIndex; rowIndex <= maxRowIndex; rowIndex += 1) {
     cellSequence = null;
 
-    for (let columnIndex = minColumnIndex; columnIndex <= maxColumnIndex; columnIndex++) {
+    for (let columnIndex = minColumnIndex; columnIndex <= maxColumnIndex; columnIndex += 1) {
       const cell = { rowIndex, columnIndex };
       const mark = markMatrix.get(rowIndex, columnIndex);
 
@@ -34,10 +34,10 @@ export const getWinCellSequence = (markMatrix: Matrix<Mark>, {
   }
 
   // check for vertical mark sequences
-  for (let columnIndex = minColumnIndex; columnIndex <= maxColumnIndex; columnIndex++) {
+  for (let columnIndex = minColumnIndex; columnIndex <= maxColumnIndex; columnIndex += 1) {
     cellSequence = null;
 
-    for (let rowIndex = minRowIndex; rowIndex <= maxRowIndex; rowIndex++) {
+    for (let rowIndex = minRowIndex; rowIndex <= maxRowIndex; rowIndex += 1) {
       const cell = { rowIndex, columnIndex };
       const mark = markMatrix.get(rowIndex, columnIndex);
 
@@ -50,13 +50,26 @@ export const getWinCellSequence = (markMatrix: Matrix<Mark>, {
   }
 
   // check for diagonal mark sequences (top-left -> bottom-right)
-  for (let indexesSum = minRowIndex + minColumnIndex; indexesSum <= maxRowIndex + maxColumnIndex; indexesSum++) {
+  for (
+    let indexesSum = minRowIndex + minColumnIndex;
+    indexesSum <= maxRowIndex + maxColumnIndex;
+    indexesSum += 1
+  ) {
     cellSequence = null;
 
-    for (let rowIndex = minRowIndex; rowIndex <= Math.max(maxRowIndex, maxColumnIndex); rowIndex++) {
+    for (
+      let rowIndex = minRowIndex;
+      rowIndex <= Math.max(maxRowIndex, maxColumnIndex);
+      rowIndex += 1
+    ) {
       const columnIndex = indexesSum - rowIndex;
 
-      if (rowIndex < minRowIndex || rowIndex > maxRowIndex || columnIndex < minColumnIndex || columnIndex > maxColumnIndex) {
+      if (
+        rowIndex < minRowIndex
+        || rowIndex > maxRowIndex
+        || columnIndex < minColumnIndex
+        || columnIndex > maxColumnIndex
+      ) {
         continue;
       }
 
@@ -72,13 +85,26 @@ export const getWinCellSequence = (markMatrix: Matrix<Mark>, {
   }
 
   // check for diagonal mark sequences (bottom-left -> top-right)
-  for (let indexesDiff = minRowIndex - maxColumnIndex; indexesDiff <= maxRowIndex - minColumnIndex; indexesDiff++) {
+  for (
+    let indexesDiff = minRowIndex - maxColumnIndex;
+    indexesDiff <= maxRowIndex - minColumnIndex;
+    indexesDiff += 1
+  ) {
     cellSequence = null;
 
-    for (let rowIndex = minRowIndex; rowIndex <= Math.max(maxRowIndex, maxColumnIndex); rowIndex++) {
+    for (
+      let rowIndex = minRowIndex;
+      rowIndex <= Math.max(maxRowIndex, maxColumnIndex);
+      rowIndex += 1
+    ) {
       const columnIndex = rowIndex - indexesDiff;
 
-      if (rowIndex < minRowIndex || rowIndex > maxRowIndex || columnIndex < minColumnIndex || columnIndex > maxColumnIndex) {
+      if (
+        rowIndex < minRowIndex
+        || rowIndex > maxRowIndex
+        || columnIndex < minColumnIndex
+        || columnIndex > maxColumnIndex
+      ) {
         continue;
       }
 

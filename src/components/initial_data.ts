@@ -18,5 +18,5 @@ export const initialGameStatistic: GameStatistic = {
   winCount: {
     [Mark.CROSS]: 0,
     [Mark.NOUGHT]: 0,
-  }
+  },
 };

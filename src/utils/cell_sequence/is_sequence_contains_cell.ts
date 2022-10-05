@@ -1,4 +1,4 @@
-import { Cell, CellSequence } from "../../types";
+import { Cell, CellSequence } from '../../types';
 
 export const isSequenceContainsCell = (
   cellSequence: CellSequence | undefined,
@@ -8,7 +8,7 @@ export const isSequenceContainsCell = (
     return false;
   }
 
-  return cellSequence.cells.some(({ rowIndex, columnIndex }) => {
-    return cell.rowIndex === rowIndex && cell.columnIndex === columnIndex;
-  });
+  return cellSequence.cells.some(({ rowIndex, columnIndex }) => (
+    cell.rowIndex === rowIndex && cell.columnIndex === columnIndex
+  ));
 };

@@ -7,7 +7,7 @@ describe('utils > cell_sequence > isSequenceContainsCell', () => {
     cellSequence: CellSequence | undefined;
     cell: Cell;
     expectedResult: boolean;
-  };
+  }
 
   const testCases: TestCase[] = [
     {

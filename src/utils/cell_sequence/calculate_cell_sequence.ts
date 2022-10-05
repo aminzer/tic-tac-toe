@@ -11,7 +11,7 @@ export const calculateCellSequence = (
   }
 
   const cells = cellSequence?.mark === nextMark
-    ? [...cellSequence?.cells, nextCell]
+    ? [...(cellSequence?.cells ?? []), nextCell]
     : [nextCell];
 
   return {

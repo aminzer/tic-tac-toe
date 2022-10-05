@@ -10,7 +10,7 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
       winner: 'x' | 'o';
       sequence: number[][];
     } | null;
-  };
+  }
 
   const testCases: TestCase[] = [
     {
@@ -102,7 +102,7 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
       default:
         return undefined;
     }
-  }
+  };
 
   testCases.forEach(({ board, expectation }) => {
     let matrix: Matrix<Mark>;
@@ -116,7 +116,7 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
 
       board.forEach((row, rowIndex) => {
         row.forEach((cell, columnIndex) => {
-          let mark = getMark(cell);
+          const mark = getMark(cell);
 
           if (mark) {
             matrix.set(rowIndex, columnIndex, mark);
@@ -128,7 +128,7 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
         expectedWinCellSequence = {
           cells: expectation.sequence.map(([rowIndex, columnIndex]) => ({ rowIndex, columnIndex })),
           mark: getMark(expectation.winner) as Mark,
-        }
+        };
       }
     });
 

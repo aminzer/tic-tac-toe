@@ -8,7 +8,7 @@ describe('utils > cell_sequence > calculateCellSequence', () => {
     nextCell: Cell;
     nextMark?: Mark;
     expectedCalculatedCellSequence: CellSequence | null;
-  };
+  }
 
   const testCaseDefaults = {
     cellSequence: {
@@ -68,7 +68,9 @@ describe('utils > cell_sequence > calculateCellSequence', () => {
     },
   ];
 
-  testCases.forEach(({ cellSequence, nextCell, nextMark, expectedCalculatedCellSequence }) => {
+  testCases.forEach(({
+    cellSequence, nextCell, nextMark, expectedCalculatedCellSequence,
+  }) => {
     describe(`when ${JSON.stringify({ cellSequence, nextCell, nextMark })}`, () => {
       it(`returns ${JSON.stringify(expectedCalculatedCellSequence)}`, () => {
         expect(calculateCellSequence(

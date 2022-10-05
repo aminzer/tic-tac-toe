@@ -1,7 +1,7 @@
 import { Mark } from '../constants';
 
 export function getMarkClass(mark?: Mark, {
-  prefix = ''
+  prefix = '',
 }: {
   prefix?: string;
 } = {}): string {

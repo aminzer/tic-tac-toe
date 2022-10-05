@@ -1,9 +1,12 @@
-import { Cell } from "../types";
+import { Cell } from '../types';
 
 export class Matrix<T> {
   private _minRowIndex: number;
+
   private _maxRowIndex: number;
+
   private _minColumnIndex: number;
+
   private _maxColumnIndex: number;
 
   private _data: Map<string, T>;
@@ -42,18 +45,6 @@ export class Matrix<T> {
     return this._minRowIndex;
   }
 
-  public get maxRowIndex(): number {
-    return this._maxRowIndex;
-  }
-
-  public get minColumnIndex(): number {
-    return this._minColumnIndex;
-  }
-
-  public get maxColumnIndex(): number {
-    return this._maxColumnIndex;
-  }
-
   public set minRowIndex(minRowIndex: number) {
     this.ensureRangeIsValid(minRowIndex, this._maxRowIndex);
 
@@ -64,6 +55,10 @@ export class Matrix<T> {
     if (isDeletionOutsideMatrixRequired) {
       this.deleteDataOutsizeMatrix();
     }
+  }
+
+  public get maxRowIndex(): number {
+    return this._maxRowIndex;
   }
 
   public set maxRowIndex(maxRowIndex: number) {
@@ -78,6 +73,10 @@ export class Matrix<T> {
     }
   }
 
+  public get minColumnIndex(): number {
+    return this._minColumnIndex;
+  }
+
   public set minColumnIndex(minColumnIndex: number) {
     this.ensureRangeIsValid(minColumnIndex, this._maxColumnIndex);
 
@@ -88,6 +87,10 @@ export class Matrix<T> {
     if (isDeletionOutsideMatrixRequired) {
       this.deleteDataOutsizeMatrix();
     }
+  }
+
+  public get maxColumnIndex(): number {
+    return this._maxColumnIndex;
   }
 
   public set maxColumnIndex(maxColumnIndex: number) {
@@ -121,7 +124,11 @@ export class Matrix<T> {
   public mapRows<U>(callback: (row: MatrixRow<T>) => U): U[] {
     const res: U[] = [];
 
-    for (let rowIndex = this._minRowIndex; rowIndex <= this._maxRowIndex; rowIndex++) {
+    for (
+      let rowIndex = this._minRowIndex;
+      rowIndex <= this._maxRowIndex;
+      rowIndex += 1
+    ) {
       res.push(callback(new MatrixRow(rowIndex, this)));
     }
 
@@ -131,7 +138,11 @@ export class Matrix<T> {
   public mapColumns<U>(callback: (row: MatrixColumn<T>) => U): U[] {
     const res: U[] = [];
 
-    for (let columnIndex = this._minColumnIndex; columnIndex <= this._maxColumnIndex; columnIndex++) {
+    for (
+      let columnIndex = this._minColumnIndex;
+      columnIndex <= this._maxColumnIndex;
+      columnIndex += 1
+    ) {
       res.push(callback(new MatrixColumn(columnIndex, this)));
     }
 
@@ -166,10 +177,10 @@ export class Matrix<T> {
 
   private isCellWithinMatrix(rowIndex: number, columnIndex: number): boolean {
     return (
-      rowIndex >= this._minRowIndex &&
-      rowIndex <= this._maxRowIndex &&
-      columnIndex >= this._minColumnIndex &&
-      columnIndex <= this._maxColumnIndex
+      rowIndex >= this._minRowIndex
+      && rowIndex <= this._maxRowIndex
+      && columnIndex >= this._minColumnIndex
+      && columnIndex <= this._maxColumnIndex
     );
   }
 
@@ -187,12 +198,12 @@ export class Matrix<T> {
 
   private deleteDataOutsizeMatrix(): void {
     [...this._data.keys()]
-      .filter(dataKey => {
+      .filter((dataKey) => {
         const { rowIndex, columnIndex } = this.parseDataKey(dataKey);
 
         return !this.isCellWithinMatrix(rowIndex, columnIndex);
       })
-      .forEach(dataKey => {
+      .forEach((dataKey) => {
         this._data.delete(dataKey);
       });
   }
@@ -210,7 +221,7 @@ class MatrixRow<T> {
     for (
       let columnIndex = this.matrix.minColumnIndex;
       columnIndex <= this.matrix.maxColumnIndex;
-      columnIndex++
+      columnIndex += 1
     ) {
       res.push(callback({ rowIndex: this.index, columnIndex }));
     }
@@ -231,7 +242,7 @@ class MatrixColumn<T> {
     for (
       let rowIndex = this.matrix.minRowIndex;
       rowIndex <= this.matrix.maxRowIndex;
-      rowIndex++
+      rowIndex += 1
     ) {
       res.push(callback({ rowIndex, columnIndex: this.index }));
     }
