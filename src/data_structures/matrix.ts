@@ -1,3 +1,5 @@
+import { Cell } from "../types";
+
 export class Matrix<T> {
   private _minRowIndex: number;
   private _maxRowIndex: number;
@@ -116,6 +118,26 @@ export class Matrix<T> {
     this._data.set(dataKey, value);
   }
 
+  public mapRows<U>(callback: (row: MatrixRow<T>) => U): U[] {
+    const res: U[] = [];
+
+    for (let rowIndex = this._minRowIndex; rowIndex <= this._maxRowIndex; rowIndex++) {
+      res.push(callback(new MatrixRow(rowIndex, this)));
+    }
+
+    return res;
+  }
+
+  public mapColumns<U>(callback: (row: MatrixColumn<T>) => U): U[] {
+    const res: U[] = [];
+
+    for (let columnIndex = this._minColumnIndex; columnIndex <= this._maxColumnIndex; columnIndex++) {
+      res.push(callback(new MatrixColumn(columnIndex, this)));
+    }
+
+    return res;
+  }
+
   public clone(): Matrix<T> {
     const newMatrix = new Matrix<T>({
       minRowIndex: this._minRowIndex,
@@ -173,5 +195,47 @@ export class Matrix<T> {
       .forEach(dataKey => {
         this._data.delete(dataKey);
       });
+  }
+}
+
+class MatrixRow<T> {
+  public constructor(
+    public readonly index: number,
+    private readonly matrix: Matrix<T>,
+  ) { }
+
+  public mapColumns<U>(callback: (cell: Cell) => U): U[] {
+    const res: U[] = [];
+
+    for (
+      let columnIndex = this.matrix.minColumnIndex;
+      columnIndex <= this.matrix.maxColumnIndex;
+      columnIndex++
+    ) {
+      res.push(callback({ rowIndex: this.index, columnIndex }));
+    }
+
+    return res;
+  }
+}
+
+class MatrixColumn<T> {
+  public constructor(
+    public readonly index: number,
+    private readonly matrix: Matrix<T>,
+  ) { }
+
+  public mapRows<U>(callback: (cell: Cell) => U): U[] {
+    const res: U[] = [];
+
+    for (
+      let rowIndex = this.matrix.minRowIndex;
+      rowIndex <= this.matrix.maxRowIndex;
+      rowIndex++
+    ) {
+      res.push(callback({ rowIndex, columnIndex: this.index }));
+    }
+
+    return res;
   }
 }

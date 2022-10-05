@@ -1,10 +1,10 @@
 import { Mark, GameRoundStatus } from '../constants';
-import { MarkMatrix, GameRoundInfo, GameStatistic } from '../types';
-import { createMatrix } from '../utils';
+import { GameRoundInfo, GameStatistic } from '../types';
+import { Matrix } from '../data_structures';
 
 export const initialMark: Mark = Mark.CROSS;
 
-export const initialMarkMatrix: MarkMatrix = createMatrix<Mark>({
+export const initialMarkMatrix = new Matrix<Mark>({
   maxRowIndex: 10,
   maxColumnIndex: 10,
 });

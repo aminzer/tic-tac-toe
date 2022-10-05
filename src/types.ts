@@ -1,5 +1,4 @@
 import { Mark, GameRoundStatus } from './constants';
-import { List } from './data_structures';
 
 export interface Cell {
   rowIndex: number;
@@ -10,8 +9,6 @@ export interface CellSequence {
   cells: Cell[];
   mark: Mark;
 }
-
-export type MarkMatrix = List<List<Mark>>;
 
 export interface GameRoundInfo {
   startingMark: Mark;

@@ -1,10 +1,12 @@
-import { MarkMatrix, GameRoundInfo } from '../../types';
+import { Mark } from '../../constants';
+import { Matrix } from '../../data_structures';
+import { GameRoundInfo } from '../../types';
 import { isGameRoundFinished, isSequenceContainsCell } from '../../utils';
 import BoardCell from './board_cell';
 import './board.styles.css';
 
 interface Props {
-  markMatrix: MarkMatrix;
+  markMatrix: Matrix<Mark>;
   gameRoundInfo: GameRoundInfo;
   onCellClick: (rowIndex: number, columnIndex: number) => void;
 }
@@ -18,22 +20,22 @@ export default function BoardComponent({ markMatrix, gameRoundInfo, onCellClick 
       <div className="board-spacer">
         <table className="board">
           <tbody>
-            {markMatrix.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((mark, columnIndex) => (
+            {markMatrix.mapRows((row) => (
+              <tr key={row.index}>
+                {row.mapColumns(({ rowIndex, columnIndex }) => (
                   <BoardCell
                     rowIndex={rowIndex}
                     columnIndex={columnIndex}
-                    mark={mark}
+                    mark={markMatrix.get(rowIndex, columnIndex)}
                     isDisabled={isRoundFinished}
                     isWinSequenceCell={isSequenceContainsCell(winCellSequence, {
                       rowIndex,
                       columnIndex,
                     })}
-                    isTopBorderCell={rowIndex === markMatrix.minIndex}
-                    isBottomBorderCell={rowIndex === markMatrix.maxIndex}
-                    isLeftBorderCell={columnIndex === markMatrix.get(0).minIndex}
-                    isRightBorderCell={columnIndex === markMatrix.get(0).maxIndex}
+                    isTopBorderCell={rowIndex === markMatrix.minRowIndex}
+                    isBottomBorderCell={rowIndex === markMatrix.maxRowIndex}
+                    isLeftBorderCell={columnIndex === markMatrix.minColumnIndex}
+                    isRightBorderCell={columnIndex === markMatrix.maxColumnIndex}
                     onCellClick={onCellClick}
                     key={columnIndex}
                   />

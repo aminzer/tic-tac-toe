@@ -1,1 +1,1 @@
-export { List } from './list';
+export { Matrix } from './matrix';

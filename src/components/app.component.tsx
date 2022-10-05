@@ -3,7 +3,6 @@ import { GameRoundStatus, Mark } from '../constants';
 import {
   getWinCellSequence,
   increaseMatrixSizeBeyondBoundaryCell,
-  cloneMatrix,
   invertMark,
   setTitle,
 } from '../utils';
@@ -24,8 +23,8 @@ function AppComponent() {
   const [gameStatistic, setGameStatistic] = useState(initialGameStatistic);
 
   const handleBoardCellClick = (rowIndex: number, columnIndex: number): void => {
-    const newMarkMatrix = cloneMatrix(markMatrix);
-    newMarkMatrix.get(rowIndex).set(columnIndex, currentMark);
+    const newMarkMatrix = markMatrix.clone();
+    newMarkMatrix.set(rowIndex, columnIndex, currentMark);
 
     increaseMatrixSizeBeyondBoundaryCell(newMarkMatrix, { rowIndex, columnIndex });
 
