@@ -1,7 +1,7 @@
-import { Mark } from '../../constants';
-import { Matrix } from '../../data_structures';
-import { GameRoundInfo } from '../../types';
-import { isGameRoundFinished, isSequenceContainsCell } from '../../utils';
+import { Mark } from '../../../constants';
+import { Matrix } from '../../../data_structures';
+import { GameRoundInfo } from '../../../types';
+import { isGameRoundFinished, isSequenceContainsCell } from '../../../utils';
 import BoardCell from './board_cell';
 import './board.styles.css';
 

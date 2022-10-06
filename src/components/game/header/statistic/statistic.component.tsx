@@ -1,5 +1,5 @@
-import { Mark } from '../../../constants';
-import { GameStatistic } from '../../../types';
+import { Mark } from '../../../../constants';
+import { GameStatistic } from '../../../../types';
 import WinCount from './win_count';
 
 interface Props {

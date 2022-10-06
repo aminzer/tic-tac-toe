@@ -1,5 +1,5 @@
-import { Mark } from '../../../constants';
-import { getBackgroundMarkClass } from '../../../utils';
+import { Mark } from '../../../../constants';
+import { getBackgroundMarkClass } from '../../../../utils';
 import './board_cell.styles.css';
 
 interface Props {

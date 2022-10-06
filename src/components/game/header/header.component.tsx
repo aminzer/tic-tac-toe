@@ -1,5 +1,5 @@
-import { Mark } from '../../constants';
-import { GameRoundInfo, GameStatistic } from '../../types';
+import { Mark } from '../../../constants';
+import { GameRoundInfo, GameStatistic } from '../../../types';
 import Statistic from './statistic';
 import RoundInfo from './round_info';
 import './header.styles.css';
