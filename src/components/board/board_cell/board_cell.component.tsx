@@ -13,7 +13,7 @@ interface Props {
   isLeftBorderCell: boolean;
   isRightBorderCell: boolean;
   onCellClick: (rowIndex: number, columnIndex: number) => void;
-};
+}
 
 export default function BoardCellComponent({
   rowIndex,
@@ -40,7 +40,7 @@ export default function BoardCellComponent({
 
     return (
       <td className={`${boardCellClass} ${isWinSequenceCell ? `${getBackgroundMarkClass(mark)}-dark` : ''}`}>
-        <button className="board-cell-button">
+        <button className="board-cell-button" type="button">
           <div className={cellClassName} />
         </button>
       </td>
@@ -52,7 +52,7 @@ export default function BoardCellComponent({
       className={boardCellClass}
       onClick={isDisabled ? undefined : () => onCellClick(rowIndex, columnIndex)}
     >
-      <button className={`board-cell-button ${isDisabled ? '' : 'active'}`} />
+      <button className={`board-cell-button ${isDisabled ? '' : 'active'}`} type="button" />
     </td>
   );
 }

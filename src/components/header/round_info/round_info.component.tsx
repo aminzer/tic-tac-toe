@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { Mark } from '../../../constants';
 import { GameRoundInfo } from '../../../types';
 import { getColorMarkClass, isGameRoundFinished } from '../../../utils';
@@ -11,12 +10,16 @@ interface Props {
   onNewGameRoundStart: () => void;
 }
 
-export default function RoundInfoComponent({ currentMark, gameRoundInfo, onNewGameRoundStart }: Props) {
+export default function RoundInfoComponent({
+  currentMark,
+  gameRoundInfo,
+  onNewGameRoundStart,
+}: Props) {
   if (isGameRoundFinished(gameRoundInfo)) {
-    const winnerMark = gameRoundInfo.winCellSequence?.mark
+    const winnerMark = gameRoundInfo.winCellSequence?.mark;
 
     return (
-      <Fragment>
+      <>
         <span className={getColorMarkClass(winnerMark)}>Winner</span>
 
         <MarkIcon mark={winnerMark} />
@@ -24,15 +27,15 @@ export default function RoundInfoComponent({ currentMark, gameRoundInfo, onNewGa
         <Button onClick={onNewGameRoundStart} style={{ marginLeft: '0.5rem' }}>
           Start new round
         </Button>
-      </Fragment>
+      </>
     );
   }
 
   return (
-    <Fragment>
+    <>
       <span className={getColorMarkClass(currentMark)}>Current turn</span>
 
       <MarkIcon mark={currentMark} />
-    </Fragment>
+    </>
   );
 }

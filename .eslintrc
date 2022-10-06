@@ -1,6 +1,8 @@
 {
   "extends": [
-    "airbnb-base",
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
     "airbnb-typescript/base"
   ],
   "plugins": [
@@ -19,13 +21,18 @@
     "jest.config.js"
   ],
   "rules": {
+    "@typescript-eslint/no-use-before-define": "off",
     "class-methods-use-this": "off",
     "import/prefer-default-export": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/control-has-associated-label": "off",
     "linebreak-style": "off",
     "max-classes-per-file": "off",
     "no-continue": "off",
     "no-restricted-exports": "off",
     "no-underscore-dangle": "off",
-    "@typescript-eslint/no-use-before-define": "off"
+    "react/jsx-props-no-spreading": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/require-default-props": "off"
   }
 }

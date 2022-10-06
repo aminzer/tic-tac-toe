@@ -11,7 +11,12 @@ interface Props {
   onNewGameRoundStart: () => void;
 }
 
-export default function HeaderComponent({ currentMark, gameRoundInfo, gameStatistic, onNewGameRoundStart }: Props) {
+export default function HeaderComponent({
+  currentMark,
+  gameRoundInfo,
+  gameStatistic,
+  onNewGameRoundStart,
+}: Props) {
   return (
     <div className="header">
       <div className="header-row">

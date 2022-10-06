@@ -46,7 +46,7 @@ function AppComponent() {
         winCount: {
           ...gameStatistic.winCount,
           [winCellSequence.mark]: gameStatistic.winCount[winCellSequence.mark] + 1,
-        }
+        },
       };
 
       setGameStatistic(newGameStatistic);
@@ -89,7 +89,7 @@ function AppComponent() {
           gameRoundInfo={gameRoundInfo}
           onCellClick={handleBoardCellClick}
         />
-      </div >
+      </div>
     </React.StrictMode>
   );
 }
