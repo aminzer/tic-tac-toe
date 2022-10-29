@@ -3,6 +3,7 @@ import { GameRoundInfo } from '../../../../types';
 import { getColorMarkClass, isGameRoundFinished } from '../../../../utils';
 import Button from '../../button';
 import MarkIcon from './mark_icon';
+import './round_info.styles.css';
 
 interface Props {
   currentMark: Mark;
@@ -20,7 +21,7 @@ export default function RoundInfoComponent({
 
     return (
       <>
-        <span className={getColorMarkClass(winnerMark)}>Winner</span>
+        <span className={`text ${getColorMarkClass(winnerMark)}`}>Winner</span>
 
         <MarkIcon mark={winnerMark} />
 
@@ -33,7 +34,7 @@ export default function RoundInfoComponent({
 
   return (
     <>
-      <span className={getColorMarkClass(currentMark)}>Current turn</span>
+      <span className={`text ${getColorMarkClass(currentMark)}`}>Current turn</span>
 
       <MarkIcon mark={currentMark} />
     </>
