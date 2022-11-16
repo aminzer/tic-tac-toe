@@ -14,7 +14,7 @@ import {
   initialGameRoundInfo,
   initialGameStatistic,
 } from './initial_data';
-import './app.styles.css';
+import './game.styles.css';
 
 export default function GameComponent() {
   const [markMatrix, setMarkMatrix] = useState(initialMarkMatrix);
