@@ -1,4 +1,5 @@
 import { Cell, CellSequence } from '../../types';
+import { areCellsEqual } from '../cell';
 
 export const isSequenceContainsCell = (
   cellSequence: CellSequence | undefined,
@@ -8,7 +9,7 @@ export const isSequenceContainsCell = (
     return false;
   }
 
-  return cellSequence.cells.some(({ rowIndex, columnIndex }) => (
-    cell.rowIndex === rowIndex && cell.columnIndex === columnIndex
+  return cellSequence.cells.some((sequenceCell) => (
+    areCellsEqual(sequenceCell, cell)
   ));
 };

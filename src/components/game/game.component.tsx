@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { GameRoundStatus, Mark } from '../../constants';
 import {
   getWinCellSequence,
@@ -6,6 +6,7 @@ import {
   invertMark,
   setTitle,
 } from '../../utils';
+import { Cell } from '../../types';
 import Header from './header';
 import Board from './board';
 import {
@@ -22,7 +23,7 @@ export default function GameComponent() {
   const [gameRoundInfo, setGameRoundInfo] = useState(initialGameRoundInfo);
   const [gameStatistic, setGameStatistic] = useState(initialGameStatistic);
 
-  const handleBoardCellClick = (rowIndex: number, columnIndex: number): void => {
+  const handleBoardCellClick = ({ rowIndex, columnIndex }: Cell): void => {
     const newMarkMatrix = markMatrix.clone();
     newMarkMatrix.set(rowIndex, columnIndex, currentMark);
 
@@ -75,21 +76,20 @@ export default function GameComponent() {
   }, [gameStatistic]);
 
   return (
-    <React.StrictMode>
-      <div className="content">
-        <Header
-          currentMark={currentMark}
-          gameRoundInfo={gameRoundInfo}
-          gameStatistic={gameStatistic}
-          onNewGameRoundStart={startNewGameRound}
-        />
+    <div className="content">
+      <Header
+        currentMark={currentMark}
+        gameRoundInfo={gameRoundInfo}
+        gameStatistic={gameStatistic}
+        onNewGameRoundStart={startNewGameRound}
+      />
 
-        <Board
-          markMatrix={markMatrix}
-          gameRoundInfo={gameRoundInfo}
-          onCellClick={handleBoardCellClick}
-        />
-      </div>
-    </React.StrictMode>
+      <Board
+        markMatrix={markMatrix}
+        gameRoundInfo={gameRoundInfo}
+        currentPlayerMark={currentMark}
+        onCellClick={handleBoardCellClick}
+      />
+    </div>
   );
 }

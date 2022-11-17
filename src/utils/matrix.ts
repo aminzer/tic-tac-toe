@@ -20,3 +20,8 @@ export const increaseMatrixSizeBeyondBoundaryCell = <T>(matrix: Matrix<T>, cell:
     matrix.maxColumnIndex += 1;
   }
 };
+
+export const getCentralCell = <T>(matrix: Matrix<T>): Cell => ({
+  rowIndex: Math.floor((matrix.maxRowIndex + matrix.minRowIndex) / 2),
+  columnIndex: Math.floor((matrix.maxColumnIndex + matrix.minColumnIndex) / 2),
+});

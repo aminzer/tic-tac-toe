@@ -1,58 +1,73 @@
+import classNames from 'classnames';
 import { Mark } from '../../../../constants';
-import { getBackgroundMarkClass } from '../../../../utils';
+import { Cell } from '../../../../types';
+import { getBackgroundMarkClass, getOutlineMarkClass } from '../../../../utils';
 import './board_cell.styles.css';
 
 interface Props {
   rowIndex: number;
   columnIndex: number;
   mark?: Mark;
-  isDisabled: boolean;
-  isWinSequenceCell: boolean;
-  isTopBorderCell: boolean;
-  isBottomBorderCell: boolean;
-  isLeftBorderCell: boolean;
-  isRightBorderCell: boolean;
-  onCellClick: (rowIndex: number, columnIndex: number) => void;
+  currentPlayerMark: Mark;
+  isActive: boolean;
+  isFocused: boolean;
+  isWinSequence: boolean;
+  isTopBorder: boolean;
+  isBottomBorder: boolean;
+  isLeftBorder: boolean;
+  isRightBorder: boolean;
+  onClick: (cell: Cell) => void;
+  onFocus: (cell: Cell) => void;
 }
 
 export default function BoardCellComponent({
   rowIndex,
   columnIndex,
   mark,
-  isDisabled,
-  isWinSequenceCell,
-  isTopBorderCell,
-  isBottomBorderCell,
-  isLeftBorderCell,
-  isRightBorderCell,
-  onCellClick,
+  currentPlayerMark,
+  isActive,
+  isFocused,
+  isWinSequence,
+  isTopBorder,
+  isBottomBorder,
+  isLeftBorder,
+  isRightBorder,
+  onClick,
+  onFocus,
 }: Props) {
-  const boardCellClass = [
-    'board-cell',
-    isTopBorderCell ? 'board-cell-top' : '',
-    isBottomBorderCell ? 'board-cell-bottom' : '',
-    isLeftBorderCell ? 'board-cell-left' : '',
-    isRightBorderCell ? 'board-cell-right' : '',
-  ].join(' ');
+  const cellClassName = classNames('board-cell', {
+    top: isTopBorder,
+    bottom: isBottomBorder,
+    left: isLeftBorder,
+    right: isRightBorder,
+    [`${getBackgroundMarkClass(mark)}-dark`]: isWinSequence,
+  });
 
-  if (mark) {
-    const cellClassName = `board-cell-mark ${getBackgroundMarkClass(mark)}`;
+  const cellButtonClassName = classNames('board-cell-button', {
+    active: isActive,
+    focused: isFocused,
+    [getOutlineMarkClass(currentPlayerMark)]: isFocused,
+  });
 
-    return (
-      <td className={`${boardCellClass} ${isWinSequenceCell ? `${getBackgroundMarkClass(mark)}-dark` : ''}`}>
-        <button className="board-cell-button" type="button">
-          <div className={cellClassName} />
-        </button>
-      </td>
-    );
-  }
+  const cellMarkClassName = classNames('board-cell-mark', getBackgroundMarkClass(mark));
+
+  const handleClick = () => {
+    if (isActive) {
+      onClick({ rowIndex, columnIndex });
+    }
+  };
 
   return (
     <td
-      className={boardCellClass}
-      onClick={isDisabled ? undefined : () => onCellClick(rowIndex, columnIndex)}
+      className={cellClassName}
+      onClick={handleClick}
+      onMouseEnter={() => onFocus({ rowIndex, columnIndex })}
     >
-      <button className={`board-cell-button ${isDisabled ? '' : 'active'}`} type="button" />
+      <button className={cellButtonClassName} type="button">
+        {mark && (
+          <div className={cellMarkClassName} />
+        )}
+      </button>
     </td>
   );
 }

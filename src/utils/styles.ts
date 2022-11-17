@@ -15,3 +15,7 @@ export function getBackgroundMarkClass(mark?: Mark): string {
 export function getColorMarkClass(mark?: Mark): string {
   return getMarkClass(mark, { prefix: 'color-' });
 }
+
+export function getOutlineMarkClass(mark?: Mark): string {
+  return getMarkClass(mark, { prefix: 'outline-' });
+}
