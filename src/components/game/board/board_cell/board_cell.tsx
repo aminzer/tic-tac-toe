@@ -20,7 +20,7 @@ interface Props {
   onFocus: (cell: Cell) => void;
 }
 
-export default function BoardCellComponent({
+export default function BoardCell({
   rowIndex,
   columnIndex,
   mark,

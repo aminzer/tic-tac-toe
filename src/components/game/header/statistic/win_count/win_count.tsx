@@ -7,7 +7,7 @@ interface Props {
   mark: Mark;
 }
 
-export default function WinCountComponent({ value, mark }: Props) {
+export default function WinCount({ value, mark }: Props) {
   const className = `win-count ${getMarkClass(mark, { prefix: 'win-count-' })}`;
 
   return (

@@ -6,7 +6,7 @@ interface Props {
   gameStatistic: GameStatistic;
 }
 
-export default function StatisticComponent({ gameStatistic: { winCount } }: Props) {
+export default function Statistic({ gameStatistic: { winCount } }: Props) {
   return (
     <>
       <WinCount

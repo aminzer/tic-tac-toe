@@ -1,7 +1,7 @@
-import AppWrapper from './app_wrapper.component';
+import AppWrapper from './app_wrapper';
 import Game from './game';
 
-export default function AppComponent() {
+export default function App() {
   return (
     <AppWrapper>
       <Game />

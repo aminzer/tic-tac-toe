@@ -6,7 +6,7 @@ interface Props {
   mark?: Mark;
 }
 
-export default function MarkIconComponent({ mark }: Props) {
+export default function MarkIcon({ mark }: Props) {
   const className = `mark-icon ${getBackgroundMarkClass(mark)}`;
 
   return (

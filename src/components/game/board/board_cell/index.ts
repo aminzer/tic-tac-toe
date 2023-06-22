@@ -1,1 +1,1 @@
-export { default } from './board_cell.component';
+export { default } from './board_cell';

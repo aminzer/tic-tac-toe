@@ -17,7 +17,7 @@ import {
 } from './initial_data';
 import './game.styles.css';
 
-export default function GameComponent() {
+export default function Game() {
   const [markMatrix, setMarkMatrix] = useState(initialMarkMatrix);
   const [currentMark, setCurrentMark] = useState(initialMark);
   const [gameRoundInfo, setGameRoundInfo] = useState(initialGameRoundInfo);

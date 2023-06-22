@@ -1,1 +1,1 @@
-export { default } from './game.component';
+export { default } from './game';

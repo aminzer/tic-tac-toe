@@ -1,1 +1,1 @@
-export { default } from './win_count.component';
+export { default } from './win_count';

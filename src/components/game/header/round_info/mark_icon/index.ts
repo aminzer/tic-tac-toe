@@ -1,1 +1,1 @@
-export { default } from './mark_icon.component';
+export { default } from './mark_icon';

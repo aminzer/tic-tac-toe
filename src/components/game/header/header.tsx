@@ -11,7 +11,7 @@ interface Props {
   onNewGameRoundStart: () => void;
 }
 
-export default function HeaderComponent({
+export default function Header({
   currentMark,
   gameRoundInfo,
   gameStatistic,

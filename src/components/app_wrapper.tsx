@@ -6,7 +6,7 @@ interface Props {
   children: ReactNode;
 }
 
-export default function AppWrapperComponent({ children }: Props) {
+export default function AppWrapper({ children }: Props) {
   return (
     <React.StrictMode>
       <ThemeProvider theme={theme}>

@@ -11,7 +11,7 @@ interface Props {
   onNewGameRoundStart: () => void;
 }
 
-export default function RoundInfoComponent({
+export default function RoundInfo({
   currentMark,
   gameRoundInfo,
   onNewGameRoundStart,

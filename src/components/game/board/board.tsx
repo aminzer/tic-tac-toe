@@ -18,7 +18,7 @@ interface Props {
   onCellClick: (cell: Cell) => void;
 }
 
-export default function BoardComponent({
+export default function Board({
   markMatrix,
   gameRoundInfo,
   currentPlayerMark,
