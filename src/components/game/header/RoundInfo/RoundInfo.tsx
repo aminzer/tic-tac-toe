@@ -1,9 +1,9 @@
 import { Mark } from '../../../../constants';
 import { GameRoundInfo } from '../../../../types';
 import { getColorMarkClass, isGameRoundFinished } from '../../../../utils';
-import Button from '../../button';
-import MarkIcon from './mark_icon';
-import './round_info.styles.css';
+import Button from '../../Button';
+import MarkIcon from './MarkIcon';
+import './styles.css';
 
 interface Props {
   currentMark: Mark;

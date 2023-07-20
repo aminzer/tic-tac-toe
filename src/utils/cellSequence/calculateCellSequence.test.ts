@@ -1,6 +1,6 @@
 import { Mark } from '../../constants';
 import { Cell, CellSequence } from '../../types';
-import { calculateCellSequence } from './calculate_cell_sequence';
+import calculateCellSequence from './calculateCellSequence';
 
 describe('utils > cell_sequence > calculateCellSequence', () => {
   interface TestCase {

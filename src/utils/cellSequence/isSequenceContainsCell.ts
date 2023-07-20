@@ -1,7 +1,7 @@
 import { Cell, CellSequence } from '../../types';
 import { areCellsEqual } from '../cell';
 
-export const isSequenceContainsCell = (
+const isSequenceContainsCell = (
   cellSequence: CellSequence | undefined,
   cell: Cell,
 ): boolean => {
@@ -13,3 +13,5 @@ export const isSequenceContainsCell = (
     areCellsEqual(sequenceCell, cell)
   ));
 };
+
+export default isSequenceContainsCell;

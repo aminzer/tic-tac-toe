@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 
-import { Matrix } from '../data_structures';
+import { Matrix } from '../dataStructures';
 import { Cell } from '../types';
 
 export const increaseMatrixSizeBeyondBoundaryCell = <T>(matrix: Matrix<T>, cell: Cell): void => {

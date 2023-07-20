@@ -1,6 +1,6 @@
 import { Cell } from '../types';
 
-export class Matrix<T> {
+class Matrix<T> {
   private _minRowIndex: number;
 
   private _maxRowIndex: number;
@@ -250,3 +250,5 @@ class MatrixColumn<T> {
     return res;
   }
 }
+
+export default Matrix;

@@ -1,6 +1,6 @@
 import { Mark } from '../../constants';
 import { Cell, CellSequence } from '../../types';
-import { isSequenceContainsCell } from './is_sequence_contains_cell';
+import isSequenceContainsCell from './isSequenceContainsCell';
 
 describe('utils > cell_sequence > isSequenceContainsCell', () => {
   interface TestCase {

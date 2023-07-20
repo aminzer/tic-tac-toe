@@ -1,7 +1,7 @@
 import { Mark } from '../../constants';
 import { Cell, CellSequence } from '../../types';
 
-export const calculateCellSequence = (
+const calculateCellSequence = (
   cellSequence: CellSequence | null,
   nextCell: Cell,
   nextMark?: Mark,
@@ -19,3 +19,5 @@ export const calculateCellSequence = (
     mark: nextMark,
   };
 };
+
+export default calculateCellSequence;

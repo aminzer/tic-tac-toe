@@ -1,7 +1,7 @@
 import { Mark } from '../../constants';
-import { Matrix } from '../../data_structures';
+import { Matrix } from '../../dataStructures';
 import { CellSequence } from '../../types';
-import { getWinCellSequence } from './get_win_cell_sequence';
+import getWinCellSequence from './getWinCellSequence';
 
 describe('utils > cell_sequence > getWinCellSequence', () => {
   interface TestCase {

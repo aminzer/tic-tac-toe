@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Mark } from '../../../constants';
-import { Matrix } from '../../../data_structures';
+import { Matrix } from '../../../dataStructures';
 import { Cell, GameRoundInfo } from '../../../types';
 import {
   areCellsEqual,
@@ -8,8 +8,8 @@ import {
   isGameRoundFinished,
   isSequenceContainsCell,
 } from '../../../utils';
-import BoardCell from './board_cell';
-import './board.styles.css';
+import BoardCell from './BoardCell';
+import './styles.css';
 
 interface Props {
   markMatrix: Matrix<Mark>;

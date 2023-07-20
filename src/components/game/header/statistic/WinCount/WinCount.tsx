@@ -1,6 +1,6 @@
 import { Mark } from '../../../../../constants';
 import { getMarkClass } from '../../../../../utils';
-import './win_count.styles.css';
+import './styles.css';
 
 interface Props {
   value: number;

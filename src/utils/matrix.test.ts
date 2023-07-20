@@ -1,4 +1,4 @@
-import { Matrix } from '../data_structures';
+import { Matrix } from '../dataStructures';
 import { getCentralCell } from './matrix';
 
 describe('utils > matrix > getCentralCell', () => {

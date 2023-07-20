@@ -1,5 +1,5 @@
-import AppWrapper from './app_wrapper';
-import Game from './game';
+import AppWrapper from './AppWrapper';
+import Game from './Game';
 
 export default function App() {
   return (

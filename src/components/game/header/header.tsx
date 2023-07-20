@@ -1,8 +1,8 @@
 import { Mark } from '../../../constants';
 import { GameRoundInfo, GameStatistic } from '../../../types';
-import Statistic from './statistic';
-import RoundInfo from './round_info';
-import './header.styles.css';
+import Statistic from './Statistic';
+import RoundInfo from './RoundInfo';
+import './styles.css';
 
 interface Props {
   currentMark: Mark;

@@ -1,9 +1,9 @@
 import { Mark } from '../../constants';
-import { Matrix } from '../../data_structures';
+import { Matrix } from '../../dataStructures';
 import { CellSequence } from '../../types';
-import { calculateCellSequence } from './calculate_cell_sequence';
+import calculateCellSequence from './calculateCellSequence';
 
-export const getWinCellSequence = (markMatrix: Matrix<Mark>, {
+const getWinCellSequence = (markMatrix: Matrix<Mark>, {
   winSequenceLength = 5,
 }: {
   winSequenceLength?: number;
@@ -121,3 +121,5 @@ export const getWinCellSequence = (markMatrix: Matrix<Mark>, {
 
   return null;
 };
+
+export default getWinCellSequence;

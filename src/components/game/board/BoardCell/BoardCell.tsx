@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { Mark } from '../../../../constants';
 import { Cell } from '../../../../types';
 import { getBackgroundMarkClass, getOutlineMarkClass } from '../../../../utils';
-import './board_cell.styles.css';
+import './styles.css';
 
 interface Props {
   rowIndex: number;

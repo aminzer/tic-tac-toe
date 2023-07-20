@@ -7,15 +7,15 @@ import {
   setTitle,
 } from '../../utils';
 import { Cell } from '../../types';
-import Header from './header';
-import Board from './board';
+import Header from './Header';
+import Board from './Board';
 import {
   initialMark,
   initialMarkMatrix,
   initialGameRoundInfo,
   initialGameStatistic,
-} from './initial_data';
-import './game.styles.css';
+} from './initialData';
+import './styles.css';
 
 export default function Game() {
   const [markMatrix, setMarkMatrix] = useState(initialMarkMatrix);

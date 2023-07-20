@@ -1,6 +1,6 @@
 import { Mark } from '../../../../constants';
 import { GameStatistic } from '../../../../types';
-import WinCount from './win_count';
+import WinCount from './WinCount';
 
 interface Props {
   gameStatistic: GameStatistic;

@@ -1,6 +1,6 @@
 import { Mark } from '../../../../../constants';
 import { getBackgroundMarkClass } from '../../../../../utils';
-import './mark_icon.styles.css';
+import './styles.css';
 
 interface Props {
   mark?: Mark;

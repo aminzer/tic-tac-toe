@@ -1,5 +1,5 @@
 export * from './cell';
-export * from './cell_sequence';
+export * from './cellSequence';
 export * from './document';
 export * from './game';
 export * from './matrix';
