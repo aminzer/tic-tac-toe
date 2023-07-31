@@ -1,6 +1,6 @@
 export enum Mark {
-  CROSS = 'X',
-  NOUGHT = 'O',
+  CROSS = 'CROSS',
+  NOUGHT = 'NOUGHT',
 }
 
 export enum GameRoundStatus {

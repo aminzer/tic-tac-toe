@@ -8,7 +8,7 @@
     "lint": "eslint src/**/*.ts src/**/*.tsx",
     "lint:fix": "npm run lint -- --fix",
     "preview": "vite preview",
-    "test": "jest ."
+    "test": "jest"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",

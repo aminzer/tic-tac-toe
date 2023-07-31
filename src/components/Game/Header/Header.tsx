@@ -1,22 +1,23 @@
+import React from 'react';
 import { Mark } from '../../../constants';
 import { GameRoundInfo, GameStatistic } from '../../../types';
 import Statistic from './Statistic';
 import RoundInfo from './RoundInfo';
 import './styles.css';
 
-interface Props {
+interface HeaderProps {
   currentMark: Mark;
   gameRoundInfo: GameRoundInfo;
   gameStatistic: GameStatistic;
   onNewGameRoundStart: () => void;
 }
 
-export default function Header({
+const Header: React.FC<HeaderProps> = ({
   currentMark,
   gameRoundInfo,
   gameStatistic,
   onNewGameRoundStart,
-}: Props) {
+}) => {
   return (
     <div className="header">
       <div className="header-row">
@@ -32,4 +33,6 @@ export default function Header({
       </div>
     </div>
   );
-}
+};
+
+export default Header;

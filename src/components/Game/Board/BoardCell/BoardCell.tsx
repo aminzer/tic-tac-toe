@@ -1,10 +1,11 @@
+import React from 'react';
 import classNames from 'classnames';
 import { Mark } from '../../../../constants';
 import { Cell } from '../../../../types';
 import { getBackgroundMarkClass, getOutlineMarkClass } from '../../../../utils';
 import './styles.css';
 
-interface Props {
+interface BoardCellProps {
   rowIndex: number;
   columnIndex: number;
   mark?: Mark;
@@ -20,7 +21,7 @@ interface Props {
   onFocus: (cell: Cell) => void;
 }
 
-export default function BoardCell({
+const BoardCell: React.FC<BoardCellProps> = ({
   rowIndex,
   columnIndex,
   mark,
@@ -34,7 +35,7 @@ export default function BoardCell({
   isRightBorder,
   onClick,
   onFocus,
-}: Props) {
+}) => {
   const cellClassName = classNames('board-cell', {
     top: isTopBorder,
     bottom: isBottomBorder,
@@ -70,4 +71,6 @@ export default function BoardCell({
       </button>
     </td>
   );
-}
+};
+
+export default BoardCell;

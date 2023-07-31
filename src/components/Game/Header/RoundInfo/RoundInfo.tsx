@@ -1,3 +1,4 @@
+import React from 'react';
 import { Mark } from '../../../../constants';
 import { GameRoundInfo } from '../../../../types';
 import { getColorMarkClass, isGameRoundFinished } from '../../../../utils';
@@ -5,17 +6,17 @@ import Button from '../../Button';
 import MarkIcon from './MarkIcon';
 import './styles.css';
 
-interface Props {
+interface RoundInfoProps {
   currentMark: Mark;
   gameRoundInfo: GameRoundInfo;
   onNewGameRoundStart: () => void;
 }
 
-export default function RoundInfo({
+const RoundInfo: React.FC<RoundInfoProps> = ({
   currentMark,
   gameRoundInfo,
   onNewGameRoundStart,
-}: Props) {
+}) => {
   if (isGameRoundFinished(gameRoundInfo)) {
     const winnerMark = gameRoundInfo.winCellSequence?.mark;
 
@@ -39,4 +40,6 @@ export default function RoundInfo({
       <MarkIcon mark={currentMark} />
     </>
   );
-}
+};
+
+export default RoundInfo;

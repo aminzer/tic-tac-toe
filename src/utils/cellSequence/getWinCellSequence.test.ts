@@ -3,9 +3,16 @@ import { Matrix } from '../../dataStructures';
 import { CellSequence } from '../../types';
 import getWinCellSequence from './getWinCellSequence';
 
+type Board = ('x' | 'o' | ' ')[][];
+
+const formatBoard = (board: Board): string => `\n${board.map((row) => JSON.stringify(row)).join('\n')}\n`;
+
 describe('utils > cell_sequence > getWinCellSequence', () => {
   interface TestCase {
-    board: ('x' | 'o' | ' ')[][];
+    board: Board;
+    options?: {
+      winSequenceLength?: number;
+    }
     expectation: {
       winner: 'x' | 'o';
       sequence: number[][];
@@ -19,6 +26,9 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
         [' ', ' ', ' '],
         [' ', ' ', ' '],
       ],
+      options: {
+        winSequenceLength: 3,
+      },
       expectation: null,
     },
     {
@@ -27,6 +37,9 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
         ['x', 'x', 'o'],
         ['o', 'x', 'x'],
       ],
+      options: {
+        winSequenceLength: 3,
+      },
       expectation: null,
     },
     {
@@ -36,6 +49,9 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
         [' ', ' ', ' ', ' '],
         [' ', ' ', ' ', ' '],
       ],
+      options: {
+        winSequenceLength: 3,
+      },
       expectation: {
         winner: 'x',
         sequence: [[1, 0], [1, 1], [1, 2]],
@@ -48,6 +64,9 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
         [' ', ' ', ' ', ' '],
         [' ', ' ', ' ', ' '],
       ],
+      options: {
+        winSequenceLength: 3,
+      },
       expectation: {
         winner: 'o',
         sequence: [[1, 1], [1, 2], [1, 3]],
@@ -60,6 +79,9 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
         ['o', 'x', ' ', ' '],
         [' ', 'x', ' ', ' '],
       ],
+      options: {
+        winSequenceLength: 3,
+      },
       expectation: {
         winner: 'x',
         sequence: [[1, 1], [2, 1], [3, 1]],
@@ -72,6 +94,9 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
         [' ', ' ', ' ', 'x'],
         [' ', ' ', ' ', ' '],
       ],
+      options: {
+        winSequenceLength: 3,
+      },
       expectation: {
         winner: 'x',
         sequence: [[0, 1], [1, 2], [2, 3]],
@@ -84,9 +109,75 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
         ['o', 'x', 'x', ' '],
         [' ', ' ', ' ', ' '],
       ],
+      options: {
+        winSequenceLength: 3,
+      },
       expectation: {
         winner: 'o',
         sequence: [[0, 2], [1, 1], [2, 0]],
+      },
+    },
+    {
+      board: [
+        [' ', ' ', 'o', 'o', ' '],
+        [' ', 'o', 'o', 'x', ' '],
+        [' ', 'o', 'x', 'x', ' '],
+        [' ', ' ', ' ', ' ', ' '],
+      ],
+      options: {
+        winSequenceLength: 4,
+      },
+      expectation: null,
+    },
+    {
+      board: [
+        [' ', ' ', 'o', 'o', ' '],
+        [' ', 'o', 'o', 'x', ' '],
+        [' ', 'o', 'x', 'x', ' '],
+        ['o', ' ', ' ', ' ', ' '],
+      ],
+      options: {
+        winSequenceLength: 4,
+      },
+      expectation: {
+        winner: 'o',
+        sequence: [[0, 3], [1, 2], [2, 1], [3, 0]],
+      },
+    },
+    {
+      board: [
+        [' ', ' ', 'o', 'o', ' ', ' '],
+        [' ', 'o', 'o', 'x', ' ', ' '],
+        [' ', 'o', 'x', 'x', ' ', ' '],
+        ['o', ' ', ' ', 'x', ' ', ' '],
+        [' ', ' ', ' ', 'x', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' '],
+      ],
+      expectation: null,
+    },
+    {
+      board: [
+        [' ', ' ', 'o', 'o', ' ', ' '],
+        [' ', 'o', 'o', 'x', ' ', ' '],
+        [' ', 'o', 'x', 'x', ' ', ' '],
+        ['o', ' ', ' ', 'x', ' ', ' '],
+        [' ', ' ', ' ', 'x', ' ', ' '],
+        [' ', ' ', ' ', 'o', ' ', ' '],
+      ],
+      expectation: null,
+    },
+    {
+      board: [
+        ['o', 'o', 'o', 'o', ' ', ' '],
+        [' ', 'o', 'o', 'x', ' ', ' '],
+        [' ', 'o', 'x', 'x', ' ', ' '],
+        ['o', ' ', ' ', 'x', ' ', ' '],
+        [' ', ' ', ' ', 'x', ' ', ' '],
+        [' ', ' ', ' ', 'x', ' ', ' '],
+      ],
+      expectation: {
+        winner: 'x',
+        sequence: [[1, 3], [2, 3], [3, 3], [4, 3], [5, 3]],
       },
     },
   ];
@@ -104,7 +195,7 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
     }
   };
 
-  testCases.forEach(({ board, expectation }) => {
+  testCases.forEach(({ board, options, expectation }) => {
     let matrix: Matrix<Mark>;
     let expectedWinCellSequence: CellSequence | null = null;
 
@@ -132,11 +223,9 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
       }
     });
 
-    describe(`when board: ${JSON.stringify(board)}`, () => {
+    describe(`when board: ${formatBoard(board)} and options: ${JSON.stringify(options)}`, () => {
       it(`returns ${JSON.stringify(expectation)}`, () => {
-        expect(
-          getWinCellSequence(matrix, { winSequenceLength: 3 }),
-        ).toEqual(expectedWinCellSequence);
+        expect(getWinCellSequence(matrix, options)).toEqual(expectedWinCellSequence);
       });
     });
   });

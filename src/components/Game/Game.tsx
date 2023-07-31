@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GameRoundStatus, Mark } from '../../constants';
 import {
   getWinCellSequence,
@@ -17,7 +17,7 @@ import {
 } from './initialData';
 import './styles.css';
 
-export default function Game() {
+const Game: React.FC = () => {
   const [markMatrix, setMarkMatrix] = useState(initialMarkMatrix);
   const [currentMark, setCurrentMark] = useState(initialMark);
   const [gameRoundInfo, setGameRoundInfo] = useState(initialGameRoundInfo);
@@ -92,4 +92,6 @@ export default function Game() {
       />
     </div>
   );
-}
+};
+
+export default Game;

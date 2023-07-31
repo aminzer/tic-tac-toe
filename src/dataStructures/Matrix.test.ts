@@ -133,6 +133,20 @@ describe('Matrix', () => {
       },
       {
         params: {
+          maxRowIndex: 5,
+          maxColumnIndex: 10,
+        },
+        expectations: {
+          minRowIndex: 0,
+          maxRowIndex: 5,
+          rowCount: 6,
+          minColumnIndex: 0,
+          maxColumnIndex: 10,
+          columnCount: 11,
+        },
+      },
+      {
+        params: {
           minRowIndex: 1,
           maxRowIndex: 5,
           minColumnIndex: 20,

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Mark } from '../../../constants';
 import { Matrix } from '../../../dataStructures';
 import { Cell, GameRoundInfo } from '../../../types';
@@ -11,19 +11,19 @@ import {
 import BoardCell from './BoardCell';
 import './styles.css';
 
-interface Props {
+interface BoardProps {
   markMatrix: Matrix<Mark>;
   gameRoundInfo: GameRoundInfo;
   currentPlayerMark: Mark;
   onCellClick: (cell: Cell) => void;
 }
 
-export default function Board({
+const Board: React.FC<BoardProps> = ({
   markMatrix,
   gameRoundInfo,
   currentPlayerMark,
   onCellClick,
-}: Props) {
+}) => {
   const isRoundFinished = isGameRoundFinished(gameRoundInfo);
   const { winCellSequence } = gameRoundInfo;
 
@@ -69,4 +69,6 @@ export default function Board({
       </div>
     </div>
   );
-}
+};
+
+export default Board;

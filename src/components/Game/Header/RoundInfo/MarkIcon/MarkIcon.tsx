@@ -1,15 +1,18 @@
+import React from 'react';
 import { Mark } from '../../../../../constants';
 import { getBackgroundMarkClass } from '../../../../../utils';
 import './styles.css';
 
-interface Props {
+interface MarkIconProps {
   mark?: Mark;
 }
 
-export default function MarkIcon({ mark }: Props) {
+const MarkIcon: React.FC<MarkIconProps> = ({ mark }) => {
   const className = `mark-icon ${getBackgroundMarkClass(mark)}`;
 
   return (
     <div className={className} />
   );
-}
+};
+
+export default MarkIcon;

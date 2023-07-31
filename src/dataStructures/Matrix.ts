@@ -53,7 +53,7 @@ class Matrix<T> {
     this._minRowIndex = minRowIndex;
 
     if (isDeletionOutsideMatrixRequired) {
-      this.deleteDataOutsizeMatrix();
+      this.deleteDataOutsideMatrix();
     }
   }
 
@@ -69,7 +69,7 @@ class Matrix<T> {
     this._maxRowIndex = maxRowIndex;
 
     if (isDeletionOutsideMatrixRequired) {
-      this.deleteDataOutsizeMatrix();
+      this.deleteDataOutsideMatrix();
     }
   }
 
@@ -85,7 +85,7 @@ class Matrix<T> {
     this._minColumnIndex = minColumnIndex;
 
     if (isDeletionOutsideMatrixRequired) {
-      this.deleteDataOutsizeMatrix();
+      this.deleteDataOutsideMatrix();
     }
   }
 
@@ -101,14 +101,14 @@ class Matrix<T> {
     this._maxColumnIndex = maxColumnIndex;
 
     if (isDeletionOutsideMatrixRequired) {
-      this.deleteDataOutsizeMatrix();
+      this.deleteDataOutsideMatrix();
     }
   }
 
   public get(rowIndex: number, columnIndex: number): T | undefined {
     this.ensureCellIsWithinMatrix(rowIndex, columnIndex);
 
-    const dataKey = this.stringifyDataKey(rowIndex, columnIndex);
+    const dataKey = this.getDataKey(rowIndex, columnIndex);
 
     return this._data.get(dataKey);
   }
@@ -116,7 +116,7 @@ class Matrix<T> {
   public set(rowIndex: number, columnIndex: number, value: T): void {
     this.ensureCellIsWithinMatrix(rowIndex, columnIndex);
 
-    const dataKey = this.stringifyDataKey(rowIndex, columnIndex);
+    const dataKey = this.getDataKey(rowIndex, columnIndex);
 
     this._data.set(dataKey, value);
   }
@@ -162,7 +162,7 @@ class Matrix<T> {
     return newMatrix;
   }
 
-  private stringifyDataKey(rowIndex: number, columnIndex: number): string {
+  private getDataKey(rowIndex: number, columnIndex: number): string {
     return `${rowIndex}_${columnIndex}`;
   }
 
@@ -196,7 +196,7 @@ class Matrix<T> {
     }
   }
 
-  private deleteDataOutsizeMatrix(): void {
+  private deleteDataOutsideMatrix(): void {
     [...this._data.keys()]
       .filter((dataKey) => {
         const { rowIndex, columnIndex } = this.parseDataKey(dataKey);

@@ -1,13 +1,14 @@
+import React from 'react';
 import { Mark } from '../../../../../constants';
 import { getMarkClass } from '../../../../../utils';
 import './styles.css';
 
-interface Props {
+interface WinCountProps {
   value: number;
   mark: Mark;
 }
 
-export default function WinCount({ value, mark }: Props) {
+const WinCount: React.FC<WinCountProps> = ({ value, mark }) => {
   const className = `win-count ${getMarkClass(mark, { prefix: 'win-count-' })}`;
 
   return (
@@ -15,4 +16,6 @@ export default function WinCount({ value, mark }: Props) {
       {value}
     </div>
   );
-}
+};
+
+export default WinCount;

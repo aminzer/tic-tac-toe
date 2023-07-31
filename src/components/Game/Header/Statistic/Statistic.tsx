@@ -1,12 +1,13 @@
+import React from 'react';
 import { Mark } from '../../../../constants';
 import { GameStatistic } from '../../../../types';
 import WinCount from './WinCount';
 
-interface Props {
+interface StatisticProps {
   gameStatistic: GameStatistic;
 }
 
-export default function Statistic({ gameStatistic: { winCount } }: Props) {
+const Statistic: React.FC<StatisticProps> = ({ gameStatistic: { winCount } }) => {
   return (
     <>
       <WinCount
@@ -20,4 +21,6 @@ export default function Statistic({ gameStatistic: { winCount } }: Props) {
       />
     </>
   );
-}
+};
+
+export default Statistic;
