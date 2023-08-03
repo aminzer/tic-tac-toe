@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GameRoundStatus, Mark } from '../../constants';
-import {
-  getWinCellSequence,
-  increaseMatrixSizeBeyondBoundaryCell,
-  invertMark,
-  setTitle,
-} from '../../utils';
+import { getWinCellSequence, invertMark, setTitle } from '../../utils';
 import { Cell } from '../../types';
 import Header from './Header';
 import Board from './Board';
@@ -26,8 +21,7 @@ const Game: React.FC = () => {
   const handleBoardCellClick = ({ rowIndex, columnIndex }: Cell): void => {
     const newMarkMatrix = markMatrix.clone();
     newMarkMatrix.set(rowIndex, columnIndex, currentMark);
-
-    increaseMatrixSizeBeyondBoundaryCell(newMarkMatrix, { rowIndex, columnIndex });
+    newMarkMatrix.increaseMatrixSizeToIncludeCell({ rowIndex, columnIndex }, { borderOffset: 1 });
 
     setMarkMatrix(newMarkMatrix);
 

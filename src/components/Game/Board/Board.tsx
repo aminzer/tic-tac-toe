@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import { Mark } from '../../../constants';
 import { Matrix } from '../../../dataStructures';
 import { Cell, GameRoundInfo } from '../../../types';
-import {
-  areCellsEqual,
-  getCentralCell,
-  isGameRoundFinished,
-  isSequenceContainsCell,
-} from '../../../utils';
+import { areCellsEqual, isGameRoundFinished, isSequenceContainsCell } from '../../../utils';
 import BoardCell from './BoardCell';
 import './styles.css';
 
@@ -27,7 +22,7 @@ const Board: React.FC<BoardProps> = ({
   const isRoundFinished = isGameRoundFinished(gameRoundInfo);
   const { winCellSequence } = gameRoundInfo;
 
-  const [focusedCell, setFocusedCell] = useState<Cell>(getCentralCell(markMatrix));
+  const [focusedCell, setFocusedCell] = useState<Cell>(markMatrix.getCentralCell());
 
   return (
     <div className="board-container">

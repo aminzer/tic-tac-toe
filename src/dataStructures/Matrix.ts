@@ -1,4 +1,4 @@
-import { Cell } from '../types';
+import { Cell, MatrixSizes } from '../types';
 
 class Matrix<T> {
   private _minRowIndex: number;
@@ -16,12 +16,7 @@ class Matrix<T> {
     maxRowIndex = -1,
     minColumnIndex = 0,
     maxColumnIndex = -1,
-  }: {
-    minRowIndex?: number;
-    maxRowIndex?: number;
-    minColumnIndex?: number;
-    maxColumnIndex?: number;
-  } = {}) {
+  }: Partial<MatrixSizes> = {}) {
     this.ensureRangeIsValid(minRowIndex, maxRowIndex);
     this.ensureRangeIsValid(minColumnIndex, maxColumnIndex);
 
@@ -147,6 +142,40 @@ class Matrix<T> {
     }
 
     return res;
+  }
+
+  public increaseMatrixSizeToIncludeCell(cell: Cell, {
+    borderOffset = 0,
+  }: {
+    borderOffset?: number
+  } = {}): void {
+    const minRowIndexLimit = cell.rowIndex - borderOffset;
+    const maxRowIndexLimit = cell.rowIndex + borderOffset;
+    const minColumnIndexLimit = cell.columnIndex - borderOffset;
+    const maxColumnIndexLimit = cell.columnIndex + borderOffset;
+
+    if (this._minRowIndex > minRowIndexLimit) {
+      this.minRowIndex = minRowIndexLimit;
+    }
+
+    if (this._maxRowIndex < maxRowIndexLimit) {
+      this.maxRowIndex = maxRowIndexLimit;
+    }
+
+    if (this._minColumnIndex > minColumnIndexLimit) {
+      this.minColumnIndex = minColumnIndexLimit;
+    }
+
+    if (this._maxColumnIndex < maxColumnIndexLimit) {
+      this.maxColumnIndex = maxColumnIndexLimit;
+    }
+  }
+
+  public getCentralCell(): Cell {
+    return {
+      rowIndex: Math.floor((this._maxRowIndex + this._minRowIndex) / 2),
+      columnIndex: Math.floor((this._maxColumnIndex + this._minColumnIndex) / 2),
+    };
   }
 
   public clone(): Matrix<T> {

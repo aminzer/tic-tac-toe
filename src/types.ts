@@ -10,6 +10,13 @@ export interface CellSequence {
   mark: Mark;
 }
 
+export interface MatrixSizes {
+  minRowIndex: number;
+  maxRowIndex: number;
+  minColumnIndex: number;
+  maxColumnIndex: number;
+}
+
 export interface GameRoundInfo {
   startingMark: Mark;
   status: GameRoundStatus;

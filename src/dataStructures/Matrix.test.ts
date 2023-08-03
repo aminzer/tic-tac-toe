@@ -1,26 +1,18 @@
+import { Cell, MatrixSizes } from '../types';
 import Matrix from './Matrix';
 
-interface ConstructorTestCase {
-  params?: {
-    minRowIndex?: number;
-    maxRowIndex?: number;
-    minColumnIndex?: number;
-    maxColumnIndex?: number;
-  };
-  expectations: {
-    minRowIndex: number;
-    maxRowIndex: number;
-    rowCount: number;
-    minColumnIndex: number;
-    maxColumnIndex: number;
-    columnCount: number;
-  } | {
-    error: true;
-  };
-}
-
-describe('Matrix', () => {
+describe('dataStructures > Matrix', () => {
   describe('constructor', () => {
+    interface ConstructorTestCase {
+      params?: Partial<MatrixSizes>;
+      expectations: MatrixSizes & {
+        rowCount: number;
+        columnCount: number;
+      } | {
+        error: true;
+      };
+    }
+
     const constructorTestCases: ConstructorTestCase[] = [
       {
         params: undefined,
@@ -411,6 +403,327 @@ describe('Matrix', () => {
           '#100 [0:100],[1:100]',
           '#101 [0:101],[1:101]',
         ]);
+      });
+    });
+  });
+
+  describe('increaseMatrixSizeToIncludeCell', () => {
+    interface TestCase {
+      initialMatrixSizes: MatrixSizes;
+      cell: Cell;
+      options?: { borderOffset?: number };
+      expectedNewMatrixSize: MatrixSizes | 'no changes';
+    }
+
+    const testCases: TestCase[] = [
+      // ===========================================
+      // single-cell, offset = 0
+      // ===========================================
+      {
+        initialMatrixSizes: {
+          minRowIndex: 0, maxRowIndex: 0, minColumnIndex: 0, maxColumnIndex: 0,
+        },
+        cell: { rowIndex: 0, columnIndex: 0 },
+        expectedNewMatrixSize: 'no changes',
+      },
+
+      // ===========================================
+      // single-cell, offset = 1
+      // ===========================================
+      {
+        initialMatrixSizes: {
+          minRowIndex: 0, maxRowIndex: 0, minColumnIndex: 0, maxColumnIndex: 0,
+        },
+        cell: { rowIndex: 0, columnIndex: 0 },
+        options: { borderOffset: 1 },
+        expectedNewMatrixSize: {
+          minRowIndex: -1, maxRowIndex: 1, minColumnIndex: -1, maxColumnIndex: 1,
+        },
+      },
+
+      // ===========================================
+      // single-cell, offset = 2
+      // ===========================================
+      {
+        initialMatrixSizes: {
+          minRowIndex: 0, maxRowIndex: 0, minColumnIndex: 0, maxColumnIndex: 0,
+        },
+        cell: { rowIndex: 0, columnIndex: 0 },
+        options: { borderOffset: 2 },
+        expectedNewMatrixSize: {
+          minRowIndex: -2, maxRowIndex: 2, minColumnIndex: -2, maxColumnIndex: 2,
+        },
+      },
+
+      // ===========================================
+      // inner cell, offset = 0
+      // ===========================================
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 6, columnIndex: 11 },
+        expectedNewMatrixSize: 'no changes',
+      },
+
+      // ===========================================
+      // inner cell, offset = 1
+      // ===========================================
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 6, columnIndex: 11 },
+        options: { borderOffset: 1 },
+        expectedNewMatrixSize: 'no changes',
+      },
+
+      // ===========================================
+      // inner cell, offset = 2
+      // ===========================================
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 6, columnIndex: 11 },
+        options: { borderOffset: 2 },
+        expectedNewMatrixSize: {
+          minRowIndex: 4, maxRowIndex: 15, minColumnIndex: 9, maxColumnIndex: 20,
+        },
+      },
+
+      // ===========================================
+      // inner cell, offset = 2
+      // ===========================================
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 6, columnIndex: 11 },
+        options: { borderOffset: 1 },
+        expectedNewMatrixSize: 'no changes',
+      },
+
+      // ===========================================
+      // border cell, offset = 1
+      // ===========================================
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 5, columnIndex: 10 },
+        options: { borderOffset: 1 },
+        expectedNewMatrixSize: {
+          minRowIndex: 4, maxRowIndex: 15, minColumnIndex: 9, maxColumnIndex: 20,
+        },
+      },
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 5, columnIndex: 15 },
+        options: { borderOffset: 1 },
+        expectedNewMatrixSize: {
+          minRowIndex: 4, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+      },
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 5, columnIndex: 20 },
+        options: { borderOffset: 1 },
+        expectedNewMatrixSize: {
+          minRowIndex: 4, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 21,
+        },
+      },
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 10, columnIndex: 20 },
+        options: { borderOffset: 1 },
+        expectedNewMatrixSize: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 21,
+        },
+      },
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 15, columnIndex: 20 },
+        options: { borderOffset: 1 },
+        expectedNewMatrixSize: {
+          minRowIndex: 5, maxRowIndex: 16, minColumnIndex: 10, maxColumnIndex: 21,
+        },
+      },
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 15, columnIndex: 15 },
+        options: { borderOffset: 1 },
+        expectedNewMatrixSize: {
+          minRowIndex: 5, maxRowIndex: 16, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+      },
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 15, columnIndex: 10 },
+        options: { borderOffset: 1 },
+        expectedNewMatrixSize: {
+          minRowIndex: 5, maxRowIndex: 16, minColumnIndex: 9, maxColumnIndex: 20,
+        },
+      },
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 10, columnIndex: 10 },
+        options: { borderOffset: 1 },
+        expectedNewMatrixSize: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 9, maxColumnIndex: 20,
+        },
+      },
+
+      // ===========================================
+      // border cell, offset = 2
+      // ===========================================
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 5, columnIndex: 10 },
+        options: { borderOffset: 2 },
+        expectedNewMatrixSize: {
+          minRowIndex: 3, maxRowIndex: 15, minColumnIndex: 8, maxColumnIndex: 20,
+        },
+      },
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 5, columnIndex: 15 },
+        options: { borderOffset: 2 },
+        expectedNewMatrixSize: {
+          minRowIndex: 3, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+      },
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 5, columnIndex: 20 },
+        options: { borderOffset: 2 },
+        expectedNewMatrixSize: {
+          minRowIndex: 3, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 22,
+        },
+      },
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 10, columnIndex: 20 },
+        options: { borderOffset: 2 },
+        expectedNewMatrixSize: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 22,
+        },
+      },
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 15, columnIndex: 20 },
+        options: { borderOffset: 2 },
+        expectedNewMatrixSize: {
+          minRowIndex: 5, maxRowIndex: 17, minColumnIndex: 10, maxColumnIndex: 22,
+        },
+      },
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 15, columnIndex: 15 },
+        options: { borderOffset: 2 },
+        expectedNewMatrixSize: {
+          minRowIndex: 5, maxRowIndex: 17, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+      },
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 15, columnIndex: 10 },
+        options: { borderOffset: 2 },
+        expectedNewMatrixSize: {
+          minRowIndex: 5, maxRowIndex: 17, minColumnIndex: 8, maxColumnIndex: 20,
+        },
+      },
+      {
+        initialMatrixSizes: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 10, maxColumnIndex: 20,
+        },
+        cell: { rowIndex: 10, columnIndex: 10 },
+        options: { borderOffset: 2 },
+        expectedNewMatrixSize: {
+          minRowIndex: 5, maxRowIndex: 15, minColumnIndex: 8, maxColumnIndex: 20,
+        },
+      },
+    ];
+
+    testCases.forEach(({
+      initialMatrixSizes, cell, options, expectedNewMatrixSize,
+    }) => {
+      describe(`then initial matrix sizes are ${JSON.stringify(initialMatrixSizes)}, cell is ${JSON.stringify(cell)} and options are ${JSON.stringify(options)}`, () => {
+        const matrix = new Matrix(initialMatrixSizes);
+
+        matrix.increaseMatrixSizeToIncludeCell(cell, options);
+
+        it(`sets new matrix sizes to ${JSON.stringify(expectedNewMatrixSize)}`, () => {
+          const {
+            minRowIndex,
+            maxRowIndex,
+            minColumnIndex,
+            maxColumnIndex,
+          } = matrix;
+
+          expect({
+            minRowIndex,
+            maxRowIndex,
+            minColumnIndex,
+            maxColumnIndex,
+          }).toEqual(expectedNewMatrixSize === 'no changes' ? initialMatrixSizes : expectedNewMatrixSize);
+        });
+      });
+    });
+  });
+
+  describe('getCentralCell', () => {
+    describe('when there is a cell that is placed in exact center', () => {
+      const matrix = new Matrix({
+        minRowIndex: 1,
+        maxRowIndex: 5,
+        minColumnIndex: -1,
+        maxColumnIndex: 5,
+      });
+
+      it('returns central cell', () => {
+        expect(matrix.getCentralCell()).toEqual({ rowIndex: 3, columnIndex: 2 });
+      });
+    });
+
+    describe('when there is no cell that is placed in exact center', () => {
+      const matrix = new Matrix({
+        minRowIndex: 1,
+        maxRowIndex: 4,
+        minColumnIndex: -1,
+        maxColumnIndex: 4,
+      });
+
+      it('returns cell near center that is closer to lower index', () => {
+        expect(matrix.getCentralCell()).toEqual({ rowIndex: 2, columnIndex: 1 });
       });
     });
   });
