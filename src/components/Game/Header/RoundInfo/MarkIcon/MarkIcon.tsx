@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mark } from '../../../../../constants';
-import { getBackgroundMarkClass } from '../../../../../utils';
+import { getBackgroundMarkClass } from '../../../../../utils/styles';
 import './styles.css';
 
 interface MarkIconProps {

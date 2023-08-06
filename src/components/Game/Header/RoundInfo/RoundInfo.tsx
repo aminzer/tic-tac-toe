@@ -1,7 +1,8 @@
 import React from 'react';
 import { Mark } from '../../../../constants';
 import { GameRoundInfo } from '../../../../types';
-import { getColorMarkClass, isGameRoundFinished } from '../../../../utils';
+import { isGameRoundFinished } from '../../../../utils/game';
+import { getColorMarkClass } from '../../../../utils/styles';
 import Button from '../../Button';
 import MarkIcon from './MarkIcon';
 import './styles.css';

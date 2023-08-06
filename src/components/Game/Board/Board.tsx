@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Mark } from '../../../constants';
 import { Matrix } from '../../../dataStructures';
 import { Cell, GameRoundInfo } from '../../../types';
-import { areCellsEqual, isGameRoundFinished, isSequenceContainsCell } from '../../../utils';
+import { areCellsEqual } from '../../../utils/cell';
+import { isSequenceContainsCell } from '../../../utils/cellSequence';
+import { isGameRoundFinished } from '../../../utils/game';
 import BoardCell from './BoardCell';
 import './styles.css';
 

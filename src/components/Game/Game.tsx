@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { GameRoundStatus, Mark } from '../../constants';
-import { getWinCellSequence, invertMark, setTitle } from '../../utils';
 import { Cell } from '../../types';
+import { getWinCellSequence } from '../../utils/cellSequence';
+import { setTitle } from '../../utils/document';
+import { invertMark } from '../../utils/game';
 import Header from './Header';
 import Board from './Board';
 import {

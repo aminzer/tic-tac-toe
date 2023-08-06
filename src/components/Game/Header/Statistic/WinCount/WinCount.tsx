@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mark } from '../../../../../constants';
-import { getMarkClass } from '../../../../../utils';
+import { getMarkClass } from '../../../../../utils/styles';
 import './styles.css';
 
 interface WinCountProps {

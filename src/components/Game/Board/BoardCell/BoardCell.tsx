@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { Mark } from '../../../../constants';
 import { Cell } from '../../../../types';
-import { getBackgroundMarkClass, getOutlineMarkClass } from '../../../../utils';
+import { getBackgroundMarkClass, getOutlineMarkClass } from '../../../../utils/styles';
 import './styles.css';
 
 interface BoardCellProps {
