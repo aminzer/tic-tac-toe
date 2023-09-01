@@ -1,6 +1,4 @@
 import React, { ReactNode } from 'react';
-import { CssBaseline, ThemeProvider } from '@mui/material';
-import theme from '../theme';
 
 interface AppWrapperProps {
   children: ReactNode;
@@ -9,10 +7,7 @@ interface AppWrapperProps {
 const AppWrapper: React.FC<AppWrapperProps> = ({ children }) => {
   return (
     <React.StrictMode>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        {children}
-      </ThemeProvider>
+      {children}
     </React.StrictMode>
   );
 };
