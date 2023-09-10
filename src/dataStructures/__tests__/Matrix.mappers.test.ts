@@ -20,27 +20,27 @@ describe('dataStructures > Matrix', () => {
 
     describe('mapRows', () => {
       it('return array of results of calls of callback for each matrix row', () => {
-        const x = matrix.mapRows((row) => (
-          `#${row.index} ${row.mapColumns((cell) => `[${cell.rowIndex}:${cell.columnIndex}]`).join(',')}`
-        ));
+        const x = matrix.mapRows(
+          (row) =>
+            `#${row.index} ${row
+              .mapColumns((cell) => `[${cell.rowIndex}:${cell.columnIndex}]`)
+              .join(',')}`,
+        );
 
-        expect(x).toEqual([
-          '#0 [0:100],[0:101]',
-          '#1 [1:100],[1:101]',
-        ]);
+        expect(x).toEqual(['#0 [0:100],[0:101]', '#1 [1:100],[1:101]']);
       });
     });
 
     describe('mapColumns', () => {
       it('return array of results of calls of callback for each matrix column', () => {
-        const x = matrix.mapColumns((column) => (
-          `#${column.index} ${column.mapRows((cell) => `[${cell.rowIndex}:${cell.columnIndex}]`).join(',')}`
-        ));
+        const x = matrix.mapColumns(
+          (column) =>
+            `#${column.index} ${column
+              .mapRows((cell) => `[${cell.rowIndex}:${cell.columnIndex}]`)
+              .join(',')}`,
+        );
 
-        expect(x).toEqual([
-          '#100 [0:100],[1:100]',
-          '#101 [0:101],[1:101]',
-        ]);
+        expect(x).toEqual(['#100 [0:100],[1:100]', '#101 [0:101],[1:101]']);
       });
     });
   });

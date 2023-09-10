@@ -27,5 +27,5 @@ export interface GameStatistic {
   winCount: {
     [Mark.CROSS]: number;
     [Mark.NOUGHT]: number;
-  }
+  };
 }

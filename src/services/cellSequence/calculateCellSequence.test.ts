@@ -31,9 +31,7 @@ describe('utils > cell_sequence > calculateCellSequence', () => {
       ...testCaseDefaults,
       nextMark: Mark.NOUGHT,
       expectedCalculatedCellSequence: {
-        cells: [
-          { rowIndex: 0, columnIndex: 2 },
-        ],
+        cells: [{ rowIndex: 0, columnIndex: 2 }],
         mark: Mark.NOUGHT,
       },
     },
@@ -60,24 +58,18 @@ describe('utils > cell_sequence > calculateCellSequence', () => {
       cellSequence: null,
       nextMark: Mark.CROSS,
       expectedCalculatedCellSequence: {
-        cells: [
-          { rowIndex: 0, columnIndex: 2 },
-        ],
+        cells: [{ rowIndex: 0, columnIndex: 2 }],
         mark: Mark.CROSS,
       },
     },
   ];
 
-  testCases.forEach(({
-    cellSequence, nextCell, nextMark, expectedCalculatedCellSequence,
-  }) => {
+  testCases.forEach(({ cellSequence, nextCell, nextMark, expectedCalculatedCellSequence }) => {
     describe(`when ${JSON.stringify({ cellSequence, nextCell, nextMark })}`, () => {
       it(`returns ${JSON.stringify(expectedCalculatedCellSequence)}`, () => {
-        expect(calculateCellSequence(
-          cellSequence,
-          nextCell,
-          nextMark,
-        )).toEqual(expectedCalculatedCellSequence);
+        expect(calculateCellSequence(cellSequence, nextCell, nextMark)).toEqual(
+          expectedCalculatedCellSequence,
+        );
       });
     });
   });

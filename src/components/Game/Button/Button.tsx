@@ -3,7 +3,7 @@ import './styles.css';
 
 interface ButtonProps {
   children: ReactNode;
-  onClick?: () => void
+  onClick?: () => void;
   style?: CSSProperties;
 }
 

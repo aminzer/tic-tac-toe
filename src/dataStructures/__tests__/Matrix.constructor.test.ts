@@ -5,12 +5,14 @@ describe('dataStructures > Matrix', () => {
   describe('constructor', () => {
     interface ConstructorTestCase {
       params?: Partial<MatrixSizes>;
-      expectations: MatrixSizes & {
-        rowCount: number;
-        columnCount: number;
-      } | {
-        error: true;
-      };
+      expectations:
+        | (MatrixSizes & {
+            rowCount: number;
+            columnCount: number;
+          })
+        | {
+            error: true;
+          };
     }
 
     const constructorTestCases: ConstructorTestCase[] = [
@@ -165,14 +167,8 @@ describe('dataStructures > Matrix', () => {
 
         const matrix = new Matrix(params);
 
-        const {
-          minRowIndex,
-          maxRowIndex,
-          rowCount,
-          minColumnIndex,
-          maxColumnIndex,
-          columnCount,
-        } = expectations;
+        const { minRowIndex, maxRowIndex, rowCount, minColumnIndex, maxColumnIndex, columnCount } =
+          expectations;
 
         it(`sets minRowIndex = ${minRowIndex}`, () => {
           expect(matrix.minRowIndex).toBe(minRowIndex);

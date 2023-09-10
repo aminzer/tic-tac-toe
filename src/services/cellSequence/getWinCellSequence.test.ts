@@ -5,14 +5,15 @@ import getWinCellSequence from './getWinCellSequence';
 
 type Board = ('x' | 'o' | ' ')[][];
 
-const formatBoard = (board: Board): string => `\n${board.map((row) => JSON.stringify(row)).join('\n')}\n`;
+const formatBoard = (board: Board): string =>
+  `\n${board.map((row) => JSON.stringify(row)).join('\n')}\n`;
 
 describe('utils > cell_sequence > getWinCellSequence', () => {
   interface TestCase {
     board: Board;
     options?: {
       winSequenceLength?: number;
-    }
+    };
     expectation: {
       winner: 'x' | 'o';
       sequence: number[][];
@@ -54,7 +55,11 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
       },
       expectation: {
         winner: 'x',
-        sequence: [[1, 0], [1, 1], [1, 2]],
+        sequence: [
+          [1, 0],
+          [1, 1],
+          [1, 2],
+        ],
       },
     },
     {
@@ -69,7 +74,11 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
       },
       expectation: {
         winner: 'o',
-        sequence: [[1, 1], [1, 2], [1, 3]],
+        sequence: [
+          [1, 1],
+          [1, 2],
+          [1, 3],
+        ],
       },
     },
     {
@@ -84,7 +93,11 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
       },
       expectation: {
         winner: 'x',
-        sequence: [[1, 1], [2, 1], [3, 1]],
+        sequence: [
+          [1, 1],
+          [2, 1],
+          [3, 1],
+        ],
       },
     },
     {
@@ -99,7 +112,11 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
       },
       expectation: {
         winner: 'x',
-        sequence: [[0, 1], [1, 2], [2, 3]],
+        sequence: [
+          [0, 1],
+          [1, 2],
+          [2, 3],
+        ],
       },
     },
     {
@@ -114,7 +131,11 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
       },
       expectation: {
         winner: 'o',
-        sequence: [[0, 2], [1, 1], [2, 0]],
+        sequence: [
+          [0, 2],
+          [1, 1],
+          [2, 0],
+        ],
       },
     },
     {
@@ -141,7 +162,12 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
       },
       expectation: {
         winner: 'o',
-        sequence: [[0, 3], [1, 2], [2, 1], [3, 0]],
+        sequence: [
+          [0, 3],
+          [1, 2],
+          [2, 1],
+          [3, 0],
+        ],
       },
     },
     {
@@ -177,7 +203,13 @@ describe('utils > cell_sequence > getWinCellSequence', () => {
       ],
       expectation: {
         winner: 'x',
-        sequence: [[1, 3], [2, 3], [3, 3], [4, 3], [5, 3]],
+        sequence: [
+          [1, 3],
+          [2, 3],
+          [3, 3],
+          [4, 3],
+          [5, 3],
+        ],
       },
     },
   ];

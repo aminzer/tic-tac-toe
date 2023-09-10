@@ -10,9 +10,7 @@ interface MarkIconProps {
 const MarkIcon: React.FC<MarkIconProps> = ({ mark }) => {
   const className = `mark-icon ${getBackgroundMarkClass(mark)}`;
 
-  return (
-    <div className={className} />
-  );
+  return <div className={className} />;
 };
 
 export default MarkIcon;

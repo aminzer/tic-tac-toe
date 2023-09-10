@@ -5,11 +5,7 @@ interface AppWrapperProps {
 }
 
 const AppWrapper: React.FC<AppWrapperProps> = ({ children }) => {
-  return (
-    <React.StrictMode>
-      {children}
-    </React.StrictMode>
-  );
+  return <React.StrictMode>{children}</React.StrictMode>;
 };
 
 export default AppWrapper;

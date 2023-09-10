@@ -119,11 +119,7 @@ class Matrix<T> {
   public mapRows<U>(callback: (row: MatrixRow<T>) => U): U[] {
     const res: U[] = [];
 
-    for (
-      let rowIndex = this._minRowIndex;
-      rowIndex <= this._maxRowIndex;
-      rowIndex += 1
-    ) {
+    for (let rowIndex = this._minRowIndex; rowIndex <= this._maxRowIndex; rowIndex += 1) {
       res.push(callback(new MatrixRow(rowIndex, this)));
     }
 
@@ -144,11 +140,14 @@ class Matrix<T> {
     return res;
   }
 
-  public increaseMatrixSizeToIncludeCell(cell: Cell, {
-    borderOffset = 0,
-  }: {
-    borderOffset?: number
-  } = {}): void {
+  public increaseMatrixSizeToIncludeCell(
+    cell: Cell,
+    {
+      borderOffset = 0,
+    }: {
+      borderOffset?: number;
+    } = {},
+  ): void {
     const minRowIndexLimit = cell.rowIndex - borderOffset;
     const maxRowIndexLimit = cell.rowIndex + borderOffset;
     const minColumnIndexLimit = cell.columnIndex - borderOffset;
@@ -195,7 +194,7 @@ class Matrix<T> {
     return `${rowIndex}_${columnIndex}`;
   }
 
-  private parseDataKey(dataKey: string): { rowIndex: number, columnIndex: number } {
+  private parseDataKey(dataKey: string): { rowIndex: number; columnIndex: number } {
     const [rowIndexStr, columnIndexStr] = dataKey.split('_');
 
     const rowIndex = Number.parseInt(rowIndexStr, 10);
@@ -206,16 +205,18 @@ class Matrix<T> {
 
   private isCellWithinMatrix(rowIndex: number, columnIndex: number): boolean {
     return (
-      rowIndex >= this._minRowIndex
-      && rowIndex <= this._maxRowIndex
-      && columnIndex >= this._minColumnIndex
-      && columnIndex <= this._maxColumnIndex
+      rowIndex >= this._minRowIndex &&
+      rowIndex <= this._maxRowIndex &&
+      columnIndex >= this._minColumnIndex &&
+      columnIndex <= this._maxColumnIndex
     );
   }
 
   private ensureCellIsWithinMatrix(rowIndex: number, columnIndex: number): void {
     if (!this.isCellWithinMatrix(rowIndex, columnIndex)) {
-      throw new Error(`Cell (${rowIndex},${columnIndex}) is out of matrix [${this._minRowIndex}..${this._maxRowIndex}][${this._minColumnIndex}..${this._maxColumnIndex}]`);
+      throw new Error(
+        `Cell (${rowIndex},${columnIndex}) is out of matrix [${this._minRowIndex}..${this._maxRowIndex}][${this._minColumnIndex}..${this._maxColumnIndex}]`,
+      );
     }
   }
 
@@ -242,7 +243,7 @@ class MatrixRow<T> {
   public constructor(
     public readonly index: number,
     private readonly matrix: Matrix<T>,
-  ) { }
+  ) {}
 
   public mapColumns<U>(callback: (cell: Cell) => U): U[] {
     const res: U[] = [];
@@ -263,7 +264,7 @@ class MatrixColumn<T> {
   public constructor(
     public readonly index: number,
     private readonly matrix: Matrix<T>,
-  ) { }
+  ) {}
 
   public mapRows<U>(callback: (cell: Cell) => U): U[] {
     const res: U[] = [];

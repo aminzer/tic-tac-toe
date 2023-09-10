@@ -10,9 +10,8 @@ const calculateCellSequence = (
     return null;
   }
 
-  const cells = cellSequence?.mark === nextMark
-    ? [...(cellSequence?.cells ?? []), nextCell]
-    : [nextCell];
+  const cells =
+    cellSequence?.mark === nextMark ? [...(cellSequence?.cells ?? []), nextCell] : [nextCell];
 
   return {
     cells,

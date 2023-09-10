@@ -11,11 +11,7 @@ interface WinCountProps {
 const WinCount: React.FC<WinCountProps> = ({ value, mark }) => {
   const className = `win-count ${getMarkClass(mark, { prefix: 'win-count-' })}`;
 
-  return (
-    <div className={className}>
-      {value}
-    </div>
-  );
+  return <div className={className}>{value}</div>;
 };
 
 export default WinCount;

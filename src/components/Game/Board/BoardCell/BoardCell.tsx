@@ -65,9 +65,7 @@ const BoardCell: React.FC<BoardCellProps> = ({
       onMouseEnter={() => onFocus({ rowIndex, columnIndex })}
     >
       <button className={cellButtonClassName} type="button">
-        {mark && (
-          <div className={cellMarkClassName} />
-        )}
+        {mark && <div className={cellMarkClassName} />}
       </button>
     </td>
   );

@@ -3,17 +3,15 @@ import { Matrix } from '../../dataStructures';
 import { CellSequence } from '../../types';
 import calculateCellSequence from './calculateCellSequence';
 
-const getWinCellSequence = (markMatrix: Matrix<Mark>, {
-  winSequenceLength = 5,
-}: {
-  winSequenceLength?: number;
-} = {}): CellSequence | null => {
-  const {
-    minRowIndex,
-    maxRowIndex,
-    minColumnIndex,
-    maxColumnIndex,
-  } = markMatrix;
+const getWinCellSequence = (
+  markMatrix: Matrix<Mark>,
+  {
+    winSequenceLength = 5,
+  }: {
+    winSequenceLength?: number;
+  } = {},
+): CellSequence | null => {
+  const { minRowIndex, maxRowIndex, minColumnIndex, maxColumnIndex } = markMatrix;
 
   let cellSequence: CellSequence | null = null;
 
@@ -65,10 +63,10 @@ const getWinCellSequence = (markMatrix: Matrix<Mark>, {
       const columnIndex = indexesSum - rowIndex;
 
       if (
-        rowIndex < minRowIndex
-        || rowIndex > maxRowIndex
-        || columnIndex < minColumnIndex
-        || columnIndex > maxColumnIndex
+        rowIndex < minRowIndex ||
+        rowIndex > maxRowIndex ||
+        columnIndex < minColumnIndex ||
+        columnIndex > maxColumnIndex
       ) {
         continue;
       }
@@ -100,10 +98,10 @@ const getWinCellSequence = (markMatrix: Matrix<Mark>, {
       const columnIndex = rowIndex - indexesDiff;
 
       if (
-        rowIndex < minRowIndex
-        || rowIndex > maxRowIndex
-        || columnIndex < minColumnIndex
-        || columnIndex > maxColumnIndex
+        rowIndex < minRowIndex ||
+        rowIndex > maxRowIndex ||
+        columnIndex < minColumnIndex ||
+        columnIndex > maxColumnIndex
       ) {
         continue;
       }

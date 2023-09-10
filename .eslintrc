@@ -3,10 +3,11 @@
     "airbnb",
     "airbnb-typescript",
     "airbnb/hooks",
-    "airbnb-typescript/base"
+    "prettier"
   ],
   "plugins": [
-    "jest"
+    "jest",
+    "prettier"
   ],
   "env": {
     "node": true,
@@ -33,6 +34,7 @@
     "no-continue": "off",
     "no-restricted-exports": "off",
     "no-underscore-dangle": "off",
+    "prettier/prettier": "error",
     "react/jsx-props-no-spreading": "off",
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
