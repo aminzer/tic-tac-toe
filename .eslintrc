@@ -36,6 +36,14 @@
     "no-underscore-dangle": "off",
     "prettier/prettier": "error",
     "react/jsx-props-no-spreading": "off",
+    "react/no-unknown-property": [
+      "error",
+      {
+        "ignore": [
+          "css"
+        ]
+      }
+    ],
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
     "react/function-component-definition": [
