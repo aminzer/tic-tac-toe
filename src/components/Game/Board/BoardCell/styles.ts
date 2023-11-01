@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Mark } from '../../../../constants';
-import { ignoreProps } from '../../../../library';
+import { getMarkColor, ignoreProps } from '../../../../library';
 
 export const Container = styled('td', {
   shouldForwardProp: ignoreProps(
@@ -24,7 +24,7 @@ export const Container = styled('td', {
   border: `1px solid ${theme.palette.background.light}`,
 
   ...(isWinSequence && {
-    backgroundColor: theme.palette.marks[mark === Mark.CROSS ? 'cross' : 'nought'].dark,
+    backgroundColor: getMarkColor({ mark, type: 'dark', theme }),
   }),
 
   ...(isTopBorder && { borderTop: 'none' }),
@@ -54,9 +54,7 @@ export const Button = styled('button', {
     }),
 
   ...(isFocused && {
-    outline: `2px solid ${
-      theme.palette.marks[currentPlayerMark === Mark.CROSS ? 'cross' : 'nought'].default
-    }`,
+    outline: `2px solid ${getMarkColor({ mark: currentPlayerMark, theme })}`,
   }),
 }));
 
@@ -68,5 +66,5 @@ export const CellMark = styled('div', {
   height: '100%',
   width: '100%',
   borderRadius: theme.shape.borderRadius.default,
-  backgroundColor: theme.palette.marks[mark === Mark.CROSS ? 'cross' : 'nought'].default,
+  backgroundColor: getMarkColor({ mark, theme }),
 }));
