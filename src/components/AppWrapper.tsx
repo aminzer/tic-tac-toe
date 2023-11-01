@@ -1,11 +1,19 @@
 import React, { ReactNode } from 'react';
+import { GlobalStyles, ThemeProvider } from '../library';
 
 interface AppWrapperProps {
   children: ReactNode;
 }
 
 const AppWrapper: React.FC<AppWrapperProps> = ({ children }) => {
-  return <React.StrictMode>{children}</React.StrictMode>;
+  return (
+    <React.StrictMode>
+      <ThemeProvider>
+        <GlobalStyles />
+        {children}
+      </ThemeProvider>
+    </React.StrictMode>
+  );
 };
 
 export default AppWrapper;
