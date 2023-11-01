@@ -1,9 +1,7 @@
 import React from 'react';
-import classNames from 'classnames';
 import { Mark } from '../../../../constants';
 import { Cell } from '../../../../types';
-import { getBackgroundMarkClass, getOutlineMarkClass } from '../../../../utils/styles';
-import './styles.css';
+import { Button, CellMark, Container } from './styles';
 
 interface BoardCellProps {
   rowIndex: number;
@@ -36,22 +34,6 @@ const BoardCell: React.FC<BoardCellProps> = ({
   onClick,
   onFocus,
 }) => {
-  const cellClassName = classNames('board-cell', {
-    top: isTopBorder,
-    bottom: isBottomBorder,
-    left: isLeftBorder,
-    right: isRightBorder,
-    [`${getBackgroundMarkClass(mark)}-dark`]: isWinSequence,
-  });
-
-  const cellButtonClassName = classNames('board-cell-button', {
-    active: isActive,
-    focused: isFocused,
-    [getOutlineMarkClass(currentPlayerMark)]: isFocused,
-  });
-
-  const cellMarkClassName = classNames('board-cell-mark', getBackgroundMarkClass(mark));
-
   const handleClick = () => {
     if (isActive) {
       onClick({ rowIndex, columnIndex });
@@ -59,15 +41,25 @@ const BoardCell: React.FC<BoardCellProps> = ({
   };
 
   return (
-    <td
-      className={cellClassName}
+    <Container
+      mark={mark}
+      isWinSequence={isWinSequence}
+      isTopBorder={isTopBorder}
+      isBottomBorder={isBottomBorder}
+      isLeftBorder={isLeftBorder}
+      isRightBorder={isRightBorder}
       onClick={handleClick}
       onMouseEnter={() => onFocus({ rowIndex, columnIndex })}
     >
-      <button className={cellButtonClassName} type="button">
-        {mark && <div className={cellMarkClassName} />}
-      </button>
-    </td>
+      <Button
+        type="button"
+        currentPlayerMark={currentPlayerMark}
+        isActive={isActive}
+        isFocused={isFocused}
+      >
+        {mark && <CellMark mark={mark} />}
+      </Button>
+    </Container>
   );
 };
 
