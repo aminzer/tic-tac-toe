@@ -35,7 +35,7 @@ const RoundInfo: React.FC<RoundInfoProps> = ({
 
   return (
     <>
-      <Text mark={currentMark}>Current turn</Text>
+      <Text mark={currentMark}>Current move</Text>
 
       <MarkIcon mark={currentMark} />
     </>
