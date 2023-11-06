@@ -3,7 +3,7 @@ import { Mark } from '../../../constants';
 import { GameRoundInfo, GameStatistic } from '../../../types';
 import Statistic from './Statistic';
 import RoundInfo from './RoundInfo';
-import './styles.css';
+import { Container, Row } from './styles';
 
 interface HeaderProps {
   currentMark: Mark;
@@ -19,19 +19,19 @@ const Header: React.FC<HeaderProps> = ({
   onNewGameRoundStart,
 }) => {
   return (
-    <div className="header">
-      <div className="header-row">
+    <Container>
+      <Row>
         <Statistic gameStatistic={gameStatistic} />
-      </div>
+      </Row>
 
-      <div className="header-row">
+      <Row>
         <RoundInfo
           currentMark={currentMark}
           gameRoundInfo={gameRoundInfo}
           onNewGameRoundStart={onNewGameRoundStart}
         />
-      </div>
-    </div>
+      </Row>
+    </Container>
   );
 };
 
