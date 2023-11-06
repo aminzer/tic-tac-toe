@@ -8,7 +8,9 @@ const getMarkColor = ({
 }: {
   mark?: Mark | null;
   type?: 'default' | 'dark';
-  theme: Theme;
+  theme: {
+    palette: Pick<Theme['palette'], 'marks'>;
+  };
 }): string => {
   return theme.palette.marks[mark === Mark.CROSS ? 'cross' : 'nought'][type];
 };
