@@ -6,7 +6,7 @@ import { areCellsEqual } from '../../../services/cell';
 import { isSequenceContainsCell } from '../../../services/cellSequence';
 import { isGameRoundFinished } from '../../../services/game';
 import BoardCell from './BoardCell';
-import './styles.css';
+import { Container, Spacer, Table } from './styles';
 
 interface BoardProps {
   markMatrix: Matrix<Mark>;
@@ -27,9 +27,9 @@ const Board: React.FC<BoardProps> = ({
   const [focusedCell, setFocusedCell] = useState<Cell>(markMatrix.getCentralCell());
 
   return (
-    <div className="board-container">
-      <div className="board-spacer">
-        <table className="board">
+    <Container>
+      <Spacer>
+        <Table>
           <tbody>
             {markMatrix.mapRows((row) => (
               <tr key={row.index}>
@@ -62,9 +62,9 @@ const Board: React.FC<BoardProps> = ({
               </tr>
             ))}
           </tbody>
-        </table>
-      </div>
-    </div>
+        </Table>
+      </Spacer>
+    </Container>
   );
 };
 
