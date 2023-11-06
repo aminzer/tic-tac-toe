@@ -12,7 +12,7 @@ import {
   initialGameRoundInfo,
   initialGameStatistic,
 } from './initialData';
-import './styles.css';
+import { Content } from './styles';
 
 const Game: React.FC = () => {
   const [markMatrix, setMarkMatrix] = useState(initialMarkMatrix);
@@ -72,7 +72,7 @@ const Game: React.FC = () => {
   }, [gameStatistic]);
 
   return (
-    <div className="content">
+    <Content>
       <Header
         currentMark={currentMark}
         gameRoundInfo={gameRoundInfo}
@@ -86,7 +86,7 @@ const Game: React.FC = () => {
         currentPlayerMark={currentMark}
         onCellClick={handleBoardCellClick}
       />
-    </div>
+    </Content>
   );
 };
 
