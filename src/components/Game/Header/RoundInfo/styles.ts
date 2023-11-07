@@ -1,6 +1,4 @@
 import styled from '@emotion/styled';
-import { Mark } from '../../../../constants';
-import { getMarkColor, ignoreProps } from '../../../../library';
 
 export const Container = styled('div')({
   display: 'flex',
@@ -8,9 +6,6 @@ export const Container = styled('div')({
   gap: '0.5rem',
 });
 
-export const Text = styled('span', {
-  shouldForwardProp: ignoreProps('mark'),
-})<{ mark?: Mark }>(({ mark, theme }) => ({
+export const TextContainer = styled('span')({
   margin: '0.5rem 0',
-  color: getMarkColor({ mark, theme }),
-}));
+});

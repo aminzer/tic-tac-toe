@@ -2,8 +2,8 @@ import React from 'react';
 import { Mark } from '../../../../constants';
 import { GameRoundInfo } from '../../../../types';
 import { isGameRoundFinished } from '../../../../services/game';
-import { Button, MarkIcon } from '../../../../library';
-import { Container, Text } from './styles';
+import { Button, MarkIcon, Typography } from '../../../../library';
+import { Container, TextContainer } from './styles';
 
 interface RoundInfoProps {
   currentMark: Mark;
@@ -21,7 +21,9 @@ const RoundInfo: React.FC<RoundInfoProps> = ({
 
     return (
       <Container>
-        <Text mark={winnerMark}>Winner</Text>
+        <TextContainer>
+          <Typography color={winnerMark}>Winner</Typography>
+        </TextContainer>
 
         <MarkIcon mark={winnerMark} />
 
@@ -32,7 +34,9 @@ const RoundInfo: React.FC<RoundInfoProps> = ({
 
   return (
     <Container>
-      <Text mark={currentMark}>Current move</Text>
+      <TextContainer>
+        <Typography color={currentMark}>Current move</Typography>
+      </TextContainer>
 
       <MarkIcon mark={currentMark} />
     </Container>
