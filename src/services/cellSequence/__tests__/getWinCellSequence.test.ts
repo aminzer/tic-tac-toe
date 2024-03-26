@@ -1,7 +1,7 @@
-import { Mark } from '../../constants';
-import { Matrix } from '../../dataStructures';
-import { CellSequence } from '../../types';
-import getWinCellSequence from './getWinCellSequence';
+import { Mark } from '../../../constants';
+import { Matrix } from '../../../dataStructures';
+import { CellSequence } from '../../../types';
+import getWinCellSequence from '../getWinCellSequence';
 
 type Board = ('x' | 'o' | ' ')[][];
 

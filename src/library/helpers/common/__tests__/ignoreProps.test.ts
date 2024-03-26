@@ -1,4 +1,4 @@
-import ignoreProps from './ignoreProps';
+import ignoreProps from '../ignoreProps';
 
 describe('library > helpers > common > ignoreProps', () => {
   interface TestCase {

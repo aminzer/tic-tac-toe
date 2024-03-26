@@ -1,4 +1,4 @@
-import areCellsEqual from './areCellsEqual';
+import areCellsEqual from '../areCellsEqual';
 
 describe('utils > cell > areCellsEqual', () => {
   describe('when cells have different row and column indexes', () => {

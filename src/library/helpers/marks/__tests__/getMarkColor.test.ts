@@ -1,5 +1,5 @@
-import { Mark } from '../../../constants';
-import getMarkColor from './getMarkColor';
+import { Mark } from '../../../../constants';
+import getMarkColor from '../getMarkColor';
 
 describe('library > helpers > marks > getMarkColor', () => {
   const theme = {
