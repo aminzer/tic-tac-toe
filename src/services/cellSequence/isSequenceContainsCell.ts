@@ -1,7 +1,10 @@
 import { Cell, CellSequence } from '../../types';
 import { areCellsEqual } from '../cell';
 
-const isSequenceContainsCell = (cellSequence: CellSequence | undefined, cell: Cell): boolean => {
+const isSequenceContainsCell = (
+  cellSequence: Pick<CellSequence, 'cells'> | undefined,
+  cell: Cell,
+): boolean => {
   if (!cellSequence) {
     return false;
   }
