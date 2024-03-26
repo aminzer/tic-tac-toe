@@ -1,7 +1,7 @@
 import { GameRoundStatus } from '../../constants';
 import { GameRoundInfo } from '../../types';
 
-const isGameRoundFinished = (gameRoundInfo: GameRoundInfo): boolean => {
+const isGameRoundFinished = (gameRoundInfo: Pick<GameRoundInfo, 'status'>): boolean => {
   return gameRoundInfo.status === GameRoundStatus.FINISHED;
 };
 
