@@ -1,6 +1,7 @@
+import { formatTestName } from '../../../../test';
 import ignoreProps from '../ignoreProps';
 
-describe('library > helpers > common > ignoreProps', () => {
+describe(formatTestName(__filename), () => {
   interface TestCase {
     ignoredProps: string[];
     prop: string;

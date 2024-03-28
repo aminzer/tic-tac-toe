@@ -1,8 +1,9 @@
 import { Mark } from '../../../constants';
+import { formatTestName } from '../../../test';
 import { Cell, CellSequence } from '../../../types';
 import calculateCellSequence from '../calculateCellSequence';
 
-describe('utils > cell_sequence > calculateCellSequence', () => {
+describe(formatTestName(__filename), () => {
   interface TestCase {
     cellSequence: CellSequence | null;
     nextCell: Cell;

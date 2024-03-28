@@ -1,1 +1,1 @@
-export { default as describeFunctionTest } from './describeFunctionTest';
+export { default as describeFunctionTest, formatTestName } from './describeFunctionTest';

@@ -1,7 +1,7 @@
 import { describeFunctionTest } from '../../../test';
 import isSequenceContainsCell from '../isSequenceContainsCell';
 
-describeFunctionTest(isSequenceContainsCell, __dirname, {
+describeFunctionTest(isSequenceContainsCell, __filename, {
   testCases: [
     {
       args: [undefined, { rowIndex: 1, columnIndex: 1 }],

@@ -1,5 +1,6 @@
 import { Mark } from '../../../constants';
 import { Matrix } from '../../../dataStructures';
+import { formatTestName } from '../../../test';
 import { CellSequence } from '../../../types';
 import getWinCellSequence from '../getWinCellSequence';
 
@@ -8,7 +9,7 @@ type Board = ('x' | 'o' | ' ')[][];
 const formatBoard = (board: Board): string =>
   `\n${board.map((row) => JSON.stringify(row)).join('\n')}\n`;
 
-describe('utils > cell_sequence > getWinCellSequence', () => {
+describe(formatTestName(__filename), () => {
   interface TestCase {
     board: Board;
     options?: {
