@@ -8,6 +8,9 @@ export interface Theme {
     primary: {
       default: string;
     };
+    secondary: {
+      default: string;
+    };
     background: {
       default: string;
       light: string;

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Mark } from '../../../../constants';
-import { getMarkColor, ignoreProps } from '../../../../library';
+import { Theme, getMarkColor, ignoreProps } from '../../../../library';
 
 export const Container = styled('td', {
   shouldForwardProp: ignoreProps(
@@ -33,6 +33,22 @@ export const Container = styled('td', {
   ...(isRightBorder && { borderRight: 'none' }),
 }));
 
+const getFocusedButtonOutlineColor = ({
+  currentPlayerMark,
+  isActive,
+  theme,
+}: {
+  currentPlayerMark: Mark;
+  isActive: boolean;
+  theme: Theme;
+}): string => {
+  if (!isActive) {
+    return theme.palette.secondary.default;
+  }
+
+  return getMarkColor({ mark: currentPlayerMark, theme });
+};
+
 export const Button = styled('button', {
   shouldForwardProp: ignoreProps('currentPlayerMark', 'isActive', 'isFocused'),
 })<{
@@ -54,7 +70,7 @@ export const Button = styled('button', {
     }),
 
   ...(isFocused && {
-    outline: `2px solid ${getMarkColor({ mark: currentPlayerMark, theme })}`,
+    outline: `2px solid ${getFocusedButtonOutlineColor({ currentPlayerMark, isActive, theme })}`,
   }),
 }));
 
