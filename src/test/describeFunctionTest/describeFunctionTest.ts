@@ -15,7 +15,7 @@ const describeFunctionTest = <Args extends unknown[], Result>(
 ): void => {
   describe(formatTestName(testFilePath), () => {
     testCases.forEach(({ args, expectedResult, description, only }) => {
-      const describeTestCase = only ? describe : describe;
+      const describeTestCase = only ? describe.only : describe;
 
       describeTestCase(description ?? `when arguments are ${JSON.stringify(args)}`, () => {
         it(`returns ${JSON.stringify(expectedResult)}`, () => {
