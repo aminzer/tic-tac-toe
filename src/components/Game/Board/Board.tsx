@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useEventListener } from 'usehooks-ts';
 import { Mark } from '../../../constants';
 import { Matrix } from '../../../dataStructures';
 import { Cell, GameRoundInfo } from '../../../types';
+import { getNewFocusedCell } from '../../../services/board';
 import { areCellsEqual } from '../../../services/cell';
 import { isSequenceContainsCell } from '../../../services/cellSequence';
 import { isGameRoundFinished } from '../../../services/game';
+import { handleFocusedCellChange } from '../../../services/keyboardSettings';
 import BoardCell from './BoardCell';
 import { Container, Spacer, Table } from './styles';
 
@@ -25,6 +28,14 @@ const Board: React.FC<BoardProps> = ({
   const { winCellSequence } = gameRoundInfo;
 
   const [focusedCell, setFocusedCell] = useState<Cell>(markMatrix.getCentralCell());
+
+  useEventListener('keydown', (event): void => {
+    handleFocusedCellChange(event, (focusedCellChange) => {
+      setFocusedCell((prevFocusedCell) =>
+        getNewFocusedCell({ prevFocusedCell, focusedCellChange, boardLimits: markMatrix }),
+      );
+    });
+  });
 
   return (
     <Container>
