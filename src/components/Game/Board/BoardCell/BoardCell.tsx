@@ -1,7 +1,7 @@
 import React from 'react';
 import { Mark } from '../../../../constants';
 import { Cell } from '../../../../types';
-import { Button, CellMark, Container } from './styles';
+import { CellMark, ClickableArea, Container } from './styles';
 
 interface BoardCellProps {
   rowIndex: number;
@@ -51,14 +51,13 @@ const BoardCell: React.FC<BoardCellProps> = ({
       onClick={handleClick}
       onMouseEnter={() => onFocus({ rowIndex, columnIndex })}
     >
-      <Button
-        type="button"
+      <ClickableArea
         currentPlayerMark={currentPlayerMark}
         isActive={isActive}
         isFocused={isFocused}
       >
         {mark && <CellMark mark={mark} />}
-      </Button>
+      </ClickableArea>
     </Container>
   );
 };

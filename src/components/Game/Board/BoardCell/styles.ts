@@ -33,7 +33,7 @@ export const Container = styled('td', {
   ...(isRightBorder && { borderRight: 'none' }),
 }));
 
-const getFocusedButtonOutlineColor = ({
+const getFocusedClickableAreaOutlineColor = ({
   currentPlayerMark,
   isActive,
   theme,
@@ -49,7 +49,7 @@ const getFocusedButtonOutlineColor = ({
   return getMarkColor({ mark: currentPlayerMark, theme });
 };
 
-export const Button = styled('button', {
+export const ClickableArea = styled('div', {
   shouldForwardProp: ignoreProps('currentPlayerMark', 'isActive', 'isFocused'),
 })<{
   currentPlayerMark: Mark;
@@ -70,7 +70,11 @@ export const Button = styled('button', {
     }),
 
   ...(isFocused && {
-    outline: `2px solid ${getFocusedButtonOutlineColor({ currentPlayerMark, isActive, theme })}`,
+    outline: `2px solid ${getFocusedClickableAreaOutlineColor({
+      currentPlayerMark,
+      isActive,
+      theme,
+    })}`,
   }),
 }));
 
