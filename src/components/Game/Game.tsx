@@ -20,7 +20,11 @@ const Game: React.FC = () => {
   const [gameRoundInfo, setGameRoundInfo] = useState(initialGameRoundInfo);
   const [gameStatistic, setGameStatistic] = useState(initialGameStatistic);
 
-  const handleBoardCellClick = ({ rowIndex, columnIndex }: Cell): void => {
+  const handleCellMarkSet = ({ rowIndex, columnIndex }: Cell): void => {
+    if (markMatrix.get(rowIndex, columnIndex)) {
+      return;
+    }
+
     const newMarkMatrix = markMatrix.clone();
     newMarkMatrix.set(rowIndex, columnIndex, currentMark);
     newMarkMatrix.increaseMatrixSizeToIncludeCell({ rowIndex, columnIndex }, { borderOffset: 1 });
@@ -84,7 +88,7 @@ const Game: React.FC = () => {
         markMatrix={markMatrix}
         gameRoundInfo={gameRoundInfo}
         currentPlayerMark={currentMark}
-        onCellClick={handleBoardCellClick}
+        onCellMarkSet={handleCellMarkSet}
       />
     </Content>
   );

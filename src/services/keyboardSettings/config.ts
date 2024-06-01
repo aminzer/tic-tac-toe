@@ -7,4 +7,5 @@ export const DEFAULT_KEYBOARD_SETTINGS: KeyboardSettings = {
     [FocusedCellChangeDirection.LEFT]: 'ArrowLeft',
     [FocusedCellChangeDirection.RIGHT]: 'ArrowRight',
   },
+  setCellMark: 'Space',
 };

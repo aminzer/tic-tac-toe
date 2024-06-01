@@ -10,6 +10,9 @@ export enum FocusedCellChangeDirection {
   RIGHT = 'RIGHT',
 }
 
+type KeyboardKeyCode = KeyboardEvent['code'];
+
 export interface KeyboardSettings {
-  focusedCellMovement: Record<FocusedCellChangeDirection, string>;
+  focusedCellMovement: Record<FocusedCellChangeDirection, KeyboardKeyCode>;
+  setCellMark: KeyboardKeyCode;
 }
