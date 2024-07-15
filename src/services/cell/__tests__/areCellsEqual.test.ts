@@ -1,4 +1,4 @@
-import { describeFunctionTest } from '../../../test';
+import { describeFunctionTest } from '@aminzer/describe-function-test';
 import areCellsEqual from '../areCellsEqual';
 
 describeFunctionTest(areCellsEqual, __filename, {

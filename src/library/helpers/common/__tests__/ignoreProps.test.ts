@@ -1,4 +1,4 @@
-import { formatTestName } from '../../../../test';
+import { formatTestName } from '@aminzer/describe-function-test';
 import ignoreProps from '../ignoreProps';
 
 describe(formatTestName(__filename), () => {

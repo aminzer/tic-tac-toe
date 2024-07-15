@@ -1,6 +1,6 @@
+import { formatTestName } from '@aminzer/describe-function-test';
 import { Mark } from '../../../constants';
 import { Matrix } from '../../../dataStructures';
-import { formatTestName } from '../../../test';
 import { CellSequence } from '../../../types';
 import getWinCellSequence from '../getWinCellSequence';
 

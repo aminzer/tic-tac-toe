@@ -1,4 +1,4 @@
-import { describeFunctionTest } from '../../../test';
+import { describeFunctionTest } from '@aminzer/describe-function-test';
 import isSequenceContainsCell from '../isSequenceContainsCell';
 
 describeFunctionTest(isSequenceContainsCell, __filename, {

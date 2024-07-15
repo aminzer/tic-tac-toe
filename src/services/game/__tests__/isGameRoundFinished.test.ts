@@ -1,5 +1,5 @@
+import { describeFunctionTest } from '@aminzer/describe-function-test';
 import { GameRoundStatus } from '../../../constants';
-import { describeFunctionTest } from '../../../test';
 import isGameRoundFinished from '../isGameRoundFinished';
 
 describeFunctionTest(isGameRoundFinished, __filename, {

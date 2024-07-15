@@ -19,6 +19,7 @@
     "usehooks-ts": "^3.1.0"
   },
   "devDependencies": {
+    "@aminzer/describe-function-test": "^1.0.0",
     "@emotion/babel-plugin": "^11.11.0",
     "@types/jest": "^29.5.12",
     "@types/react": "^18.3.3",
