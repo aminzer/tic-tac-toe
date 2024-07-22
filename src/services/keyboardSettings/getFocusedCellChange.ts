@@ -1,9 +1,12 @@
-import getKeyboardSettings from './getKeyboardSettings';
-import { FocusedCellChange } from './types';
+import { FocusedCellChange, KeyboardSettings } from './types';
 
-const getFocusedCellChange = (event: KeyboardEvent): FocusedCellChange | null => {
-  const settings = getKeyboardSettings();
-
+const getFocusedCellChange = ({
+  event,
+  settings,
+}: {
+  event: Pick<KeyboardEvent, 'code'>;
+  settings: KeyboardSettings;
+}): FocusedCellChange | null => {
   if (event.code === settings.focusedCellMovement.UP) {
     return {
       rowDelta: -1,
