@@ -5,7 +5,7 @@ const getFocusedCellChange = ({
   settings,
 }: {
   event: Pick<KeyboardEvent, 'code'>;
-  settings: KeyboardSettings;
+  settings: Pick<KeyboardSettings, 'focusedCellMovement'>;
 }): FocusedCellChange | null => {
   if (event.code === settings.focusedCellMovement.UP) {
     return {
