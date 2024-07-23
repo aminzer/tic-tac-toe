@@ -11,7 +11,7 @@ const Statistic: React.FC<StatisticProps> = ({ gameStatistic: { winCount } }) =>
   return (
     <>
       <WinCount value={winCount[Mark.CROSS]} mark={Mark.CROSS} />
-      x
+      ✕
       <WinCount value={winCount[Mark.NOUGHT]} mark={Mark.NOUGHT} />
     </>
   );
