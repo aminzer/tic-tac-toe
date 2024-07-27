@@ -7,7 +7,7 @@ import { getNewFocusedCell } from '../../../services/board';
 import { areCellsEqual } from '../../../services/cell';
 import { isSequenceContainsCell } from '../../../services/cellSequence';
 import { isGameRoundFinished } from '../../../services/game';
-import { handleCellMarkSet, handleFocusedCellChange } from '../../../services/keyboardSettings';
+import { handleCellMarkSet, handleFocusedCellChange } from '../../../services/keyboard';
 import BoardCell from './BoardCell';
 import { Container, Spacer, Table } from './styles';
 

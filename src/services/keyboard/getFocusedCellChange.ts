@@ -1,4 +1,5 @@
-import { FocusedCellChange, KeyboardSettings } from './types';
+import { KeyboardSettings } from '../keyboardSettings';
+import { FocusedCellChange } from './types';
 
 const getFocusedCellChange = ({
   event,

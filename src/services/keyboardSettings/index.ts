@@ -1,3 +1,2 @@
-export { default as handleCellMarkSet } from './handleCellMarkSet';
-export { default as handleFocusedCellChange } from './handleFocusedCellChange';
-export type { FocusedCellChange } from './types';
+export { default as getKeyboardSettings } from './getKeyboardSettings';
+export type { KeyboardSettings } from './types';

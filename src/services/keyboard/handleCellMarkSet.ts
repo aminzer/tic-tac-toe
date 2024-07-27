@@ -1,4 +1,4 @@
-import getKeyboardSettings from './getKeyboardSettings';
+import { getKeyboardSettings } from '../keyboardSettings';
 
 const handleCellMarkSet = (event: KeyboardEvent, handler: () => void): void => {
   const settings = getKeyboardSettings();

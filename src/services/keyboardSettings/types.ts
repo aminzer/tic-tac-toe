@@ -1,8 +1,3 @@
-export interface FocusedCellChange {
-  rowDelta: number;
-  columnDelta: number;
-}
-
 export enum FocusedCellChangeDirection {
   UP = 'UP',
   DOWN = 'DOWN',
