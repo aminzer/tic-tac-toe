@@ -43,7 +43,7 @@ const getFocusedClickableAreaOutlineColor = ({
   theme: Theme;
 }): string => {
   if (!isActive) {
-    return theme.palette.secondary.default;
+    return theme.palette.primary.default;
   }
 
   return getMarkColor({ mark: currentPlayerMark, theme });
