@@ -1,7 +1,7 @@
 import { formatTestName } from '@aminzer/describe-function-test';
-import { Mark } from '../../../constants';
-import { Matrix } from '../../../dataStructures';
-import { CellSequence } from '../../../types';
+import { Mark } from '../../../../constants';
+import { Matrix } from '../../../../dataStructures';
+import { CellSequence } from '../../../../types';
 import getWinCellSequence from '../getWinCellSequence';
 
 type Board = ('x' | 'o' | ' ')[][];
