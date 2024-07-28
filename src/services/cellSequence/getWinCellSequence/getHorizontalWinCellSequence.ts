@@ -1,8 +1,8 @@
 import { Mark } from '../../../constants';
 import { Matrix } from '../../../dataStructures';
 import { CellSequence } from '../../../types';
-import calculateCellSequence from '../calculateCellSequence';
 import getCellSequenceLength from '../getCellSequenceLength';
+import calculateCellSequence from './calculateCellSequence';
 
 const getHorizontalWinCellSequence = (
   markMatrix: Matrix<Mark>,

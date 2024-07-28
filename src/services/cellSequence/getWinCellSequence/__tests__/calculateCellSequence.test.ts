@@ -1,6 +1,6 @@
 import { formatTestName } from '@aminzer/describe-function-test';
-import { Mark } from '../../../constants';
-import { Cell, CellSequence } from '../../../types';
+import { Mark } from '../../../../constants';
+import { Cell, CellSequence } from '../../../../types';
 import calculateCellSequence from '../calculateCellSequence';
 
 describe(formatTestName(__filename), () => {

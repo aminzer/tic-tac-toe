@@ -1,5 +1,5 @@
-import { Mark } from '../../constants';
-import { Cell, CellSequence } from '../../types';
+import { Mark } from '../../../constants';
+import { Cell, CellSequence } from '../../../types';
 
 const calculateCellSequence = (
   cellSequence: CellSequence | null,
