@@ -1,35 +1,35 @@
-import { KeyboardSettings } from '../keyboardSettings';
+import { GameKeyboardSettings } from '../keyboardSettings';
 import { FocusedCellChange } from './types';
 
 const getFocusedCellChange = ({
   event,
-  settings,
+  gameKeyboardSettings,
 }: {
   event: Pick<KeyboardEvent, 'code'>;
-  settings: Pick<KeyboardSettings, 'focusedCellMovement'>;
+  gameKeyboardSettings: Pick<GameKeyboardSettings, 'focusedCellMovement'>;
 }): FocusedCellChange | null => {
-  if (event.code === settings.focusedCellMovement.UP) {
+  if (event.code === gameKeyboardSettings.focusedCellMovement.UP) {
     return {
       rowDelta: -1,
       columnDelta: 0,
     };
   }
 
-  if (event.code === settings.focusedCellMovement.DOWN) {
+  if (event.code === gameKeyboardSettings.focusedCellMovement.DOWN) {
     return {
       rowDelta: 1,
       columnDelta: 0,
     };
   }
 
-  if (event.code === settings.focusedCellMovement.LEFT) {
+  if (event.code === gameKeyboardSettings.focusedCellMovement.LEFT) {
     return {
       rowDelta: 0,
       columnDelta: -1,
     };
   }
 
-  if (event.code === settings.focusedCellMovement.RIGHT) {
+  if (event.code === gameKeyboardSettings.focusedCellMovement.RIGHT) {
     return {
       rowDelta: 0,
       columnDelta: 1,

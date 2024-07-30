@@ -34,13 +34,13 @@ const Board: React.FC<BoardProps> = ({
       return;
     }
 
-    handleFocusedCellChange(event, (focusedCellChange) => {
+    handleFocusedCellChange(event, currentPlayerMark, (focusedCellChange) => {
       setFocusedCell((prevFocusedCell) =>
         getNewFocusedCell({ prevFocusedCell, focusedCellChange, boardLimits: markMatrix }),
       );
     });
 
-    handleCellMarkSet(event, () => {
+    handleCellMarkSet(event, currentPlayerMark, () => {
       onCellMarkSet(focusedCell);
     });
   });

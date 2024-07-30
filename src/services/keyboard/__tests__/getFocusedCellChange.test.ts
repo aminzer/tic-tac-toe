@@ -1,8 +1,8 @@
 import { describeFunctionTest } from '@aminzer/describe-function-test';
 import getFocusedCellChange from '../getFocusedCellChange';
-import { FocusedCellChangeDirection, KeyboardSettings } from '../../keyboardSettings/types';
+import { FocusedCellChangeDirection, GameKeyboardSettings } from '../../keyboardSettings/types';
 
-export const settings: Pick<KeyboardSettings, 'focusedCellMovement'> = {
+export const gameKeyboardSettings: Pick<GameKeyboardSettings, 'focusedCellMovement'> = {
   focusedCellMovement: {
     [FocusedCellChangeDirection.UP]: 'ArrowUp',
     [FocusedCellChangeDirection.DOWN]: 'ArrowDown',
@@ -14,27 +14,27 @@ export const settings: Pick<KeyboardSettings, 'focusedCellMovement'> = {
 describeFunctionTest(getFocusedCellChange, __filename, {
   testCases: [
     {
-      args: [{ event: { code: 'KeyA' }, settings }],
+      args: [{ event: { code: 'KeyA' }, gameKeyboardSettings }],
       expectedResult: null,
     },
     {
-      args: [{ event: { code: 'Space' }, settings }],
+      args: [{ event: { code: 'Space' }, gameKeyboardSettings }],
       expectedResult: null,
     },
     {
-      args: [{ event: { code: 'ArrowUp' }, settings }],
+      args: [{ event: { code: 'ArrowUp' }, gameKeyboardSettings }],
       expectedResult: { rowDelta: -1, columnDelta: 0 },
     },
     {
-      args: [{ event: { code: 'ArrowDown' }, settings }],
+      args: [{ event: { code: 'ArrowDown' }, gameKeyboardSettings }],
       expectedResult: { rowDelta: 1, columnDelta: 0 },
     },
     {
-      args: [{ event: { code: 'ArrowLeft' }, settings }],
+      args: [{ event: { code: 'ArrowLeft' }, gameKeyboardSettings }],
       expectedResult: { rowDelta: 0, columnDelta: -1 },
     },
     {
-      args: [{ event: { code: 'ArrowRight' }, settings }],
+      args: [{ event: { code: 'ArrowRight' }, gameKeyboardSettings }],
       expectedResult: { rowDelta: 0, columnDelta: 1 },
     },
   ],

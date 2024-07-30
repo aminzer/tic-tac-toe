@@ -1,14 +1,16 @@
-import { getKeyboardSettings } from '../keyboardSettings';
+import { Mark } from '../../constants';
 import getFocusedCellChange from './getFocusedCellChange';
+import getLocalMultiplayerGameKeyboardSettings from './getLocalMultiplayerGameKeyboardSettings';
 import { FocusedCellChange } from './types';
 
 const handleFocusedCellChange = (
   event: KeyboardEvent,
+  currentPlayerMark: Mark,
   handler: (FocusedCellChange: FocusedCellChange) => void,
 ): void => {
-  const settings = getKeyboardSettings();
+  const gameKeyboardSettings = getLocalMultiplayerGameKeyboardSettings(currentPlayerMark);
 
-  const focusedCellChange = getFocusedCellChange({ event, settings });
+  const focusedCellChange = getFocusedCellChange({ event, gameKeyboardSettings });
 
   if (focusedCellChange) {
     handler(focusedCellChange);

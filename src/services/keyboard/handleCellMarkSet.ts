@@ -1,9 +1,14 @@
-import { getKeyboardSettings } from '../keyboardSettings';
+import { Mark } from '../../constants';
+import getLocalMultiplayerGameKeyboardSettings from './getLocalMultiplayerGameKeyboardSettings';
 
-const handleCellMarkSet = (event: KeyboardEvent, handler: () => void): void => {
-  const settings = getKeyboardSettings();
+const handleCellMarkSet = (
+  event: KeyboardEvent,
+  currentPlayerMark: Mark,
+  handler: () => void,
+): void => {
+  const gameKeyboardSettings = getLocalMultiplayerGameKeyboardSettings(currentPlayerMark);
 
-  if (event.code === settings.setCellMark) {
+  if (event.code === gameKeyboardSettings.setCellMark) {
     handler();
   }
 };
