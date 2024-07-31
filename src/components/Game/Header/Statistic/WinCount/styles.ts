@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { Mark } from '../../../../../constants';
-import { getMarkColor, ignoreProps } from '../../../../../library';
+import { Mark } from '@app/constants';
+import { getMarkColor, ignoreProps } from '@app/library';
 
 export const Container = styled('div', {
   shouldForwardProp: ignoreProps('mark'),

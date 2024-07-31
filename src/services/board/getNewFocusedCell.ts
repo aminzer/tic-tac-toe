@@ -1,5 +1,5 @@
+import { Cell } from '@app/types';
 import { FocusedCellChange } from '../keyboard';
-import { Cell } from '../../types';
 
 const getNewFocusedCell = ({
   prevFocusedCell,

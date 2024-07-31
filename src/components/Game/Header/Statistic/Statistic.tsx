@@ -1,6 +1,6 @@
 import React from 'react';
-import { Mark } from '../../../../constants';
-import { GameStatistic } from '../../../../types';
+import { Mark } from '@app/constants';
+import { GameStatistic } from '@app/types';
 import WinCount from './WinCount';
 
 interface StatisticProps {

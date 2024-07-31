@@ -1,11 +1,5 @@
-import { Mark } from '../../constants';
-
-export enum FocusedCellChangeDirection {
-  UP = 'UP',
-  DOWN = 'DOWN',
-  LEFT = 'LEFT',
-  RIGHT = 'RIGHT',
-}
+import { Mark } from '@app/constants';
+import { FocusedCellChangeDirection } from './constants';
 
 type KeyboardKeyCode = KeyboardEvent['code'];
 

@@ -1,5 +1,5 @@
-import { GameRoundStatus } from '../../constants';
-import { GameRoundInfo } from '../../types';
+import { GameRoundStatus } from '@app/constants';
+import { GameRoundInfo } from '@app/types';
 
 const isGameRoundFinished = (gameRoundInfo: Pick<GameRoundInfo, 'status'>): boolean => {
   return gameRoundInfo.status === GameRoundStatus.FINISHED;

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Mark } from '../../../../constants';
+import { Mark } from '@app/constants';
 import { getMarkColor, ignoreProps } from '../../../helpers';
 
 export const Container = styled('div', {

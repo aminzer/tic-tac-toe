@@ -1,8 +1,8 @@
 import React from 'react';
-import { Mark } from '../../../../constants';
-import { GameRoundInfo } from '../../../../types';
-import { isGameRoundFinished } from '../../../../services/game';
-import { Button, MarkIcon, Typography } from '../../../../library';
+import { Mark } from '@app/constants';
+import { Button, MarkIcon, Typography } from '@app/library';
+import { isGameRoundFinished } from '@app/services/game';
+import { GameRoundInfo } from '@app/types';
 import { Container, TextContainer } from './styles';
 
 interface RoundInfoProps {

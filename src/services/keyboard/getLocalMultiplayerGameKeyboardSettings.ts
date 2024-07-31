@@ -1,4 +1,4 @@
-import { Mark } from '../../constants';
+import { Mark } from '@app/constants';
 import { GameKeyboardSettings, getKeyboardSettings } from '../keyboardSettings';
 
 const getLocalMultiplayerGameKeyboardSettings = (currentPlayerMark: Mark): GameKeyboardSettings => {

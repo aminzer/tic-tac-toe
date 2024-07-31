@@ -1,6 +1,6 @@
 import React from 'react';
-import { Mark } from '../../../constants';
-import { GameRoundInfo, GameStatistic } from '../../../types';
+import { Mark } from '@app/constants';
+import { GameRoundInfo, GameStatistic } from '@app/types';
 import Statistic from './Statistic';
 import RoundInfo from './RoundInfo';
 import { Container, Row } from './styles';

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Mark } from '../../../../constants';
-import { Cell } from '../../../../types';
+import { Mark } from '@app/constants';
+import { Cell } from '@app/types';
 import { CellMark, ClickableArea, Container } from './styles';
 
 interface BoardCellProps {

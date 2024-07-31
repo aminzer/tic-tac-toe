@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mark } from '../../../../constants';
+import { Mark } from '@app/constants';
 import { Container } from './styles';
 
 interface MarkIconProps {

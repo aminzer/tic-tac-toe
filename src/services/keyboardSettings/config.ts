@@ -1,5 +1,6 @@
-import { Mark } from '../../constants';
-import { FocusedCellChangeDirection, KeyboardSettings } from './types';
+import { Mark } from '@app/constants';
+import { FocusedCellChangeDirection } from './constants';
+import { KeyboardSettings } from './types';
 
 export const DEFAULT_KEYBOARD_SETTINGS: KeyboardSettings = {
   localMultiplayer: {

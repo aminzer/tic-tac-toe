@@ -1,4 +1,4 @@
-import { Mark } from '../../constants';
+import { Mark } from '@app/constants';
 import getMarkClass from './getMarkClass';
 
 const getBackgroundMarkClass = (mark?: Mark): string => {

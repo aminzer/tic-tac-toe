@@ -1,5 +1,5 @@
 import { formatTestName } from '@aminzer/describe-function-test';
-import { MatrixSizes } from '../../types';
+import { MatrixSizes } from '@app/types';
 import Matrix from '../Matrix';
 
 describe(formatTestName(__filename), () => {

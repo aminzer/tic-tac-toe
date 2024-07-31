@@ -1,4 +1,4 @@
-import { Mark } from '../../../constants';
+import { Mark } from '@app/constants';
 import { Theme } from '../../design';
 
 const getMarkColor = ({

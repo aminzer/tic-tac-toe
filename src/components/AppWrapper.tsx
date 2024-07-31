@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { GlobalStyles, ThemeProvider } from '../library';
+import { GlobalStyles, ThemeProvider } from '@app/library';
 
 interface AppWrapperProps {
   children: ReactNode;

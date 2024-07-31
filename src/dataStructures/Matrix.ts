@@ -1,4 +1,4 @@
-import { Cell, MatrixSizes } from '../types';
+import { Cell, MatrixSizes } from '@app/types';
 
 class Matrix<T> {
   private _minRowIndex: number;

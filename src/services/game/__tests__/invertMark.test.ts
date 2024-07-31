@@ -1,5 +1,5 @@
 import { describeFunctionTest } from '@aminzer/describe-function-test';
-import { Mark } from '../../../constants';
+import { Mark } from '@app/constants';
 import invertMark from '../invertMark';
 
 describeFunctionTest(invertMark, __filename, {

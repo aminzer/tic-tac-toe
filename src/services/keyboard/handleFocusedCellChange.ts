@@ -1,4 +1,4 @@
-import { Mark } from '../../constants';
+import { Mark } from '@app/constants';
 import getFocusedCellChange from './getFocusedCellChange';
 import getLocalMultiplayerGameKeyboardSettings from './getLocalMultiplayerGameKeyboardSettings';
 import { FocusedCellChange } from './types';

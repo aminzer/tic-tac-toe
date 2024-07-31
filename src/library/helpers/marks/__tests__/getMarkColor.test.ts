@@ -1,5 +1,5 @@
 import { describeFunctionTest } from '@aminzer/describe-function-test';
-import { Mark } from '../../../../constants';
+import { Mark } from '@app/constants';
 import getMarkColor from '../getMarkColor';
 
 const theme = {

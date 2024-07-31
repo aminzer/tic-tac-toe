@@ -1,4 +1,4 @@
-import { Cell } from '../../types';
+import { Cell } from '@app/types';
 
 const areCellsEqual = (cell1: Cell, cell2: Cell): boolean => {
   return cell1.rowIndex === cell2.rowIndex && cell1.columnIndex === cell2.columnIndex;

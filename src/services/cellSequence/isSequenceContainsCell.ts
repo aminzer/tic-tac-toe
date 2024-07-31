@@ -1,4 +1,4 @@
-import { Cell, CellSequence } from '../../types';
+import { Cell, CellSequence } from '@app/types';
 import { areCellsEqual } from '../cell';
 
 const isSequenceContainsCell = (

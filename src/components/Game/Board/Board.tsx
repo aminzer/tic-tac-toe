@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useEventListener } from 'usehooks-ts';
-import { Mark } from '../../../constants';
-import { Matrix } from '../../../dataStructures';
-import { Cell, GameRoundInfo } from '../../../types';
-import { getNewFocusedCell } from '../../../services/board';
-import { areCellsEqual } from '../../../services/cell';
-import { isSequenceContainsCell } from '../../../services/cellSequence';
-import { isGameRoundFinished } from '../../../services/game';
-import { handleCellMarkSet, handleFocusedCellChange } from '../../../services/keyboard';
+import { Mark } from '@app/constants';
+import { Matrix } from '@app/dataStructures';
+import { getNewFocusedCell } from '@app/services/board';
+import { areCellsEqual } from '@app/services/cell';
+import { isSequenceContainsCell } from '@app/services/cellSequence';
+import { isGameRoundFinished } from '@app/services/game';
+import { handleCellMarkSet, handleFocusedCellChange } from '@app/services/keyboard';
+import { Cell, GameRoundInfo } from '@app/types';
 import BoardCell from './BoardCell';
 import { Container, Spacer, Table } from './styles';
 
