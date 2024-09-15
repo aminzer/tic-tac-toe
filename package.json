@@ -2,6 +2,7 @@
   "name": "tic-tac-toe",
   "private": true,
   "version": "0.0.1",
+  "description": "Tic-Tac-Toe game, 5-in-row, infinite game board",
   "type": "module",
   "scripts": {
     "dev": "vite",
