@@ -1,4 +1,4 @@
-import { Global, css, useTheme } from '@emotion/react';
+import { css, Global, useTheme } from '@emotion/react';
 
 const GlobalStyles: React.FC = () => {
   const theme = useTheme();

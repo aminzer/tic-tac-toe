@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { GameRoundStatus, Mark } from '@app/constants';
 import { getWinCellSequence } from '@app/services/cellSequence';
 import { invertMark } from '@app/services/game';
@@ -7,10 +7,10 @@ import { setTitle } from '@app/utils/document';
 import Header from './Header';
 import Board from './Board';
 import {
-  initialMark,
-  initialMarkMatrix,
   initialGameRoundInfo,
   initialGameStatistic,
+  initialMark,
+  initialMarkMatrix,
 } from './initialData';
 import { Content } from './styles';
 

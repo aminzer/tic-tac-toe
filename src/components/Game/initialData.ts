@@ -1,4 +1,4 @@
-import { Mark, GameRoundStatus } from '@app/constants';
+import { GameRoundStatus, Mark } from '@app/constants';
 import { GameRoundInfo, GameStatistic } from '@app/types';
 import { Matrix } from '@app/dataStructures';
 

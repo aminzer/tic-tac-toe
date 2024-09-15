@@ -1,4 +1,4 @@
-import { Mark, GameRoundStatus } from './constants';
+import { GameRoundStatus, Mark } from './constants';
 
 export interface Cell {
   rowIndex: number;
