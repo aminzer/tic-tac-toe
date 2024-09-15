@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
+import { Container } from './styles';
 import {
   TypographyColor,
   TypographyTextAlign,
   TypographyVariant,
   TypographyWhiteSpace,
 } from './types';
-import { Container } from './styles';
 
 export interface TypographyProps {
   children: ReactNode;

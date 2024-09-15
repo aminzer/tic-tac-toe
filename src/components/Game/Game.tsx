@@ -4,8 +4,8 @@ import { getWinCellSequence } from '@app/services/cellSequence';
 import { invertMark } from '@app/services/game';
 import { Cell } from '@app/types';
 import { setTitle } from '@app/utils/document';
-import Header from './Header';
 import Board from './Board';
+import Header from './Header';
 import {
   initialGameRoundInfo,
   initialGameStatistic,

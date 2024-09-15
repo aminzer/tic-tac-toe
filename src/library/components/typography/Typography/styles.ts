@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Mark } from '@app/constants';
-import { ignoreProps } from '../../../helpers';
 import { Theme } from '../../../design';
+import { ignoreProps } from '../../../helpers';
 import {
   TypographyColor,
   TypographyTextAlign,

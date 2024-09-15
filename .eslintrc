@@ -36,7 +36,20 @@
           "parent",
           "sibling",
           "index"
-        ]
+        ],
+        "pathGroups": [
+          {
+            "pattern": "@app/**",
+            "group": "internal"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": [
+          "internal"
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
       }
     ],
     "import/prefer-default-export": "off",

@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
 import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
+import React, { ReactNode } from 'react';
 import { defaultTheme } from '../../../design/theme';
 
 interface ThemeProviderProps {

@@ -1,6 +1,6 @@
 import { GameRoundStatus, Mark } from '@app/constants';
-import { GameRoundInfo, GameStatistic } from '@app/types';
 import { Matrix } from '@app/dataStructures';
+import { GameRoundInfo, GameStatistic } from '@app/types';
 
 export const initialMark: Mark = Mark.CROSS;
 

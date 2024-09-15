@@ -1,6 +1,6 @@
 import { describeFunctionTest } from '@aminzer/describe-function-test';
-import getFocusedCellChange from '../getFocusedCellChange';
 import { FocusedCellChangeDirection, GameKeyboardSettings } from '../../keyboardSettings';
+import getFocusedCellChange from '../getFocusedCellChange';
 
 export const gameKeyboardSettings: Pick<GameKeyboardSettings, 'focusedCellMovement'> = {
   focusedCellMovement: {
