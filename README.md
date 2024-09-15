@@ -8,4 +8,4 @@
 
 ### Link
 
-https://aminzer.github.io/tic-tac-toe/
+[https://aminzer.github.io/tic-tac-toe/](https://aminzer.github.io/tic-tac-toe/){:target="_blank"}
