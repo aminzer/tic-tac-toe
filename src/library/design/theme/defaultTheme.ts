@@ -2,7 +2,7 @@ import {
   CYAN_BRIGHT,
   PINK_BRIGHT,
   PINK_DARK,
-  // PURPLE_BRIGHT,
+  PURPLE_BRIGHT,
   PURPLE_DARK,
   PURPLE_LIGHT,
   YELLOW_BRIGHT,
@@ -13,13 +13,13 @@ import { Theme } from './types';
 const defaultTheme: Theme = {
   palette: {
     primary: {
-      default: '#000',
+      default: PURPLE_BRIGHT,
     },
     secondary: {
       default: CYAN_BRIGHT,
     },
     background: {
-      default: PURPLE_DARK,
+      default: '#000' || PURPLE_DARK,
       light: PURPLE_LIGHT,
     },
     marks: {
