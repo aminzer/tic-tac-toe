@@ -19,7 +19,7 @@ const defaultTheme: Theme = {
       default: CYAN_BRIGHT,
     },
     background: {
-      default: '#000' || PURPLE_DARK,
+      default: PURPLE_DARK,
       light: PURPLE_LIGHT,
     },
     marks: {
