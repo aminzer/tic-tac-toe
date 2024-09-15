@@ -1,4 +1,5 @@
-export const PURPLE_DARK = '#11002e';
+// export const PURPLE_DARK = '#11002e';
+export const PURPLE_DARK = '#000000';
 export const PURPLE_LIGHT = '#4a376a';
 export const PURPLE_BRIGHT = '#c5a4ff';
 
