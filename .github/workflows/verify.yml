@@ -1,4 +1,4 @@
-name: Validate
+name: Verify
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main, dev ]
 
 jobs:
-  validate:
+  verify:
     strategy:
       matrix:
         os: [ ubuntu-latest, windows-latest ]
@@ -16,15 +16,19 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-    - name: Set git to use LF
-      run: |
-        git config --global core.autocrlf false
-        git config --global core.eol lf
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Setup Node
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-    - run: yarn install --frozen-lockfile
-    - run: yarn lint
-    - run: yarn test
+
+    - name: Install dependencies
+      uses: bahmutov/npm-install@v1
+
+    - name: Run linter
+      run: npm run lint
+
+    - name: Run tests
+      run: npm run test
