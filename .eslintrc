@@ -7,7 +7,8 @@
   ],
   "plugins": [
     "jest",
-    "prettier"
+    "prettier",
+    "import"
   ],
   "env": {
     "node": true,
@@ -25,6 +26,19 @@
     "@typescript-eslint/no-use-before-define": "off",
     "arrow-body-style": "off",
     "class-methods-use-this": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ]
+      }
+    ],
     "import/prefer-default-export": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/control-has-associated-label": "off",
