@@ -1,16 +1,21 @@
 import React, { ReactNode } from 'react';
-import { Container } from './styles';
+import { ButtonContainer, LinkContainer } from './styles';
 
 interface ButtonProps {
   children: ReactNode;
+  url?: string;
   onClick?: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ children, url, onClick }) => {
+  if (url) {
+    return <LinkContainer to={url}>{children}</LinkContainer>;
+  }
+
   return (
-    <Container className="btn" type="button" onClick={onClick}>
+    <ButtonContainer type="button" onClick={onClick}>
       {children}
-    </Container>
+    </ButtonContainer>
   );
 };
 

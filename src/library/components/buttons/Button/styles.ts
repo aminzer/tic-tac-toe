@@ -1,6 +1,8 @@
+import { Theme } from '@emotion/react';
 import styled from '@emotion/styled';
+import { Link } from 'react-router';
 
-export const Container = styled('button')(({ theme }) => ({
+const getContainerStyles = ({ theme }: { theme: Theme }) => ({
   padding: '0.25rem 1rem',
   backgroundColor: 'initial',
   color: theme.palette.primary.default,
@@ -8,6 +10,7 @@ export const Container = styled('button')(({ theme }) => ({
   borderRadius: theme.shape.borderRadius.default,
   fontSize: '1rem',
   fontFamily: theme.fonts.fontFamily.default,
+  textDecoration: 'none',
   cursor: 'pointer',
   transition: 'all 0.1s linear',
 
@@ -18,4 +21,8 @@ export const Container = styled('button')(({ theme }) => ({
   '&:focus': {
     backgroundColor: theme.palette.background.light,
   },
-}));
+});
+
+export const ButtonContainer = styled('button')(getContainerStyles);
+
+export const LinkContainer = styled(Link)(getContainerStyles);
