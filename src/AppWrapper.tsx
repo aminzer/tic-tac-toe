@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { BrowserRouter } from 'react-router';
 import { GlobalStyles, ThemeProvider } from '@app/library';
 
 interface AppWrapperProps {
@@ -8,10 +9,12 @@ interface AppWrapperProps {
 const AppWrapper: React.FC<AppWrapperProps> = ({ children }) => {
   return (
     <React.StrictMode>
-      <ThemeProvider>
-        <GlobalStyles />
-        {children}
-      </ThemeProvider>
+      <BrowserRouter>
+        <ThemeProvider>
+          <GlobalStyles />
+          {children}
+        </ThemeProvider>
+      </BrowserRouter>
     </React.StrictMode>
   );
 };

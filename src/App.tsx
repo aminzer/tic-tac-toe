@@ -1,11 +1,11 @@
 import React from 'react';
 import AppWrapper from './AppWrapper';
-import Game from './Game';
+import Routes from './routes';
 
 const App: React.FC = () => {
   return (
     <AppWrapper>
-      <Game />
+      <Routes />
     </AppWrapper>
   );
 };
