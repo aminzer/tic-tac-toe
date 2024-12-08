@@ -116,6 +116,14 @@ class Matrix<T> {
     this._data.set(dataKey, value);
   }
 
+  public delete(rowIndex: number, columnIndex: number): void {
+    this.ensureCellIsWithinMatrix(rowIndex, columnIndex);
+
+    const dataKey = this.getDataKey(rowIndex, columnIndex);
+
+    this._data.delete(dataKey);
+  }
+
   public mapRows<U>(callback: (row: MatrixRow<T>) => U): U[] {
     const res: U[] = [];
 
