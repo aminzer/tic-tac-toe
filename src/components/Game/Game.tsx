@@ -6,15 +6,12 @@ import { Cell } from '@app/types';
 import { setTitle } from '@app/utils/document';
 import Board from './Board';
 import Header from './Header';
-import {
-  initialGameRoundInfo,
-  initialGameStatistic,
-  initialMark,
-  initialMarkMatrix,
-} from './initialData';
+import { useInitialMarkMatrix } from './hooks';
+import { initialGameRoundInfo, initialGameStatistic, initialMark } from './initialData';
 import { Content } from './styles';
 
 const Game: React.FC = () => {
+  const initialMarkMatrix = useInitialMarkMatrix();
   const [markMatrix, setMarkMatrix] = useState(initialMarkMatrix);
   const [currentMark, setCurrentMark] = useState(initialMark);
   const [gameRoundInfo, setGameRoundInfo] = useState(initialGameRoundInfo);

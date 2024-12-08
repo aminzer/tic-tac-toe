@@ -1,5 +1,8 @@
 import styled from '@emotion/styled';
 
+export const boardCellSizePx = 36;
+export const boardCellClickableAreaSizePx = 32;
+
 export const Container = styled('div')({
   flex: 1,
   display: 'flex',

@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { Mark } from '@app/constants';
 import { getMarkColor, ignoreProps, Theme } from '@app/library';
+import { boardCellClickableAreaSizePx, boardCellSizePx } from '../styles';
 
 export const Container = styled('td', {
   shouldForwardProp: ignoreProps(
@@ -19,8 +20,8 @@ export const Container = styled('td', {
   isLeftBorder: boolean;
   isRightBorder: boolean;
 }>(({ mark, isWinSequence, isTopBorder, isBottomBorder, isLeftBorder, isRightBorder, theme }) => ({
-  height: '2rem',
-  width: '2rem',
+  height: boardCellSizePx,
+  width: boardCellSizePx,
   border: `1px solid ${theme.palette.background.light}`,
 
   ...(isWinSequence && {
@@ -56,8 +57,8 @@ export const ClickableArea = styled('div', {
   isActive: boolean;
   isFocused: boolean;
 }>(({ currentPlayerMark, isActive, isFocused, theme }) => ({
-  height: '2rem',
-  width: '2rem',
+  height: boardCellClickableAreaSizePx,
+  width: boardCellClickableAreaSizePx,
   padding: '0.5rem',
   background: 'none',
   border: 'none',
