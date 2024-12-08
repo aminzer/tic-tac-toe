@@ -27,7 +27,7 @@ const Game: React.FC = () => {
 
     const newMarkMatrix = markMatrix.clone();
     newMarkMatrix.set(rowIndex, columnIndex, currentMark);
-    newMarkMatrix.increaseMatrixSizeToIncludeCell({ rowIndex, columnIndex }, { borderOffset: 1 });
+    newMarkMatrix.increaseMatrixSizeToIncludeCell({ rowIndex, columnIndex }, { borderOffset: 2 });
 
     setMarkMatrix(newMarkMatrix);
 
