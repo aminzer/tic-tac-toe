@@ -1,1 +1,1 @@
-export const baseUrlPath = process.env.VITE_BASE_URL_PATH ?? '/';
+export const baseUrlPath = import.meta.env.VITE_BASE_URL_PATH ?? '/';
