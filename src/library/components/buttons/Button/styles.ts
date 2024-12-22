@@ -20,6 +20,8 @@ const getContainerStyles = ({ theme }: { theme: Theme }) => ({
 
   '&:focus': {
     backgroundColor: theme.palette.background.light,
+    outline: `2px solid ${theme.palette.primary.default}`,
+    outlineOffset: '2px',
   },
 });
 
