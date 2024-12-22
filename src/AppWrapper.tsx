@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { BrowserRouter } from 'react-router';
+import { HashRouter } from 'react-router';
 import { baseUrlPath } from '@app/config/urls';
 import { GlobalStyles, ThemeProvider } from '@app/library';
 
@@ -10,12 +10,12 @@ interface AppWrapperProps {
 const AppWrapper: React.FC<AppWrapperProps> = ({ children }) => {
   return (
     <React.StrictMode>
-      <BrowserRouter basename={baseUrlPath}>
+      <HashRouter basename={baseUrlPath}>
         <ThemeProvider>
           <GlobalStyles />
           {children}
         </ThemeProvider>
-      </BrowserRouter>
+      </HashRouter>
     </React.StrictMode>
   );
 };
