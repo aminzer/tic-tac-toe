@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import { HashRouter } from 'react-router';
-import { baseUrlPath } from '@app/config/urls';
 import { GlobalStyles, ThemeProvider } from '@app/library';
 
 interface AppWrapperProps {
@@ -10,7 +9,7 @@ interface AppWrapperProps {
 const AppWrapper: React.FC<AppWrapperProps> = ({ children }) => {
   return (
     <React.StrictMode>
-      <HashRouter basename={baseUrlPath}>
+      <HashRouter>
         <ThemeProvider>
           <GlobalStyles />
           {children}
