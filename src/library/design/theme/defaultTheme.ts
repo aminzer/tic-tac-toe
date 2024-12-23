@@ -35,7 +35,7 @@ const defaultTheme: Theme = {
   },
   fonts: {
     fontFamily: {
-      default: 'Roboto Mono',
+      default: '"Roboto Mono", monospace',
     },
   },
   shape: {
