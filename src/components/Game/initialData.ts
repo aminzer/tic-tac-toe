@@ -5,7 +5,7 @@ export const initialMark: Mark = Mark.CROSS;
 
 export const initialGameRoundInfo: GameRoundInfo = {
   startingMark: initialMark,
-  status: GameRoundStatus.IN_PROGRESS,
+  status: GameRoundStatus.NOT_STARTED,
 };
 
 export const initialGameStatistic: GameStatistic = {

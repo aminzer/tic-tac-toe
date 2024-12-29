@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { GameRoundStatus, Mark } from '@app/constants';
-import { getWinCellSequence } from '@app/services/cellSequence';
-import { invertMark } from '@app/services/game';
+import React, { useEffect, useMemo, useState } from 'react';
+import { Mark } from '@app/constants';
+import { GameService } from '@app/services/game';
+import findCurrentPlayer from '@app/services/game/findCurrentPlayer';
+import { Player } from '@app/services/player';
 import { Cell } from '@app/types';
 import { setTitle } from '@app/utils/document';
 import Board from './Board';
@@ -10,59 +11,48 @@ import { useInitialMarkMatrix } from './hooks';
 import { initialGameRoundInfo, initialGameStatistic, initialMark } from './initialData';
 import { Content } from './styles';
 
-const Game: React.FC = () => {
+interface GameProps {
+  players: Player[];
+}
+
+const Game: React.FC<GameProps> = ({ players }) => {
   const initialMarkMatrix = useInitialMarkMatrix();
   const [markMatrix, setMarkMatrix] = useState(initialMarkMatrix);
   const [currentMark, setCurrentMark] = useState(initialMark);
   const [gameRoundInfo, setGameRoundInfo] = useState(initialGameRoundInfo);
   const [gameStatistic, setGameStatistic] = useState(initialGameStatistic);
 
-  const handleCellMarkSet = ({ rowIndex, columnIndex }: Cell): void => {
-    if (markMatrix.get(rowIndex, columnIndex)) {
-      return;
-    }
+  const gameService = useMemo(() => new GameService({ players }), [players]);
 
-    const newMarkMatrix = markMatrix.clone();
-    newMarkMatrix.set(rowIndex, columnIndex, currentMark);
-    newMarkMatrix.increaseMatrixSizeToIncludeCell({ rowIndex, columnIndex }, { borderOffset: 2 });
+  const handleCellMarkSet = (cell: Cell): void => {
+    const currentPlayer = findCurrentPlayer(players, currentMark);
 
-    setMarkMatrix(newMarkMatrix);
-
-    setCurrentMark(invertMark(currentMark));
-
-    const winCellSequence = getWinCellSequence(newMarkMatrix);
-
-    if (winCellSequence) {
-      setGameRoundInfo({
-        ...gameRoundInfo,
-        status: GameRoundStatus.FINISHED,
-        winCellSequence,
-      });
-
-      const newGameStatistic = {
-        ...gameStatistic,
-        winCount: {
-          ...gameStatistic.winCount,
-          [winCellSequence.mark]: gameStatistic.winCount[winCellSequence.mark] + 1,
-        },
-      };
-
-      setGameStatistic(newGameStatistic);
+    if (currentPlayer?.resolveNextCellToMark) {
+      currentPlayer.resolveNextCellToMark(cell);
     }
   };
 
   const startNewGameRound = () => {
-    setMarkMatrix(initialMarkMatrix);
+    gameService.startNewRound();
 
-    const startingMark = invertMark(gameRoundInfo.startingMark);
+    setMarkMatrix(gameService.getMarkMatrix().clone());
+    setCurrentMark(gameService.getCurrentMark());
+    setGameRoundInfo(structuredClone(gameService.getRoundInfo()));
+  };
 
-    setGameRoundInfo({
-      ...initialGameRoundInfo,
-      startingMark,
+  useEffect(() => {
+    gameService.onCellMarkSet(() => {
+      setMarkMatrix(gameService.getMarkMatrix().clone());
+      setCurrentMark(gameService.getCurrentMark());
     });
 
-    setCurrentMark(startingMark);
-  };
+    gameService.onRoundFinish(() => {
+      setGameRoundInfo(structuredClone(gameService.getRoundInfo()));
+      setGameStatistic(structuredClone(gameService.getStatistic()));
+    });
+
+    gameService.startNewRound();
+  }, [gameService]);
 
   useEffect(() => {
     const { winCount } = gameStatistic;
