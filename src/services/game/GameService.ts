@@ -58,11 +58,7 @@ class GameService {
   public startNewRound(): void {
     this.initRoundData();
 
-    this._roundInfo = {
-      ...this._roundInfo,
-      status: GameRoundStatus.IN_PROGRESS,
-      winCellSequence: undefined,
-    };
+    this._roundInfo.status = GameRoundStatus.IN_PROGRESS;
 
     this.waitForCurrentPlayerMove();
   }
@@ -84,11 +80,11 @@ class GameService {
   }
 
   private initRoundData(): void {
+    this._markMatrix = new Matrix<Mark>(this._initialBoardMatrixSizes);
+
     const startingMark = this.isFirstRound()
       ? Mark.CROSS
       : invertMark(this._roundInfo.startingMark);
-
-    this._markMatrix = new Matrix<Mark>(this._initialBoardMatrixSizes);
 
     this._currentMark = startingMark;
 
