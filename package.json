@@ -6,7 +6,6 @@
   "type": "module",
   "scripts": {
     "build": "tsc && vite build",
-    "build:watch": "yarn build --watch",
     "codestyle": "run-p lint typescript:check",
     "dev": "vite",
     "lint": "eslint src/**/*.ts src/**/*.tsx",
