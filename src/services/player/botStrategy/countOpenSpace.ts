@@ -6,19 +6,19 @@ const countOpenSpace = (
   markMatrix: Matrix<Mark>,
   rowIndex: number,
   columnIndex: number,
-  deltaRow: number,
-  deltaColumn: number,
+  rowDelta: number,
+  columnDelta: number,
   opponentMark: Mark,
   maxCount: number,
 ): number => {
   let count = 0;
-  let r = rowIndex + deltaRow;
-  let c = columnIndex + deltaColumn;
+  let r = rowIndex + rowDelta;
+  let c = columnIndex + columnDelta;
 
   while (count < maxCount && safeGet(markMatrix, r, c) !== opponentMark) {
     count += 1;
-    r += deltaRow;
-    c += deltaColumn;
+    r += rowDelta;
+    c += columnDelta;
   }
 
   return count;

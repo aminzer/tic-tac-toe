@@ -15,8 +15,8 @@ import countOpenSpace from './countOpenSpace';
 const getDirectionScore = (
   markMatrix: Matrix<Mark>,
   cell: Cell,
-  deltaRow: number,
-  deltaColumn: number,
+  rowDelta: number,
+  columnDelta: number,
   targetMark: Mark,
 ): number => {
   const { rowIndex, columnIndex } = cell;
@@ -26,16 +26,16 @@ const getDirectionScore = (
     markMatrix,
     rowIndex,
     columnIndex,
-    deltaRow,
-    deltaColumn,
+    rowDelta,
+    columnDelta,
     targetMark,
   );
   const backward = countConsecutive(
     markMatrix,
     rowIndex,
     columnIndex,
-    -deltaRow,
-    -deltaColumn,
+    -rowDelta,
+    -columnDelta,
     targetMark,
   );
   const sequenceLength = 1 + forward + backward;
@@ -46,19 +46,19 @@ const getDirectionScore = (
 
   const forwardOpen = countOpenSpace(
     markMatrix,
-    rowIndex + deltaRow * forward,
-    columnIndex + deltaColumn * forward,
-    deltaRow,
-    deltaColumn,
+    rowIndex + rowDelta * forward,
+    columnIndex + columnDelta * forward,
+    rowDelta,
+    columnDelta,
     opponentMark,
     WIN_SEQUENCE_LENGTH,
   );
   const backwardOpen = countOpenSpace(
     markMatrix,
-    rowIndex - deltaRow * backward,
-    columnIndex - deltaColumn * backward,
-    -deltaRow,
-    -deltaColumn,
+    rowIndex - rowDelta * backward,
+    columnIndex - columnDelta * backward,
+    -rowDelta,
+    -columnDelta,
     opponentMark,
     WIN_SEQUENCE_LENGTH,
   );
@@ -75,13 +75,14 @@ const evaluateCell = (markMatrix: Matrix<Mark>, cell: Cell, botMark: Mark): numb
   const opponentMark = invertMark(botMark);
 
   const offensiveScore = DIRECTIONS.reduce(
-    (sum, [deltaRow, deltaColumn]) =>
-      sum + getDirectionScore(markMatrix, cell, deltaRow, deltaColumn, botMark),
+    (sum, { rowDelta, columnDelta }) =>
+      sum + getDirectionScore(markMatrix, cell, rowDelta, columnDelta, botMark),
     0,
   );
+
   const defensiveScore = DIRECTIONS.reduce(
-    (sum, [deltaRow, deltaColumn]) =>
-      sum + getDirectionScore(markMatrix, cell, deltaRow, deltaColumn, opponentMark),
+    (sum, { rowDelta, columnDelta }) =>
+      sum + getDirectionScore(markMatrix, cell, rowDelta, columnDelta, opponentMark),
     0,
   );
 
