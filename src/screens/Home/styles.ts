@@ -24,3 +24,10 @@ export const Title = styled('h1')({
 export const Description = styled('h5')({
   margin: 0,
 });
+
+export const Menu = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '1rem',
+  alignItems: 'center',
+});

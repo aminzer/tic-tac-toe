@@ -36,7 +36,7 @@ There is no single-test runner configured; use `yarn test -- --testPathPattern=<
 
 ### Component Hierarchy
 
-`AppWrapper` provides HashRouter, Emotion ThemeProvider, and GlobalStyles. Routes: Home (`/`) and LocalMultiplayerGame (`/game`). The `Game` component bridges GameService and UI, containing `Header` (round info, stats) and `Board` (cell grid, keyboard input).
+`AppWrapper` provides HashRouter, Emotion ThemeProvider, and GlobalStyles. Routes: Home (`/`) and LocalMultiPlayerGame (`/game`). The `Game` component bridges GameService and UI, containing `Header` (round info, stats) and `Board` (cell grid, keyboard input).
 
 ### Keyboard Input
 

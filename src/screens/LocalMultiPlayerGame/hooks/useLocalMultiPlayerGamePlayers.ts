@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { Mark } from '@app/constants';
 import { LocalHumanPlayer, Player } from '@app/services/player';
 
-const useLocalMultiplayerGamePlayers = (): Player[] => {
+const useLocalMultiPlayerGamePlayers = (): Player[] => {
   return useMemo(() => {
     return [
       new LocalHumanPlayer({ mark: Mark.CROSS }),
@@ -11,4 +11,4 @@ const useLocalMultiplayerGamePlayers = (): Player[] => {
   }, []);
 };
 
-export default useLocalMultiplayerGamePlayers;
+export default useLocalMultiPlayerGamePlayers;

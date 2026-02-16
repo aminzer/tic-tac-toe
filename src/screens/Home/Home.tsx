@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Button } from '@app/library';
 import { setTitle } from '@app/utils/document';
-import { Container, Description, Title, TitleContainer } from './styles';
+import { Container, Description, Menu, Title, TitleContainer } from './styles';
 
 const Home: React.FC = () => {
   useEffect(() => {
@@ -16,7 +16,10 @@ const Home: React.FC = () => {
         <Description>5-in-row, infinite board</Description>
       </TitleContainer>
 
-      <Button url="/game">Local multiplayer</Button>
+      <Menu>
+        <Button url="/game/local/single-player">Single player</Button>
+        <Button url="/game/local/multi-player">Multiplayer</Button>
+      </Menu>
     </Container>
   );
 };
