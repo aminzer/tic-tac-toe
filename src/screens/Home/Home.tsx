@@ -17,8 +17,8 @@ const Home: React.FC = () => {
       </TitleContainer>
 
       <Menu>
-        <Button url="/game/local/single-player">Single player</Button>
-        <Button url="/game/local/multi-player">Multiplayer</Button>
+        <Button url="/single-player">Single player</Button>
+        <Button url="/multi-player">Multiplayer</Button>
       </Menu>
     </Container>
   );
