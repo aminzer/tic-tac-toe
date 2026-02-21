@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Mark } from '@app/constants';
 import { GameService } from '@app/services/game';
 import findCurrentPlayer from '@app/services/game/findCurrentPlayer';
@@ -24,13 +24,16 @@ const Game: React.FC<GameProps> = ({ players }) => {
 
   const gameService = useMemo(() => new GameService({ players }), [players]);
 
-  const handleCellMarkSet = (cell: Cell): void => {
-    const currentPlayer = findCurrentPlayer(players, currentMark);
+  const handleCellMarkSet = useCallback(
+    (cell: Cell): void => {
+      const currentPlayer = findCurrentPlayer(players, currentMark);
 
-    if (currentPlayer?.resolveNextCellToMark) {
-      currentPlayer.resolveNextCellToMark(cell);
-    }
-  };
+      if (currentPlayer?.resolveNextCellToMark) {
+        currentPlayer.resolveNextCellToMark(cell);
+      }
+    },
+    [players, currentMark],
+  );
 
   const startNewGameRound = () => {
     gameService.startNewRound();
