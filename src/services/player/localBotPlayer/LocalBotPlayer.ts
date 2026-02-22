@@ -1,8 +1,8 @@
 import { Mark } from '@app/constants';
 import { Matrix } from '@app/dataStructures';
 import { Cell } from '@app/types';
-import { getBestCell } from './botStrategy';
-import { Player } from './types';
+import { Player } from '../types';
+import { getBestCell } from './helpers';
 
 class LocalBotPlayer implements Player {
   private readonly mark: Mark;

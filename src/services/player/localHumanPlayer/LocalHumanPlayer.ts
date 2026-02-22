@@ -1,6 +1,6 @@
 import { Mark } from '@app/constants';
 import { Cell } from '@app/types';
-import { Player } from './types';
+import { Player } from '../types';
 
 class LocalHumanPlayer implements Player {
   private readonly mark: Mark;
