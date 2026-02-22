@@ -8,7 +8,8 @@
   "plugins": [
     "jest",
     "prettier",
-    "import"
+    "import",
+    "react-compiler"
   ],
   "env": {
     "node": true,
@@ -80,6 +81,7 @@
         "unnamedComponents": "arrow-function"
       }
     ],
+    "react-compiler/react-compiler": "error",
     "sort-imports": [
       "error",
       {

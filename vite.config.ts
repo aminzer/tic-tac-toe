@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => {
         jsxImportSource: "@emotion/react",
         babel: {
           plugins: [
+            "babel-plugin-react-compiler",
             "@emotion/babel-plugin",
           ],
         },
