@@ -27,7 +27,9 @@ const RoundInfo: React.FC<RoundInfoProps> = ({
 
         <MarkIcon mark={winnerMark} />
 
-        <Button onClick={onNewGameRoundStart}>Start new round</Button>
+        <Button autoFocus onClick={onNewGameRoundStart}>
+          Start new round
+        </Button>
       </Container>
     );
   }

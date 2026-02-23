@@ -4,16 +4,17 @@ import { ButtonContainer, LinkContainer } from './styles';
 interface ButtonProps {
   children: ReactNode;
   url?: string;
+  autoFocus?: boolean;
   onClick?: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, url, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ children, url, autoFocus, onClick }) => {
   if (url) {
     return <LinkContainer to={url}>{children}</LinkContainer>;
   }
 
   return (
-    <ButtonContainer type="button" onClick={onClick}>
+    <ButtonContainer type="button" autoFocus={autoFocus} onClick={onClick}>
       {children}
     </ButtonContainer>
   );
