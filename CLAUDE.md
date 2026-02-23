@@ -62,4 +62,8 @@ Jest with ts-jest and jsdom environment. Tests live in `__tests__/` directories 
 
 ## Code Style
 
-ESLint (Airbnb + TypeScript), Prettier (100 char width, single quotes). Arrow function components only (no class components or function declarations for components).
+ESLint (Airbnb + TypeScript), Prettier (100 char width, single quotes).
+
+Arrow function components only (no class components or function declarations for components).
+
+In component props, handlers (e.g. `onClick`, `onSubmit`) should come after all other props.
