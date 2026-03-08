@@ -22,46 +22,46 @@ const getDirectionScore = (
   const { rowIndex, columnIndex } = cell;
   const opponentMark = invertMark(targetMark);
 
-  const forward = countConsecutive(
+  const forward = countConsecutive({
     markMatrix,
-    rowIndex,
-    columnIndex,
+    startRowIndex: rowIndex,
+    startColumnIndex: columnIndex,
     rowDelta,
     columnDelta,
     targetMark,
-  );
-  const backward = countConsecutive(
+  });
+  const backward = countConsecutive({
     markMatrix,
-    rowIndex,
-    columnIndex,
-    -rowDelta,
-    -columnDelta,
+    startRowIndex: rowIndex,
+    startColumnIndex: columnIndex,
+    rowDelta: -rowDelta,
+    columnDelta: -columnDelta,
     targetMark,
-  );
+  });
   const sequenceLength = 1 + forward + backward;
 
   if (sequenceLength >= WIN_SEQUENCE_LENGTH) {
     return WIN_SCORE;
   }
 
-  const forwardOpen = countOpenSpace(
+  const forwardOpen = countOpenSpace({
     markMatrix,
-    rowIndex + rowDelta * forward,
-    columnIndex + columnDelta * forward,
+    startRowIndex: rowIndex + rowDelta * forward,
+    startColumnIndex: columnIndex + columnDelta * forward,
     rowDelta,
     columnDelta,
     opponentMark,
-    WIN_SEQUENCE_LENGTH,
-  );
-  const backwardOpen = countOpenSpace(
+    maxCount: WIN_SEQUENCE_LENGTH,
+  });
+  const backwardOpen = countOpenSpace({
     markMatrix,
-    rowIndex - rowDelta * backward,
-    columnIndex - columnDelta * backward,
-    -rowDelta,
-    -columnDelta,
+    startRowIndex: rowIndex - rowDelta * backward,
+    startColumnIndex: columnIndex - columnDelta * backward,
+    rowDelta: -rowDelta,
+    columnDelta: -columnDelta,
     opponentMark,
-    WIN_SEQUENCE_LENGTH,
-  );
+    maxCount: WIN_SEQUENCE_LENGTH,
+  });
   const totalOpenSpace = sequenceLength + forwardOpen + backwardOpen;
 
   if (totalOpenSpace < WIN_SEQUENCE_LENGTH) {
