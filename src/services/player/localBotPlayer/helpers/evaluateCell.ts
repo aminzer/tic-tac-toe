@@ -10,7 +10,7 @@ import {
   WIN_SEQUENCE_LENGTH,
 } from './constants';
 import countConsecutive from './countConsecutive';
-import countOpenSpace from './countOpenSpace';
+import countUnblockedCells from './countUnblockedCells';
 
 const getDirectionScore = (
   markMatrix: Matrix<Mark>,
@@ -44,7 +44,7 @@ const getDirectionScore = (
     return WIN_SCORE;
   }
 
-  const forwardOpen = countOpenSpace({
+  const forwardOpen = countUnblockedCells({
     markMatrix,
     startRowIndex: rowIndex + rowDelta * forward,
     startColumnIndex: columnIndex + columnDelta * forward,
@@ -53,7 +53,7 @@ const getDirectionScore = (
     opponentMark,
     maxCount: WIN_SEQUENCE_LENGTH,
   });
-  const backwardOpen = countOpenSpace({
+  const backwardOpen = countUnblockedCells({
     markMatrix,
     startRowIndex: rowIndex - rowDelta * backward,
     startColumnIndex: columnIndex - columnDelta * backward,

@@ -2,7 +2,7 @@ import { Mark } from '@app/constants';
 import { Matrix } from '@app/dataStructures';
 import safeGet from './safeGet';
 
-const countOpenSpace = ({
+const countUnblockedCells = ({
   markMatrix,
   startRowIndex,
   startColumnIndex,
@@ -34,4 +34,4 @@ const countOpenSpace = ({
   return count;
 };
 
-export default countOpenSpace;
+export default countUnblockedCells;

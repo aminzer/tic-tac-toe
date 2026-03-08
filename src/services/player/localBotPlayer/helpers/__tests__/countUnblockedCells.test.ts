@@ -1,7 +1,7 @@
 import { formatTestName } from '@aminzer/describe-function-test';
 import { Mark } from '@app/constants';
 import { Matrix } from '@app/dataStructures';
-import countOpenSpace from '../countOpenSpace';
+import countUnblockedCells from '../countUnblockedCells';
 
 describe(formatTestName(__filename), () => {
   let matrix: Matrix<Mark>;
@@ -14,7 +14,7 @@ describe(formatTestName(__filename), () => {
     matrix.set(3, 6, Mark.NOUGHT);
 
     expect(
-      countOpenSpace({
+      countUnblockedCells({
         markMatrix: matrix,
         startRowIndex: 3,
         startColumnIndex: 3,
@@ -28,7 +28,7 @@ describe(formatTestName(__filename), () => {
 
   it('counts up to maxCount even if more space is available', () => {
     expect(
-      countOpenSpace({
+      countUnblockedCells({
         markMatrix: matrix,
         startRowIndex: 3,
         startColumnIndex: 3,
@@ -44,7 +44,7 @@ describe(formatTestName(__filename), () => {
     matrix.set(3, 4, Mark.NOUGHT);
 
     expect(
-      countOpenSpace({
+      countUnblockedCells({
         markMatrix: matrix,
         startRowIndex: 3,
         startColumnIndex: 3,
@@ -60,7 +60,7 @@ describe(formatTestName(__filename), () => {
     matrix.set(3, 4, Mark.CROSS);
 
     expect(
-      countOpenSpace({
+      countUnblockedCells({
         markMatrix: matrix,
         startRowIndex: 3,
         startColumnIndex: 3,
@@ -74,7 +74,7 @@ describe(formatTestName(__filename), () => {
 
   it('does not stop at matrix boundary', () => {
     expect(
-      countOpenSpace({
+      countUnblockedCells({
         markMatrix: matrix,
         startRowIndex: 3,
         startColumnIndex: 3,
@@ -90,7 +90,7 @@ describe(formatTestName(__filename), () => {
     matrix.set(5, 3, Mark.CROSS);
 
     expect(
-      countOpenSpace({
+      countUnblockedCells({
         markMatrix: matrix,
         startRowIndex: 3,
         startColumnIndex: 3,
@@ -104,7 +104,7 @@ describe(formatTestName(__filename), () => {
 
   it('counts open space diagonally', () => {
     expect(
-      countOpenSpace({
+      countUnblockedCells({
         markMatrix: matrix,
         startRowIndex: 3,
         startColumnIndex: 3,
