@@ -6,7 +6,7 @@ export const Container = styled('div')({
   alignItems: 'center',
   justifyContent: 'center',
   gap: '2rem',
-  paddingTop: '20vh',
+  paddingTop: '20dvh',
 });
 
 export const TitleContainer = styled('div')({
