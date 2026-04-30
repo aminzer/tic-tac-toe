@@ -11,9 +11,9 @@ const Home: React.FC = () => {
   return (
     <Container>
       <TitleContainer>
-        <Title>TicTacToe</Title>
+        <Title>Tic Tac Toe</Title>
 
-        <Description>5-in-row, infinite board</Description>
+        <Description>5 in a row, infinite board</Description>
       </TitleContainer>
 
       <Menu>
