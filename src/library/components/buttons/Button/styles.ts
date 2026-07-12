@@ -1,6 +1,15 @@
-import { Theme } from '@emotion/react';
+import { keyframes, Theme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Link } from 'react-router';
+
+const pulse = keyframes({
+  from: {
+    boxShadow: '0 0 0 0 currentColor',
+  },
+  to: {
+    boxShadow: '0 0 0 0.5rem transparent',
+  },
+});
 
 const getContainerStyles = ({ theme }: { theme: Theme }) => ({
   padding: '0.25rem 1rem',
@@ -19,9 +28,9 @@ const getContainerStyles = ({ theme }: { theme: Theme }) => ({
   },
 
   '&:focus': {
-    backgroundColor: theme.palette.background.light,
-    outline: `2px solid ${theme.palette.primary.default}`,
-    outlineOffset: '2px',
+    backgroundColor: theme.palette.background.medium,
+    outline: 'none',
+    animation: `${pulse} 1.2s ease-out infinite`,
   },
 });
 

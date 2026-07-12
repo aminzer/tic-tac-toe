@@ -13,6 +13,7 @@ export interface Theme {
     };
     background: {
       default: string;
+      medium: string;
       light: string;
     };
     marks: {

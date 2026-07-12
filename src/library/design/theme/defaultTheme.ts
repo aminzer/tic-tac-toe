@@ -5,6 +5,7 @@ import {
   PURPLE_BRIGHT,
   PURPLE_DARK,
   PURPLE_LIGHT,
+  PURPLE_MEDIUM,
   YELLOW_BRIGHT,
   YELLOW_DARK,
 } from '../palette';
@@ -20,6 +21,7 @@ const defaultTheme: Theme = {
     },
     background: {
       default: PURPLE_DARK,
+      medium: PURPLE_MEDIUM,
       light: PURPLE_LIGHT,
     },
     marks: {
